@@ -1,9 +1,18 @@
 package br.com.gabrielferreira.aplicacao;
 
+import java.util.Locale;
+import java.util.Scanner;
+
 public class Ex05 {
 
     public static void main(String[] args) {
-        int numeroFatorar = 10;
+
+        Locale.setDefault(Locale.US);
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Qual número que vc deseja fatorar ? ");
+        int numeroFatorar = scanner.nextInt();
 
         double fatora = 1;
         for(int i = 1; i <= numeroFatorar; i++){
@@ -11,5 +20,6 @@ public class Ex05 {
         }
 
         System.out.println(fatora);
+        scanner.close();
     }
 }

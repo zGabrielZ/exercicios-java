@@ -1,10 +1,18 @@
 package br.com.gabrielferreira.aplicacao;
 
+import java.util.Locale;
+import java.util.Scanner;
+
 public class Ex07 {
 
     public static void main(String[] args) {
 
-        int x = 2;
+        Locale.setDefault(Locale.US);
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Qual número que vc deseja infomar ? ");
+        int x = scanner.nextInt();
+
         do {
             if(isPar(x)){
                 x += 5;
@@ -15,6 +23,8 @@ public class Ex07 {
             System.out.println(x);
 
         } while (x < 1000);
+
+        scanner.close();
 
     }
 
