@@ -1,6 +1,6 @@
 package br.com.gabrielferreira.model;
 
-import br.com.gabrielferreira.exception.ErroException;
+import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import lombok.*;
 import java.io.Serial;
 import java.io.Serializable;
@@ -31,21 +31,21 @@ public class Relogio implements Serializable {
         if(this.ponteiroHora != null && this.ponteiroHora.getPosicao() != null){
             return this.ponteiroHora.getPosicao();
         }
-        throw new ErroException("Hora não encontrada");
+        throw new RegraDeNegocioException("Hora não encontrada");
     }
 
     public Integer lerMinuto(){
         if(this.ponteiroMinuto != null && this.ponteiroMinuto.getPosicao() != null){
             return this.ponteiroMinuto.getPosicao() * 5;
         }
-        throw new ErroException("Minuto não encontrado");
+        throw new RegraDeNegocioException("Minuto não encontrado");
     }
 
     public Integer lerSegundo(){
         if(this.ponteiroSegundo != null && this.ponteiroSegundo.getPosicao() != null){
             return this.ponteiroSegundo.getPosicao() * 5;
         }
-        throw new ErroException("Segundo não encontrado");
+        throw new RegraDeNegocioException("Segundo não encontrado");
     }
 
     public Integer lerPosicaoHora(){

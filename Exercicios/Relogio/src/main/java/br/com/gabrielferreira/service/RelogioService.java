@@ -1,6 +1,5 @@
 package br.com.gabrielferreira.service;
-
-import br.com.gabrielferreira.exception.ErroException;
+import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Ponteiro;
 import br.com.gabrielferreira.model.Relogio;
 
@@ -28,15 +27,15 @@ public class RelogioService implements Serializable {
 
     private void validarHoraMinutoSegundo(Integer hora, Integer minuto, Integer segundo){
         if(hora == null){
-            throw new ErroException("É necessário informar a hora");
+            throw new RegraDeNegocioException("É necessário informar a hora");
         }
 
         if(minuto == null){
-            throw new ErroException("É necessário informar o minuto");
+            throw new RegraDeNegocioException("É necessário informar o minuto");
         }
 
         if(segundo == null){
-            throw new ErroException("É necessário informar o segundo");
+            throw new RegraDeNegocioException("É necessário informar o segundo");
         }
     }
 }

@@ -1,6 +1,5 @@
 package br.com.gabrielferreira.service;
-
-import br.com.gabrielferreira.exception.ErroException;
+import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Relogio;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -21,19 +20,19 @@ class RelogioServiceTest {
     @Test
     @DisplayName("Deveria validar a hora quando não informar")
     void deveValidarHora(){
-        assertThrows(ErroException.class, () -> relogioService.acertarRelogio(null, 10,10));
+        assertThrows(RegraDeNegocioException.class, () -> relogioService.acertarRelogio(null, 10,10));
     }
 
     @Test
     @DisplayName("Deveria validar o minuto quando não informar")
     void deveValidarMinuto(){
-        assertThrows(ErroException.class, () -> relogioService.acertarRelogio(10, null,10));
+        assertThrows(RegraDeNegocioException.class, () -> relogioService.acertarRelogio(10, null,10));
     }
 
     @Test
     @DisplayName("Deveria validar o segundo quando não informar")
     void deveValidarSegundi(){
-        assertThrows(ErroException.class, () -> relogioService.acertarRelogio(10, 10,null));
+        assertThrows(RegraDeNegocioException.class, () -> relogioService.acertarRelogio(10, 10,null));
     }
 
     @Test
@@ -53,20 +52,20 @@ class RelogioServiceTest {
     @DisplayName("Deveria validar a hora quando não encontrar")
     void deveNaoEncontrarHora(){
         Relogio relogio = new Relogio();
-        assertThrows(ErroException.class, relogio::lerHora);
+        assertThrows(RegraDeNegocioException.class, relogio::lerHora);
     }
 
     @Test
     @DisplayName("Deveria validar o minuto quando não encontrar")
     void deveNaoEncontrarMinuto(){
         Relogio relogio = new Relogio();
-        assertThrows(ErroException.class, relogio::lerMinuto);
+        assertThrows(RegraDeNegocioException.class, relogio::lerMinuto);
     }
 
     @Test
     @DisplayName("Deveria validar o segundo quando não encontrar")
     void deveNaoEncontrarSegundo(){
         Relogio relogio = new Relogio();
-        assertThrows(ErroException.class, relogio::lerSegundo);
+        assertThrows(RegraDeNegocioException.class, relogio::lerSegundo);
     }
 }
