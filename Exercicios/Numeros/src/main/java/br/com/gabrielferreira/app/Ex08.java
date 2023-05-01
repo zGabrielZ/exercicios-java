@@ -1,4 +1,4 @@
-package br.com.gabrielferreira.aplicacao;
+package br.com.gabrielferreira.app;
 
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 

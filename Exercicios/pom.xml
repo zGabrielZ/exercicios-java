@@ -12,6 +12,7 @@
         <module>Escola</module>
         <module>Figura_Geometrica</module>
         <module>Fracao</module>
+        <module>Numeros</module>
     </modules>
 
     <properties>

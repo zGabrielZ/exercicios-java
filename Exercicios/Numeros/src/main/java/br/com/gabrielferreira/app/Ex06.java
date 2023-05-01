@@ -1,4 +1,4 @@
-package br.com.gabrielferreira.aplicacao;
+package br.com.gabrielferreira.app;
 
 import java.util.ArrayList;
 import java.util.HashMap;
