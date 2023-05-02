@@ -1,0 +1,5 @@
+br\com\gabrielferreira\model\Relogio$RelogioBuilder.class
+br\com\gabrielferreira\model\Relogio.class
+br\com\gabrielferreira\model\Ponteiro.class
+br\com\gabrielferreira\model\Ponteiro$PonteiroBuilder.class
+br\com\gabrielferreira\service\RelogioService.class
