@@ -3,19 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>br.com.gabrielferreira</groupId>
-    <artifactId>Exercicios</artifactId>
+    <artifactId>exercicios</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>Escola</module>
-        <module>Figura_Geometrica</module>
-        <module>Fracao</module>
-        <module>Numeros</module>
-        <module>Relogio</module>
-        <module>Sistema_Escolar</module>
-    </modules>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -53,5 +44,15 @@
         </dependency>
 
     </dependencies>
+
+    <modules>
+        <module>escola</module>
+        <module>figura-geometrica</module>
+        <module>fracao</module>
+        <module>numeros</module>
+        <module>relogio</module>
+        <module>sistema-escolar</module>
+        <module>abstract-model</module>
+    </modules>
 
 </project>
