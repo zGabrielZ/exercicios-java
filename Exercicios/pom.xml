@@ -53,6 +53,7 @@
         <module>relogio</module>
         <module>sistema-escolar</module>
         <module>abstract-model</module>
+        <module>lampada</module>
     </modules>
 
 </project>
