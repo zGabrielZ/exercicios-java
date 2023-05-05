@@ -54,6 +54,7 @@
         <module>sistema-escolar</module>
         <module>abstract-model</module>
         <module>lampada</module>
+        <module>data</module>
     </modules>
 
 </project>
