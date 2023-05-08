@@ -3,6 +3,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Generated;
 import lombok.Getter;
 
+import java.io.Serial;
 import java.util.UUID;
 
 @Getter
@@ -10,6 +11,8 @@ import java.util.UUID;
 @Generated
 public class Ponto3D extends Ponto2D {
 
+    @Serial
+    private static final long serialVersionUID = -4540216104680662311L;
     private final Double coordZ;
 
     public Ponto3D(UUID id, Double coordX, Double coordY, Double coordZ) {
