@@ -55,6 +55,7 @@
         <module>abstract-model</module>
         <module>lampada</module>
         <module>data</module>
+        <module>ponto</module>
     </modules>
 
 </project>
