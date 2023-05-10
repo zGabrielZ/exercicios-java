@@ -57,6 +57,7 @@
         <module>data</module>
         <module>ponto</module>
         <module>veiculo</module>
+        <module>area</module>
     </modules>
 
 </project>
