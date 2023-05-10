@@ -58,6 +58,7 @@
         <module>ponto</module>
         <module>veiculo</module>
         <module>area</module>
+        <module>conta-bancaria</module>
     </modules>
 
 </project>
