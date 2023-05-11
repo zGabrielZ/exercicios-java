@@ -59,6 +59,7 @@
         <module>veiculo</module>
         <module>area</module>
         <module>conta-bancaria</module>
+        <module>numeros-primos</module>
     </modules>
 
 </project>
