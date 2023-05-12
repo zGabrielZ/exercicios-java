@@ -2,7 +2,8 @@ package br.com.gabrielferreira.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import br.com.gabrielferreira.exception.RegraDeNegocioException;
+import br.com.gabrielferreira.exception.SaldoInsuficienteException;
+import br.com.gabrielferreira.exception.ValorInvalidoException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,7 +17,7 @@ class ContaCorrenteTest {
     @DisplayName("Deve validar deposito quando não informar o valor")
     void deveValidarDepositoQuandoSaldoForNulo(){
         ContaBancaria contaBancaria = new ContaCorrente();
-        assertThrows(RegraDeNegocioException.class, () -> contaBancaria.depositar(null));
+        assertThrows(ValorInvalidoException.class, () -> contaBancaria.depositar(null));
     }
 
     @ParameterizedTest
@@ -24,7 +25,7 @@ class ContaCorrenteTest {
     @DisplayName("Deve validar deposito quando o valor informado for menor ou igual que zero")
     void deveValidarDepositoQuandoSaldoTiverForaPeriodo(double valor){
         ContaBancaria contaBancaria = new ContaCorrente();
-        assertThrows(RegraDeNegocioException.class, () -> contaBancaria.depositar(valor));
+        assertThrows(ValorInvalidoException.class, () -> contaBancaria.depositar(valor));
     }
 
     @Test
@@ -44,7 +45,7 @@ class ContaCorrenteTest {
     @DisplayName("Deve validar saque quando não informar o valor")
     void deveValidarSaqueQuandoSaldoForNulo(){
         ContaBancaria contaBancaria = new ContaCorrente();
-        assertThrows(RegraDeNegocioException.class, () -> contaBancaria.sacar(null));
+        assertThrows(ValorInvalidoException.class, () -> contaBancaria.sacar(null));
     }
 
     @ParameterizedTest
@@ -52,7 +53,7 @@ class ContaCorrenteTest {
     @DisplayName("Deve validar saque quando o valor informado for menor ou igual que zero")
     void deveValidarSaqueQuandoSaldoTiverForaPeriodo(double valor){
         ContaBancaria contaBancaria = new ContaCorrente();
-        assertThrows(RegraDeNegocioException.class, () -> contaBancaria.sacar(valor));
+        assertThrows(ValorInvalidoException.class, () -> contaBancaria.sacar(valor));
     }
 
     @Test
@@ -63,7 +64,7 @@ class ContaCorrenteTest {
 
         contaBancaria.depositar(5.0);
 
-        assertThrows(RegraDeNegocioException.class, () -> contaBancaria.sacar(10.0));
+        assertThrows(SaldoInsuficienteException.class, () -> contaBancaria.sacar(10.0));
     }
 
     @Test
@@ -84,7 +85,7 @@ class ContaCorrenteTest {
         ContaBancaria contaBancaria = new ContaCorrente();
         ContaBancaria contaBancariaDestino = new ContaCorrente();
 
-        assertThrows(RegraDeNegocioException.class, () -> contaBancaria.transferir(null, contaBancariaDestino));
+        assertThrows(ValorInvalidoException.class, () -> contaBancaria.transferir(null, contaBancariaDestino));
     }
 
     @Test

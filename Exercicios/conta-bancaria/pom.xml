@@ -16,12 +16,4 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>br.com.gabrielferreira</groupId>
-            <artifactId>abstract-model</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
-
 </project>

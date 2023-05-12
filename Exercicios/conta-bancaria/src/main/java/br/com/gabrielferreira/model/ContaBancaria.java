@@ -1,6 +1,7 @@
 package br.com.gabrielferreira.model;
 
-import br.com.gabrielferreira.exception.RegraDeNegocioException;
+import br.com.gabrielferreira.exception.SaldoInsuficienteException;
+import br.com.gabrielferreira.exception.ValorInvalidoException;
 import lombok.*;
 
 import java.io.Serial;
@@ -25,11 +26,11 @@ public abstract class ContaBancaria implements Serializable {
 
     public void depositar(Double saldo){
         if(saldo == null){
-            throw new RegraDeNegocioException("É necessário informar o valor para depositar");
+            throw new ValorInvalidoException("É necessário informar o valor para depositar");
         }
 
         if(saldo <= 0){
-            throw new RegraDeNegocioException("Não é possível depositar com o valor zerado ou negativo");
+            throw new ValorInvalidoException("Não é possível depositar com o valor zerado ou negativo");
         }
 
         this.saldo += saldo;
@@ -37,15 +38,15 @@ public abstract class ContaBancaria implements Serializable {
 
     public void sacar(Double saldo){
         if(saldo == null){
-            throw new RegraDeNegocioException("É necessário informar o valor para sacar");
+            throw new ValorInvalidoException("É necessário informar o valor para sacar");
         }
 
         if(saldo <= 0){
-            throw new RegraDeNegocioException("Não é possível sacar com o valor zerado ou negativo");
+            throw new ValorInvalidoException("Não é possível sacar com o valor zerado ou negativo");
         }
 
         if(saldo > this.getSaldo()){
-            throw new RegraDeNegocioException("Não é possível sacar pois o valor final é menor que o valor informado");
+            throw new SaldoInsuficienteException("Não é possível sacar pois o valor final é menor que o valor informado");
         }
 
         this.saldo -= saldo;
@@ -53,7 +54,7 @@ public abstract class ContaBancaria implements Serializable {
 
     public void transferir(Double saldoParaTransferir, ContaBancaria contaBancariaDestino){
         if(saldoParaTransferir == null){
-            throw new RegraDeNegocioException("É necessário informar o valor do saldo para transferir");
+            throw new ValorInvalidoException("É necessário informar o valor do saldo para transferir");
         }
 
         sacar(saldoParaTransferir);
