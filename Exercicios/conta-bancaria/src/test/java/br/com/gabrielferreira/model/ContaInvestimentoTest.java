@@ -3,6 +3,8 @@ package br.com.gabrielferreira.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,11 +17,11 @@ class ContaInvestimentoTest {
         ContaBancaria contaBancariaOrigem = new ContaInvestimento();
         contaBancariaOrigem.setId(UUID.randomUUID());
 
-        contaBancariaOrigem.depositar(50.00);
-        contaBancariaOrigem.depositar(100.00);
+        contaBancariaOrigem.depositar(BigDecimal.valueOf(50.00));
+        contaBancariaOrigem.depositar(BigDecimal.valueOf(100.00));
 
-        Double resultado = contaBancariaOrigem.calcularSaldoFinal();
+        BigDecimal resultado = contaBancariaOrigem.calcularSaldoFinal();
 
-        assertEquals(225, resultado);
+        assertEquals(BigDecimal.valueOf(225.0), resultado.setScale(1, RoundingMode.HALF_EVEN));
     }
 }

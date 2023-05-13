@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.UUID;
 
 class ContaCorrenteTest {
@@ -25,7 +27,8 @@ class ContaCorrenteTest {
     @DisplayName("Deve validar deposito quando o valor informado for menor ou igual que zero")
     void deveValidarDepositoQuandoSaldoTiverForaPeriodo(double valor){
         ContaBancaria contaBancaria = new ContaCorrente();
-        assertThrows(ValorInvalidoException.class, () -> contaBancaria.depositar(valor));
+        BigDecimal valorFormatado = BigDecimal.valueOf(valor);
+        assertThrows(ValorInvalidoException.class, () -> contaBancaria.depositar(valorFormatado));
     }
 
     @Test
@@ -34,11 +37,14 @@ class ContaCorrenteTest {
         ContaBancaria contaBancaria = new ContaCorrente();
         contaBancaria.setId(UUID.randomUUID());
 
-        contaBancaria.depositar(10.00);
-        contaBancaria.depositar(20.00);
-        contaBancaria.depositar(30.00);
+        contaBancaria.depositar(BigDecimal.valueOf(10.00));
+        contaBancaria.depositar(BigDecimal.valueOf(20.00));
+        contaBancaria.depositar(BigDecimal.valueOf(30.00));
 
-        assertEquals(60.00, contaBancaria.getSaldo());
+        BigDecimal resultadoFinal = contaBancaria.getSaldo();
+        assertEquals(BigDecimal.valueOf(60.00), resultadoFinal);
+        assertNotNull(contaBancaria.getId());
+        assertNotNull(contaBancaria.toString());
     }
 
     @Test
@@ -53,7 +59,8 @@ class ContaCorrenteTest {
     @DisplayName("Deve validar saque quando o valor informado for menor ou igual que zero")
     void deveValidarSaqueQuandoSaldoTiverForaPeriodo(double valor){
         ContaBancaria contaBancaria = new ContaCorrente();
-        assertThrows(ValorInvalidoException.class, () -> contaBancaria.sacar(valor));
+        BigDecimal valorFormatado = BigDecimal.valueOf(valor);
+        assertThrows(ValorInvalidoException.class, () -> contaBancaria.sacar(valorFormatado));
     }
 
     @Test
@@ -62,9 +69,11 @@ class ContaCorrenteTest {
         ContaBancaria contaBancaria = new ContaCorrente();
         contaBancaria.setId(UUID.randomUUID());
 
-        contaBancaria.depositar(5.0);
+        contaBancaria.depositar(BigDecimal.valueOf(5.0));
 
-        assertThrows(SaldoInsuficienteException.class, () -> contaBancaria.sacar(10.0));
+        BigDecimal valorFormatado = BigDecimal.valueOf(10.0);
+
+        assertThrows(SaldoInsuficienteException.class, () -> contaBancaria.sacar(valorFormatado));
     }
 
     @Test
@@ -73,10 +82,11 @@ class ContaCorrenteTest {
         ContaBancaria contaBancaria = new ContaCorrente();
         contaBancaria.setId(UUID.randomUUID());
 
-        contaBancaria.depositar(10.00);
-        contaBancaria.sacar(5.00);
+        contaBancaria.depositar(BigDecimal.valueOf(10.00));
+        contaBancaria.sacar(BigDecimal.valueOf(5.00));
 
-        assertEquals(5.00, contaBancaria.getSaldo());
+        BigDecimal resultadoFinal = contaBancaria.getSaldo();
+        assertEquals(BigDecimal.valueOf(5.00), resultadoFinal);
     }
 
     @Test
@@ -97,13 +107,15 @@ class ContaCorrenteTest {
         ContaBancaria contaBancariaDestino = new ContaCorrente();
         contaBancariaDestino.setId(UUID.randomUUID());
 
-        contaBancariaOrigem.depositar(50.00);
-        contaBancariaOrigem.depositar(100.00);
+        contaBancariaOrigem.depositar(BigDecimal.valueOf(50.00));
+        contaBancariaOrigem.depositar(BigDecimal.valueOf(100.00));
 
-        contaBancariaOrigem.transferir(30.00, contaBancariaDestino);
+        contaBancariaOrigem.transferir(BigDecimal.valueOf(30.00), contaBancariaDestino);
 
-        assertEquals(120.00, contaBancariaOrigem.getSaldo());
-        assertEquals(30.00, contaBancariaDestino.getSaldo());
+        BigDecimal resultadoFinalOrigem = contaBancariaOrigem.getSaldo();
+        BigDecimal resultadoFinalDestino = contaBancariaDestino.getSaldo();
+        assertEquals(BigDecimal.valueOf(120.00), resultadoFinalOrigem);
+        assertEquals(BigDecimal.valueOf(30.00), resultadoFinalDestino);
     }
 
     @Test
@@ -112,11 +124,11 @@ class ContaCorrenteTest {
         ContaBancaria contaBancariaOrigem = new ContaCorrente();
         contaBancariaOrigem.setId(UUID.randomUUID());
 
-        contaBancariaOrigem.depositar(50.00);
-        contaBancariaOrigem.depositar(100.00);
+        contaBancariaOrigem.depositar(BigDecimal.valueOf(50.00));
+        contaBancariaOrigem.depositar(BigDecimal.valueOf(100.00));
 
-        Double resultado = contaBancariaOrigem.calcularSaldoFinal();
+        BigDecimal resultado = contaBancariaOrigem.calcularSaldoFinal();
 
-        assertEquals(135.00, resultado);
+        assertEquals(BigDecimal.valueOf(135.0), resultado.setScale(1, RoundingMode.HALF_EVEN));
     }
 }

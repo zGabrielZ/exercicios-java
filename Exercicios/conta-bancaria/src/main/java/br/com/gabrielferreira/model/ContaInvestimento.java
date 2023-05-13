@@ -1,9 +1,11 @@
 package br.com.gabrielferreira.model;
 
+import java.math.BigDecimal;
+
 public class ContaInvestimento extends ContaBancaria {
 
     @Override
-    public Double calcularSaldoFinal() {
-        return this.getSaldo() + (this.getSaldo() * 0.5);
+    public BigDecimal calcularSaldoFinal() {
+        return this.getSaldo().add(this.getSaldo().multiply(BigDecimal.valueOf(0.5)));
     }
 }
