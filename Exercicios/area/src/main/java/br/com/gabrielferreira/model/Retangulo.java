@@ -5,13 +5,13 @@ import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Generated
 @ToString
 public class Retangulo implements AreaCalculavel, Serializable {
 
@@ -26,7 +26,7 @@ public class Retangulo implements AreaCalculavel, Serializable {
     private Integer altura;
 
     @Override
-    public Double calcularArea() {
+    public BigDecimal calcularArea() {
         if(base == null){
             throw new RegraDeNegocioException("É necessário infomar a base do retângulo");
         }
@@ -35,6 +35,6 @@ public class Retangulo implements AreaCalculavel, Serializable {
             throw new RegraDeNegocioException("É necessário infomar a altura do retângulo");
         }
 
-        return base * altura * 1.0;
+        return BigDecimal.valueOf(base).multiply(BigDecimal.valueOf(altura));
     }
 }

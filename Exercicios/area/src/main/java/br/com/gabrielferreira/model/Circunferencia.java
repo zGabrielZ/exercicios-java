@@ -5,13 +5,13 @@ import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Generated
 @ToString
 public class Circunferencia implements AreaCalculavel, Serializable {
 
@@ -24,11 +24,11 @@ public class Circunferencia implements AreaCalculavel, Serializable {
     private Integer raio;
 
     @Override
-    public Double calcularArea() {
+    public BigDecimal calcularArea() {
         if(raio == null){
             throw new RegraDeNegocioException("É necessário infomar o raio da circunferência");
         }
 
-        return Math.pow(raio, 2) * Math.PI;
+        return BigDecimal.valueOf(Math.pow(raio, 2)).multiply(BigDecimal.valueOf(Math.PI));
     }
 }

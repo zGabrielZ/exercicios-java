@@ -4,10 +4,11 @@ import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CircunferenciaTest {
 
@@ -23,8 +24,23 @@ class CircunferenciaTest {
     void deveCalcularArea(){
         Circunferencia circunferencia = new Circunferencia(UUID.randomUUID(), 5);
 
-        Double resultado = circunferencia.calcularArea();
+        BigDecimal resultado = circunferencia.calcularArea();
 
-        assertEquals(78.5, resultado, 0.1);
+        assertEquals(BigDecimal.valueOf(78.54), resultado.setScale(2, RoundingMode.HALF_EVEN));
+    }
+
+    @Test
+    @DisplayName("Deve calcular a área quando informar o raio com getters e setters")
+    void deveCalcularAreaComGettersSetters(){
+        Circunferencia circunferencia = new Circunferencia();
+        circunferencia.setId(UUID.randomUUID());
+        circunferencia.setRaio(5);
+
+        BigDecimal resultado = circunferencia.calcularArea();
+
+        assertEquals(BigDecimal.valueOf(78.54), resultado.setScale(2, RoundingMode.HALF_EVEN));
+        assertEquals(5, circunferencia.getRaio());
+        assertNotNull(circunferencia.getId());
+        assertNotNull(circunferencia.toString());
     }
 }

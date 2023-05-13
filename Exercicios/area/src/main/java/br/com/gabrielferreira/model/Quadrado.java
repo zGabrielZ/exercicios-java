@@ -5,13 +5,13 @@ import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Generated
 @ToString
 public class Quadrado implements AreaCalculavel, Serializable {
 
@@ -24,11 +24,11 @@ public class Quadrado implements AreaCalculavel, Serializable {
     private Integer lado;
 
     @Override
-    public Double calcularArea() {
+    public BigDecimal calcularArea() {
         if(lado == null){
             throw new RegraDeNegocioException("É necessário infomar o lado do quadrado");
         }
 
-        return lado * lado * 1.0;
+        return BigDecimal.valueOf(lado).multiply(BigDecimal.valueOf(lado));
     }
 }

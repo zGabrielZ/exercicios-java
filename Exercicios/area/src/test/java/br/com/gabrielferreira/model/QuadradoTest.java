@@ -4,10 +4,10 @@ import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class QuadradoTest {
 
@@ -23,8 +23,23 @@ class QuadradoTest {
     void deveCalcularArea(){
         Quadrado quadrado = new Quadrado(UUID.randomUUID(), 3);
 
-        Double resultado = quadrado.calcularArea();
+        BigDecimal resultado = quadrado.calcularArea();
 
-        assertEquals(9, resultado);
+        assertEquals(BigDecimal.valueOf(9), resultado);
+    }
+
+    @Test
+    @DisplayName("Deve calcular a área quando informar o lado com getters e setters")
+    void deveCalcularAreaComGettersSetters(){
+        Quadrado quadrado = new Quadrado();
+        quadrado.setId(UUID.randomUUID());
+        quadrado.setLado(3);
+
+        BigDecimal resultado = quadrado.calcularArea();
+
+        assertEquals(BigDecimal.valueOf(9), resultado);
+        assertEquals(3, quadrado.getLado());
+        assertNotNull(quadrado.getId());
+        assertNotNull(quadrado.toString());
     }
 }
