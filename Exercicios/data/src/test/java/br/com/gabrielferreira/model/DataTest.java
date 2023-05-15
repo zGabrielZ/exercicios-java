@@ -193,5 +193,13 @@ class DataTest {
         Data data = new Data(UUID.randomUUID(), 1, 1, 2000, hora, 50, 40);
 
         assertDoesNotThrow(() -> data.imprimir(Constantes.FORMATO_12H));
+        assertNotNull(data.getId());
+        assertEquals(1, data.getDia());
+        assertEquals(1, data.getMes());
+        assertEquals(2000, data.getAno());
+        assertEquals(hora, data.getHora());
+        assertEquals(50, data.getMinuto());
+        assertEquals(40, data.getSegundo());
+        assertNotNull(data.toString());
     }
 }

@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Generated
 @ToString
 public class Data implements Serializable {
 
@@ -16,18 +15,25 @@ public class Data implements Serializable {
     private static final long serialVersionUID = 537563925647530667L;
 
     @EqualsAndHashCode.Include
-    private final UUID id;
+    @Getter
+    private UUID id;
 
-    private final Integer dia;
+    @Getter
+    private Integer dia;
 
-    private final Integer mes;
+    @Getter
+    private Integer mes;
 
-    private final Integer ano;
+    @Getter
+    private Integer ano;
 
+    @Getter
     private Integer hora;
 
+    @Getter
     private Integer minuto;
 
+    @Getter
     private Integer segundo;
 
     public Data(UUID id, Integer dia, Integer mes, Integer ano){
