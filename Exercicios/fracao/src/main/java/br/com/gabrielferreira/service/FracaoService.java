@@ -19,11 +19,7 @@ public class FracaoService implements Serializable {
         Integer multiplcacaoNumerador = primeiraFracao.getNumerador() * segundaFracao.getNumerador();
         Integer multiplicacaoDenominador = primeiraFracao.getDenominador() * segundaFracao.getDenominador();
 
-        return Fracao.builder()
-                .id(UUID.randomUUID())
-                .numerador(multiplcacaoNumerador)
-                .denominador(multiplicacaoDenominador)
-                .build();
+        return new Fracao(UUID.randomUUID(), multiplcacaoNumerador, multiplicacaoDenominador);
     }
 
     private void validarFracao(Fracao fracao){

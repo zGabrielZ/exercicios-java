@@ -24,7 +24,7 @@ class FracaoServiceTest {
     @DisplayName("Deveria validar a fração quando não informar ela")
     void deveValidarFracaoNula(){
 
-        Fracao fracao = Fracao.builder().id(UUID.randomUUID()).numerador(4).denominador(10).build();
+        Fracao fracao = new Fracao(UUID.randomUUID(), 4, 10);
 
         assertThrows(RegraDeNegocioException.class, () -> fracaoService.multiplicar(null, fracao));
     }
@@ -33,8 +33,8 @@ class FracaoServiceTest {
     @DisplayName("Deveria validar o numerador quando não informar ela")
     void deveValidarFracaoNumerador(){
 
-        Fracao fracao = Fracao.builder().id(UUID.randomUUID()).numerador(4).denominador(10).build();
-        Fracao fracao2 = Fracao.builder().id(UUID.randomUUID()).numerador(null).denominador(10).build();
+        Fracao fracao = new Fracao(UUID.randomUUID(), 4, 10);
+        Fracao fracao2 = new Fracao(UUID.randomUUID(), null, 10);
 
         assertThrows(RegraDeNegocioException.class, () -> fracaoService.multiplicar(fracao, fracao2));
     }
@@ -43,8 +43,8 @@ class FracaoServiceTest {
     @DisplayName("Deveria validar o denominador quando não informar ela")
     void deveValidarFracaoDenominador(){
 
-        Fracao fracao = Fracao.builder().id(UUID.randomUUID()).numerador(4).denominador(10).build();
-        Fracao fracao2 = Fracao.builder().id(UUID.randomUUID()).numerador(4).denominador(null).build();
+        Fracao fracao = new Fracao(UUID.randomUUID(), 4, 10);
+        Fracao fracao2 = new Fracao(UUID.randomUUID(), 4, null);
 
         assertThrows(RegraDeNegocioException.class, () -> fracaoService.multiplicar(fracao, fracao2));
     }
@@ -53,8 +53,8 @@ class FracaoServiceTest {
     @DisplayName("Deveria criar multiplicação quando informar corretamente")
     void deveMultiplicarFracao(){
 
-        Fracao fracao = Fracao.builder().id(UUID.randomUUID()).numerador(4).denominador(10).build();
-        Fracao fracao2 = Fracao.builder().id(UUID.randomUUID()).numerador(3).denominador(5).build();
+        Fracao fracao = new Fracao(UUID.randomUUID(), 4, 10);
+        Fracao fracao2 = new Fracao(UUID.randomUUID(), 3, 5);
 
         Fracao resultado = fracaoService.multiplicar(fracao, fracao2);
 

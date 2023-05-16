@@ -8,21 +8,24 @@ import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@Builder
 @ToString
-@Generated
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Fracao implements Serializable {
 
     @Serial
     private static final long serialVersionUID = -2869293483385468926L;
 
+    @Getter
+    @Setter
     @EqualsAndHashCode.Include
     private UUID id;
 
+    @Getter
+    @Setter
     private Integer numerador;
 
+    @Getter
+    @Setter
     private Integer denominador;
 
     public String lerFracao(){
