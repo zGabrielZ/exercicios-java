@@ -6,20 +6,22 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.UUID;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Generated
 @ToString
 public class Lampada implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 537563925647530667L;
 
+    @Getter
+    @Setter
     @EqualsAndHashCode.Include
     private UUID id;
 
+    @Getter
+    @Setter
     private boolean ligada;
 
     public void ligar(){
