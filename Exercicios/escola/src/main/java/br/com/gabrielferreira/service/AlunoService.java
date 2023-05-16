@@ -6,6 +6,8 @@ import br.com.gabrielferreira.model.Prova;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 public class AlunoService implements Serializable {
@@ -22,7 +24,7 @@ public class AlunoService implements Serializable {
         alunos.forEach(aluno -> {
             validarNome(aluno.getNome());
 
-            double somaProvas = 0.0;
+            BigDecimal somaProvas = BigDecimal.ZERO;
             int somaPesos = 0;
 
             for (Prova prova : aluno.getProvas()) {
@@ -30,13 +32,13 @@ public class AlunoService implements Serializable {
                 validarNotaProva(prova.getNota(), aluno.getNome());
                 validarPeso(prova.getPeso().getValor(), aluno.getNome());
 
-                somaProvas += (prova.getNota() * prova.getPeso().getValor());
+                somaProvas = somaProvas.add(prova.getNota().multiply(BigDecimal.valueOf(prova.getPeso().getValor())));
                 somaPesos += prova.getPeso().getValor();
             }
 
             validarSomaPesos(somaPesos);
 
-            Double mediaProva = somaProvas / somaPesos;
+            BigDecimal mediaProva = somaProvas.divide(BigDecimal.valueOf(somaPesos), RoundingMode.HALF_EVEN);
             sb.append("Aluno : ").append(aluno.getNome()).append(", Média : ").append(mediaProva).append("\n");
         });
 
@@ -62,12 +64,12 @@ public class AlunoService implements Serializable {
         }
     }
 
-    private void validarNotaProva(Double nota, String nomeAluno){
+    private void validarNotaProva(BigDecimal nota, String nomeAluno){
         if(nota == null){
             throw new RegraDeNegocioException(String.format("É necessário informar a nota do aluno %s", nomeAluno));
         }
 
-        if(!(nota >= 0.0 && nota <= 10.0)){
+        if(!(nota.compareTo(BigDecimal.ZERO) >= 0 && nota.compareTo(BigDecimal.TEN) <= 0)){
             throw new RegraDeNegocioException(String.format("A nota do aluno %s tem que ser de 0.0 até 10.0", nomeAluno));
         }
 

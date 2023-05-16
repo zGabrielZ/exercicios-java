@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -56,7 +57,7 @@ class AlunoServiceTest {
     @DisplayName("Deveria validar o nome da prova quando informar a prova como nulo")
     void deveValidarNomeProvaQuandoInformarNulo(){
         Aluno aluno = gerarAluno("José da Silva");
-        Prova prova = gerarProva(null, 10.0);
+        Prova prova = gerarProva(null, BigDecimal.valueOf(10.0));
 
         aluno.getProvas().add(prova);
 
@@ -69,7 +70,7 @@ class AlunoServiceTest {
     @DisplayName("Deveria validar o nome da prova quando informar a prova como vazio")
     void deveValidarNomeProvaQuandoInformarVazio(){
         Aluno aluno = gerarAluno("José da Silva");
-        Prova prova = gerarProva("", 10.0);
+        Prova prova = gerarProva("", BigDecimal.valueOf(10.0));
 
         aluno.getProvas().add(prova);
 
@@ -96,7 +97,7 @@ class AlunoServiceTest {
     @DisplayName("Deveria validar a nota da prova quando informar a nota diferente de 0 até 10")
     void deveValidarNotaProvaQuandoInformarDiferente0E10(double notas){
         Aluno aluno = gerarAluno("José da Silva");
-        Prova prova = gerarProva("Educação Física", notas);
+        Prova prova = gerarProva("Educação Física", BigDecimal.valueOf(notas));
 
         aluno.getProvas().add(prova);
 
@@ -109,7 +110,7 @@ class AlunoServiceTest {
     @DisplayName("Deveria validar a nota do peso quando informar o peso")
     void deveValidarNotaPesoQuandoInformarNulo(){
         Aluno aluno = gerarAluno("José da Silva");
-        Prova prova = gerarProva("Educação Física", 5.0);
+        Prova prova = gerarProva("Educação Física", BigDecimal.valueOf(5.0));
         Peso peso = gerarPeso(null);
 
         prova.setPeso(peso);
@@ -125,7 +126,7 @@ class AlunoServiceTest {
     @DisplayName("Deveria validar o peso da prova quando informar o peso diferente de 1 até 5")
     void deveValidarNotaPesoQuandoInformarDiferente1E5(int pesos){
         Aluno aluno = gerarAluno("José da Silva");
-        Prova prova = gerarProva("Educação Física", 10.0);
+        Prova prova = gerarProva("Educação Física", BigDecimal.valueOf(10.0));
         Peso peso = gerarPeso(pesos);
 
         prova.setPeso(peso);
@@ -140,15 +141,15 @@ class AlunoServiceTest {
     @DisplayName("Deveria validar a soma de pesos ao informar aluno")
     void deveValidarSomaPesosAoInformarAluno(){
         Aluno aluno = gerarAluno("José da Silva");
-        Prova prova1 = gerarProva("Educação Física", 8.5);
+        Prova prova1 = gerarProva("Educação Física", BigDecimal.valueOf(8.5));
         Peso peso1 = gerarPeso(5);
         prova1.setPeso(peso1);
 
-        Prova prova2 = gerarProva("Matemática", 7.5);
+        Prova prova2 = gerarProva("Matemática", BigDecimal.valueOf(7.5));
         Peso peso2 = gerarPeso(5);
         prova2.setPeso(peso2);
 
-        Prova prova3 = gerarProva("Língua Portuguesa", 6.0);
+        Prova prova3 = gerarProva("Língua Portuguesa", BigDecimal.valueOf(6.0));
         Peso peso3 = gerarPeso(5);
         prova3.setPeso(peso3);
 
@@ -165,15 +166,15 @@ class AlunoServiceTest {
     @DisplayName("Deveria criar aluno quando informar corretamente")
     void deveCriarAluno(){
         Aluno aluno = gerarAluno("José da Silva");
-        Prova prova1 = gerarProva("Educação Física", 8.5);
+        Prova prova1 = gerarProva("Educação Física", BigDecimal.valueOf(8.5));
         Peso peso1 = gerarPeso(3);
         prova1.setPeso(peso1);
 
-        Prova prova2 = gerarProva("Matemática", 7.5);
+        Prova prova2 = gerarProva("Matemática", BigDecimal.valueOf(7.5));
         Peso peso2 = gerarPeso(2);
         prova2.setPeso(peso2);
 
-        Prova prova3 = gerarProva("Língua Portuguesa", 6.0);
+        Prova prova3 = gerarProva("Língua Portuguesa", BigDecimal.valueOf(6.0));
         Peso peso3 = gerarPeso(5);
         prova3.setPeso(peso3);
 
@@ -195,7 +196,7 @@ class AlunoServiceTest {
         return aluno;
     }
 
-    private Prova gerarProva(String nome, Double nota){
+    private Prova gerarProva(String nome, BigDecimal nota){
         Prova prova = new Prova();
         prova.setId(UUID.randomUUID());
         prova.setNome(nome);

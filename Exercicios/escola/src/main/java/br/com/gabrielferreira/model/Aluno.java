@@ -8,20 +8,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Generated
 @ToString
 public class Aluno implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 537563925647530667L;
 
+    @Getter
+    @Setter
     @EqualsAndHashCode.Include
     private UUID id;
+
+    @Getter
+    @Setter
     private String nome;
 
+    @Getter
+    @Setter
     private List<Prova> provas = new ArrayList<>();
 }
