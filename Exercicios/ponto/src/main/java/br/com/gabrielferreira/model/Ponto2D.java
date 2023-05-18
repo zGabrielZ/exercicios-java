@@ -4,25 +4,28 @@ import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.UUID;
 
-@Data
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Generated
 public class Ponto2D implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 537563925647530667L;
 
+    @Getter
     @EqualsAndHashCode.Include
     private UUID id;
 
-    private Double coordX;
-    private Double coordY;
+    @Getter
+    private BigDecimal coordX;
+
+    @Getter
+    private BigDecimal coordY;
 
     @Override
     public String toString() {
-        return String.format("ID : %s, Coordenada X : %s, Coordenada Y : %s", id, coordX, coordY);
+        return String.format("Id : %s, coordX : %s, coordY : %s", id, coordX, coordY);
     }
 }
