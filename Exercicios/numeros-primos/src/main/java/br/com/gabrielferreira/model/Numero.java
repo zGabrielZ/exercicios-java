@@ -9,20 +9,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Generated
 @ToString
 public class Numero implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1163211115637737045L;
 
+    @Getter
+    @Setter
     @EqualsAndHashCode.Include
     private UUID id;
 
+    @Getter
+    @Setter
     private Integer valor;
 
     public boolean isNumeroPrimo(){

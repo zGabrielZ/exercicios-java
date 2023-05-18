@@ -47,4 +47,20 @@ class NumeroTest {
 
         assertFalse(resultado);
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43})
+    @DisplayName("Deve verificar se o número informado é primo")
+    void deveValidarSeEhNumeroPrimoComGettersSetters(int valor){
+        Numero numero = new Numero();
+        numero.setId(UUID.randomUUID());
+        numero.setValor(valor);
+
+        boolean resultado = numero.isNumeroPrimo();
+
+        assertTrue(resultado);
+        assertNotNull(numero.getId());
+        assertNotNull(numero.getValor());
+        assertNotNull(numero.toString());
+    }
 }
