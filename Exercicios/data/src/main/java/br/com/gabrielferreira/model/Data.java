@@ -3,6 +3,8 @@ package br.com.gabrielferreira.model;
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import lombok.*;
 
+import static br.com.gabrielferreira.validate.ValidarData.*;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.UUID;
@@ -16,16 +18,16 @@ public class Data implements Serializable {
 
     @EqualsAndHashCode.Include
     @Getter
-    private UUID id;
+    private final UUID id;
 
     @Getter
-    private Integer dia;
+    private final Integer dia;
 
     @Getter
-    private Integer mes;
+    private final Integer mes;
 
     @Getter
-    private Integer ano;
+    private final Integer ano;
 
     @Getter
     private Integer hora;
@@ -58,72 +60,9 @@ public class Data implements Serializable {
         validarSegundo(this.segundo);
     }
 
-    private void validarDia(Integer dia){
-        if(dia == null){
-            throw new RegraDeNegocioException("É necessário informar o dia");
-        }
-
-        if(!(dia >= 1 && dia <= 30)){
-            throw new RegraDeNegocioException("Informe o dia corretamente (1 até 30)");
-        }
-    }
-
-    private void validarMes(Integer mes){
-        if(mes == null){
-            throw new RegraDeNegocioException("É necessário informar o mês");
-        }
-
-        if(!(mes >= 1 && mes <= 12)){
-            throw new RegraDeNegocioException("Informe o mês corretamente (1 até 12)");
-        }
-    }
-
-    private void validarAno(Integer ano){
-        if(ano == null){
-            throw new RegraDeNegocioException("É necessário informar o ano");
-        }
-
-        String anoTamanho = String.valueOf(ano);
-        if(anoTamanho.length() > 4){
-            throw new RegraDeNegocioException("Informe o ano corretamente");
-        }
-    }
-
-    private void validarHora(Integer hora){
-        if(hora == null){
-            throw new RegraDeNegocioException("É necessário informar a hora");
-        }
-
-        if(!(hora >= 0 && hora <= 24)){
-            throw new RegraDeNegocioException(String.format("A hora deve está entre 0 e 24, o valor fornecido %s", hora));
-        }
-    }
-
-    private void validarMinuto(Integer minuto){
-        if(minuto == null){
-            throw new RegraDeNegocioException("É necessário informar o minuto");
-        }
-
-        if(!(minuto >= 0 && minuto <= 59)){
-            throw new RegraDeNegocioException(String.format("O minuto deve está entre 0 e 59, o valor fornecido %s", minuto));
-        }
-    }
-
-    private void validarSegundo(Integer segundo){
-        if(segundo == null){
-            throw new RegraDeNegocioException("É necessário informar o segundo");
-        }
-
-        if(!(segundo >= 0 && segundo <= 59)){
-            throw new RegraDeNegocioException(String.format("O segundo deve está entre 0 e 59, o valor fornecido %s", segundo));
-        }
-    }
-
     public String imprimir(Integer formato){
 
-        if(formato == null){
-            throw new RegraDeNegocioException("É necessário informar o formato");
-        }
+        validarValorInformado(formato, "É necessário informar o formato");
 
         if(!isContemHorario()){
             return getFormatoSemHorario();
