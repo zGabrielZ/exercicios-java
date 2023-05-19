@@ -8,18 +8,19 @@ import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@Builder
 @ToString
-@Generated
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Ponteiro implements Serializable {
 
     @Serial
     private static final long serialVersionUID = -4233310079399156590L;
 
+    @Getter
+    @Setter
     @EqualsAndHashCode.Include
     private UUID id;
 
+    @Getter
+    @Setter
     private Integer posicao;
 }

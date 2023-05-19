@@ -14,15 +14,12 @@ public class RelogioService implements Serializable {
 
     public Relogio acertarRelogio(Integer hora, Integer minuto, Integer segundo){
 
-        Relogio relogio = new Relogio();
-        relogio.setId(UUID.randomUUID());
-
         validarHoraMinutoSegundo(hora, minuto, segundo);
-        relogio.setPonteiroHora(new Ponteiro(UUID.randomUUID(), hora % 12));
-        relogio.setPonteiroMinuto(new Ponteiro(UUID.randomUUID(), minuto / 5));
-        relogio.setPonteiroSegundo(new Ponteiro(UUID.randomUUID(), segundo / 5));
 
-        return relogio;
+        Ponteiro ponteiroHora = new Ponteiro(UUID.randomUUID(), hora % 12);
+        Ponteiro ponteiroMinuto = new Ponteiro(UUID.randomUUID(), minuto / 5);
+        Ponteiro ponteiroSegundo = new Ponteiro(UUID.randomUUID(), segundo / 5);
+        return new Relogio(UUID.randomUUID(), ponteiroHora, ponteiroMinuto, ponteiroSegundo);
     }
 
     private void validarHoraMinutoSegundo(Integer hora, Integer minuto, Integer segundo){
