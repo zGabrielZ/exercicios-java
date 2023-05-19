@@ -1,12 +1,13 @@
 package br.com.gabrielferreira.model;
 
-import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.UUID;
+
+import static br.com.gabrielferreira.validate.ValidacaoCalculoArea.*;
 
 @Data
 @AllArgsConstructor
@@ -25,10 +26,7 @@ public class Circunferencia implements AreaCalculavel, Serializable {
 
     @Override
     public BigDecimal calcularArea() {
-        if(raio == null){
-            throw new RegraDeNegocioException("É necessário infomar o raio da circunferência");
-        }
-
+        validarNumeroInformado(raio, "É necessário infomar o raio da circunferência");
         return BigDecimal.valueOf(Math.pow(raio, 2)).multiply(BigDecimal.valueOf(Math.PI));
     }
 }

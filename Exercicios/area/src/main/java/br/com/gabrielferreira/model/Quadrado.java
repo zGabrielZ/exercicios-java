@@ -1,7 +1,7 @@
 package br.com.gabrielferreira.model;
 
-import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import lombok.*;
+import static br.com.gabrielferreira.validate.ValidacaoCalculoArea.*;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -25,10 +25,7 @@ public class Quadrado implements AreaCalculavel, Serializable {
 
     @Override
     public BigDecimal calcularArea() {
-        if(lado == null){
-            throw new RegraDeNegocioException("É necessário infomar o lado do quadrado");
-        }
-
+        validarNumeroInformado(lado, "É necessário infomar o lado do quadrado");
         return BigDecimal.valueOf(lado).multiply(BigDecimal.valueOf(lado));
     }
 }

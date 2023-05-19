@@ -1,7 +1,8 @@
 package br.com.gabrielferreira.model;
 
-import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import lombok.*;
+
+import static br.com.gabrielferreira.validate.ValidacaoCalculoArea.*;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -27,14 +28,8 @@ public class Retangulo implements AreaCalculavel, Serializable {
 
     @Override
     public BigDecimal calcularArea() {
-        if(base == null){
-            throw new RegraDeNegocioException("É necessário infomar a base do retângulo");
-        }
-
-        if(altura == null){
-            throw new RegraDeNegocioException("É necessário infomar a altura do retângulo");
-        }
-
+        validarNumeroInformado(base, "É necessário infomar a base do retângulo");
+        validarNumeroInformado(altura, "É necessário infomar a altura do retângulo");
         return BigDecimal.valueOf(base).multiply(BigDecimal.valueOf(altura));
     }
 }
