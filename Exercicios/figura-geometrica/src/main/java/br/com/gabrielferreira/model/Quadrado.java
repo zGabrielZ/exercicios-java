@@ -1,11 +1,12 @@
 package br.com.gabrielferreira.model;
 
-import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import lombok.*;
 
 import java.io.Serial;
 import java.math.BigDecimal;
 import java.util.UUID;
+
+import static br.com.gabrielferreira.validate.ValidarCalcularArea.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,10 +29,7 @@ public class Quadrado extends Figura{
 
     @Override
     public BigDecimal calcularArea() {
-        if(lado == null){
-            throw new RegraDeNegocioException("É necessário informar o lado");
-        }
-
+        validarValorInformado(lado, "É necessário informar o lado");
         return BigDecimal.valueOf(Math.pow(lado, 2));
     }
 }

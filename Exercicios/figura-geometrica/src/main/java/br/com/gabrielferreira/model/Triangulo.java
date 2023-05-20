@@ -1,12 +1,13 @@
 package br.com.gabrielferreira.model;
 
-import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import lombok.*;
 
 import java.io.Serial;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.UUID;
+
+import static br.com.gabrielferreira.validate.ValidarCalcularArea.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,15 +33,8 @@ public class Triangulo extends Figura{
 
     @Override
     public BigDecimal calcularArea() {
-
-        if(base == null){
-            throw new RegraDeNegocioException("É necessário informar a base");
-        }
-
-        if(altura == null){
-            throw new RegraDeNegocioException("É necessário informar a altura");
-        }
-
+        validarValorInformado(base, "É necessário informar a base");
+        validarValorInformado(altura, "É necessário informar a altura");
         int resultadoBaseAltura = base * altura;
         return BigDecimal.valueOf(resultadoBaseAltura).divide(BigDecimal.valueOf(2.0), RoundingMode.HALF_EVEN);
     }

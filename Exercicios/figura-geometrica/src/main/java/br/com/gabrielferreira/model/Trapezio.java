@@ -1,11 +1,12 @@
 package br.com.gabrielferreira.model;
 
-import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import lombok.*;
 
 import java.io.Serial;
 import java.math.BigDecimal;
 import java.util.UUID;
+
+import static br.com.gabrielferreira.validate.ValidarCalcularArea.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -36,20 +37,9 @@ public class Trapezio extends Figura{
 
     @Override
     public BigDecimal calcularArea() {
-
-        if(baseMaior == null){
-            throw new RegraDeNegocioException("É necessário informar a base maior");
-        }
-
-        if(baseMenor == null){
-            throw new RegraDeNegocioException("É necessário informar a base menor");
-        }
-
-        if(altura == null){
-            throw new RegraDeNegocioException("É necessário informar a altura");
-        }
-
-
+        validarValorInformado(baseMaior, "É necessário informar a base maior");
+        validarValorInformado(baseMenor, "É necessário informar a base menor");
+        validarValorInformado(altura, "É necessário informar a altura");
         return BigDecimal.valueOf(((baseMaior + baseMenor) / 2.0) * altura);
     }
 }
