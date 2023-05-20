@@ -1,6 +1,5 @@
 package br.com.gabrielferreira.model;
 
-import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import lombok.*;
 
 import java.io.Serial;
@@ -8,6 +7,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+import static br.com.gabrielferreira.validate.ValidarNumero.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,13 +29,8 @@ public class Numero implements Serializable {
     private Integer valor;
 
     public boolean isNumeroPrimo(){
-        if(valor == null){
-            throw new RegraDeNegocioException("O valor não pode ser nulo");
-        }
-
-        if(valor <= 0){
-            throw new RegraDeNegocioException("Número tem que ser maior do que zero");
-        }
+        validarValorInformado(valor);
+        validarValorLimite(valor);
 
         List<Integer> valoresDividos = new ArrayList<>();
         for(int i = 1; i <= valor; i++){
