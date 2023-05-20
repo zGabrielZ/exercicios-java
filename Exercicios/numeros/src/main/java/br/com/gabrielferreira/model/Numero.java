@@ -1,8 +1,9 @@
 package br.com.gabrielferreira.model;
 
-import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.enumeration.Mes;
 import lombok.*;
+
+import static br.com.gabrielferreira.validate.ValidarNumero.*;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -14,6 +15,13 @@ public class Numero implements Serializable {
 
     @Serial
     private static final long serialVersionUID = -8501676006915527338L;
+
+    private static final Integer MES_INICIO = 1;
+    private static final Integer MES_FINAL = 12;
+    private static final Integer DIA_INICIO = 1;
+    private static final Integer DIA_FINAL = 30;
+    private static final Integer DIA_FINAL_FEVEREIRO = 28;
+
 
     public List<Integer> imprimirDezAteVinteCinco(){
         List<Integer> valores = new ArrayList<>();
@@ -59,9 +67,7 @@ public class Numero implements Serializable {
     }
 
     public BigDecimal calcularNumeroParaFatorar(Integer numero){
-        if(numero == null){
-            throw new RegraDeNegocioException("É necessário informar um número");
-        }
+        validarNumeroInformado(numero, "É necessário informar um número");
 
         BigDecimal fatora = BigDecimal.ONE;
         for(int i = 1; i <= numero; i++){
@@ -92,9 +98,7 @@ public class Numero implements Serializable {
     }
 
     public List<Integer> imprimirAteUltrapassarMil(Integer valor){
-        if(valor == null){
-            throw new RegraDeNegocioException("É necessário inforar o valor");
-        }
+        validarNumeroInformado(valor, "É necessário inforar o valor");
 
         List<Integer> valores = new ArrayList<>();
         do {
@@ -112,34 +116,15 @@ public class Numero implements Serializable {
     }
 
     public String imprimirDataInformada(Integer dia, Integer mes, Integer ano){
-        if(dia == null){
-            throw new RegraDeNegocioException("É necessário informar o dia");
-        }
+        validarNumeroInformado(dia, "É necessário informar o dia");
+        validarNumeroInformado(mes, "É necessário informar o mês");
+        validarNumeroInformado(ano, "É necessário informar o ano");
 
-        if(mes == null){
-            throw new RegraDeNegocioException("É necessário informar o mês");
-        }
+        validarTamanhoAno(ano);
 
-        if(ano == null){
-            throw new RegraDeNegocioException("É necessário informar o ano");
-        }
-
-        String anoFormat = String.valueOf(ano);
-        if(anoFormat.length() > 4){
-            throw new RegraDeNegocioException("Informe o ano corretamente");
-        }
-
-        if(!(mes >= 1 && mes <= 12)){
-            throw new RegraDeNegocioException("Informe o mês corretamente");
-        }
-
-        if(!(dia >= 1 && dia <= 30)){
-            throw new RegraDeNegocioException("Informe o dia corretamente");
-        }
-
-        if(Mes.isFevereiro(mes) && dia > 28){
-            throw new RegraDeNegocioException("Informe o dia de fevereiro corretamente");
-        }
+        validarPeriodo(!(mes >= MES_INICIO && mes <= MES_FINAL), "Informe o mês corretamente");
+        validarPeriodo(!(dia >= DIA_INICIO && dia <= DIA_FINAL), "Informe o dia corretamente");
+        validarPeriodo(Mes.isFevereiro(mes) && dia > DIA_FINAL_FEVEREIRO, "Informe o dia de fevereiro corretamente");
 
         return String.format("%s/%s/%s", dia, mes, ano);
     }
