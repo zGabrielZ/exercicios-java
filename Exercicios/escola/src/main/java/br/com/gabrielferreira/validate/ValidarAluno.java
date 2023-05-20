@@ -37,6 +37,12 @@ public class ValidarAluno {
         }
     }
 
+    public static void validarObjeto(Object object, String msg){
+        if(object == null){
+            throw new RegraDeNegocioException(msg);
+        }
+    }
+
     public static void validarString(String string, String msg){
         if(string == null || string.isBlank()){
             throw new RegraDeNegocioException(msg);

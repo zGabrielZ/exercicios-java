@@ -1,6 +1,7 @@
 package br.com.gabrielferreira.service;
 
 import br.com.gabrielferreira.model.Aluno;
+import br.com.gabrielferreira.model.Peso;
 import br.com.gabrielferreira.model.Prova;
 
 import static br.com.gabrielferreira.validate.ValidarAluno.*;
@@ -23,15 +24,17 @@ public class AlunoService implements Serializable {
         validarAlunos(alunos);
 
         alunos.forEach(aluno -> {
-            validarNome(aluno.getNome());
+            validarAluno(aluno);
+            validarNomeAluno(aluno.getNome());
 
             BigDecimal somaProvas = BigDecimal.ZERO;
             int somaPesos = 0;
 
             for (Prova prova : aluno.getProvas()) {
+                validarProva(prova);
                 validarNomeProva(prova.getNome(), aluno.getNome());
                 validarNotaProva(prova.getNota(), aluno.getNome());
-                validarPeso(prova.getPeso().getValor(), aluno.getNome());
+                validarPeso(prova.getPeso(), aluno.getNome());
 
                 somaProvas = somaProvas.add(prova.getNota().multiply(BigDecimal.valueOf(prova.getPeso().getValor())));
                 somaPesos += prova.getPeso().getValor();
@@ -51,8 +54,16 @@ public class AlunoService implements Serializable {
         validarLista(alunos, "É necessário informar pelo menos um aluno");
     }
 
-    private void validarNome(String nome){
+    private void validarAluno(Aluno aluno){
+        validarObjeto(aluno, "É necessário informar o aluno");
+    }
+
+    private void validarNomeAluno(String nome){
         validarString(nome, "É necessário informar o nome do aluno");
+    }
+
+    private void validarProva(Prova prova){
+        validarObjeto(prova, "É necessário informar a prova do aluno");
     }
 
     private void validarNomeProva(String nome, String nomeAluno){
@@ -64,8 +75,9 @@ public class AlunoService implements Serializable {
         validarNotaAluno(nota, nomeAluno);
     }
 
-    private void validarPeso(Integer peso, String nomeAluno){
-        validarInteger(peso, String.format("É necessário informar o peso da nota do aluno %s", nomeAluno));
-        validarPeriodoPeso(peso, nomeAluno);
+    private void validarPeso(Peso peso, String nomeAluno){
+        validarObjeto(peso, "É necessário informar o peso da prova do aluno");
+        validarInteger(peso.getValor(), String.format("É necessário informar o peso da nota do aluno %s", nomeAluno));
+        validarPeriodoPeso(peso.getValor(), nomeAluno);
     }
 }

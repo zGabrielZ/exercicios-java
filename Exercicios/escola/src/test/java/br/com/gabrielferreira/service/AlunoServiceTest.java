@@ -34,6 +34,17 @@ class AlunoServiceTest {
     }
 
     @Test
+    @DisplayName("Deveria validar o aluno quando informar nulo")
+    void deveValidarAlunoQuandoInformarNulo(){
+        Aluno aluno = null;
+
+        List<Aluno> alunos = new ArrayList<>();
+        alunos.add(aluno);
+
+        assertThrows(RegraDeNegocioException.class, () -> alunoService.criarAluno(alunos));
+    }
+
+    @Test
     @DisplayName("Deveria validar o nome do aluno quando informar o nome como nulo")
     void deveValidarNomeAlunoQuandoInformarNulo(){
         Aluno aluno = gerarAluno(null);
@@ -47,6 +58,18 @@ class AlunoServiceTest {
     @DisplayName("Deveria validar o nome do aluno quando informar o nome como vazio")
     void deveValidarNomeAlunoQuandoInformarVazio(){
         Aluno aluno = gerarAluno("");
+
+        List<Aluno> alunos = List.of(aluno);
+
+        assertThrows(RegraDeNegocioException.class, () -> alunoService.criarAluno(alunos));
+    }
+
+    @Test
+    @DisplayName("Deveria validar a prova quando informar nulo")
+    void deveValidarProvaQuandoInformarNulo(){
+        Aluno aluno = gerarAluno("José da Silva");
+        Prova prova = null;
+        aluno.getProvas().add(prova);
 
         List<Aluno> alunos = List.of(aluno);
 
@@ -99,6 +122,21 @@ class AlunoServiceTest {
         Aluno aluno = gerarAluno("José da Silva");
         Prova prova = gerarProva("Educação Física", BigDecimal.valueOf(notas));
 
+        aluno.getProvas().add(prova);
+
+        List<Aluno> alunos = List.of(aluno);
+
+        assertThrows(RegraDeNegocioException.class, () -> alunoService.criarAluno(alunos));
+    }
+
+    @Test
+    @DisplayName("Deveria validar a prova quando informar nulo")
+    void deveValidarPesoQuandoInformarNulo(){
+        Aluno aluno = gerarAluno("José da Silva");
+        Prova prova = gerarProva("Educação Física", BigDecimal.valueOf(5.0));
+        Peso peso = null;
+
+        prova.setPeso(peso);
         aluno.getProvas().add(prova);
 
         List<Aluno> alunos = List.of(aluno);
