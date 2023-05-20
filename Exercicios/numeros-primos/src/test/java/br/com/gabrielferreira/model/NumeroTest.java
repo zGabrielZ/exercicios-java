@@ -63,4 +63,26 @@ class NumeroTest {
         assertNotNull(numero.getValor());
         assertNotNull(numero.toString());
     }
+
+    @Test
+    @DisplayName("Deve comparar número quando não forem iguais")
+    void deveCompararNumeroNaoIguais(){
+        Numero numero1 = new Numero(UUID.randomUUID(), 11);
+        Numero numero2 = new Numero(UUID.randomUUID(), 10);
+
+        assertNotEquals(numero1, numero2);
+        assertNotEquals(numero1.hashCode(), numero2.hashCode());
+    }
+
+    @Test
+    @DisplayName("Deve comparar aluno quando forem iguais")
+    void deveCompararAlunoIguais(){
+        UUID id = UUID.randomUUID();
+        Integer numero = 10;
+        Numero numero1 = new Numero(id, numero);
+        Numero numero2 = new Numero(id, numero);
+
+        assertEquals(numero1, numero2);
+        assertEquals(numero1.hashCode(), numero2.hashCode());
+    }
 }
