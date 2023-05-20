@@ -52,4 +52,27 @@ class TrianguloTest {
         assertNotNull(triangulo.toString());
     }
 
+    @Test
+    @DisplayName("Deve comparar triângulo quando não forem iguais")
+    void deveCompararTrianguloNaoIguais(){
+        Triangulo triangulo1 = new Triangulo(UUID.randomUUID(), 10, 5);
+        Triangulo triangulo2 = new Triangulo(UUID.randomUUID(), 11, 7);
+
+        assertNotEquals(triangulo1, triangulo2);
+        assertNotEquals(triangulo1.hashCode(), triangulo2.hashCode());
+    }
+
+    @Test
+    @DisplayName("Deve comparar triângulo quando forem iguais")
+    void deveCompararTrianguloIguais(){
+        UUID id = UUID.randomUUID();
+        Integer base = 43;
+        Integer altura = 13;
+        Triangulo triangulo1 = new Triangulo(id, base, altura);
+        Triangulo triangulo2 = new Triangulo(id, base, altura);
+
+        assertEquals(triangulo1, triangulo2);
+        assertEquals(triangulo1.hashCode(), triangulo2.hashCode());
+    }
+
 }

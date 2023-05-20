@@ -8,19 +8,13 @@ import java.util.UUID;
 
 import static br.com.gabrielferreira.validate.ValidarCalcularArea.*;
 
-@AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @ToString
 public class Trapezio extends Figura{
 
     @Serial
     private static final long serialVersionUID = -6040100702355337574L;
-
-    @Getter
-    @Setter
-    @EqualsAndHashCode.Include
-    private UUID id;
 
     @Getter
     @Setter
@@ -33,6 +27,13 @@ public class Trapezio extends Figura{
     @Getter
     @Setter
     private Integer altura;
+
+    public Trapezio(UUID id, Integer baseMaior, Integer baseMenor, Integer altura){
+        super(id);
+        this.baseMaior = baseMaior;
+        this.baseMenor = baseMenor;
+        this.altura = altura;
+    }
 
 
     @Override

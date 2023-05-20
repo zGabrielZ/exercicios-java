@@ -8,10 +8,9 @@ import java.util.UUID;
 
 import static br.com.gabrielferreira.validate.ValidarCalcularArea.*;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @ToString
+@NoArgsConstructor
 public class Circunferencia extends Figura{
 
     @Serial
@@ -19,13 +18,12 @@ public class Circunferencia extends Figura{
 
     @Getter
     @Setter
-    @EqualsAndHashCode.Include
-    private UUID id;
-
-    @Getter
-    @Setter
     private Integer raio;
 
+    public Circunferencia(UUID id, Integer raio){
+        super(id);
+        this.raio = raio;
+    }
 
     @Override
     public BigDecimal calcularArea() {

@@ -8,9 +8,8 @@ import java.util.UUID;
 
 import static br.com.gabrielferreira.validate.ValidarCalcularArea.*;
 
-@AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @ToString
 public class Quadrado extends Figura{
 
@@ -19,13 +18,12 @@ public class Quadrado extends Figura{
 
     @Getter
     @Setter
-    @EqualsAndHashCode.Include
-    private UUID id;
-
-    @Getter
-    @Setter
     private Integer lado;
 
+    public Quadrado(UUID id, Integer lado){
+        super(id);
+        this.lado = lado;
+    }
 
     @Override
     public BigDecimal calcularArea() {

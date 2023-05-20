@@ -61,4 +61,28 @@ class TrapezioTest {
         assertNotNull(trapezio.toString());
     }
 
+    @Test
+    @DisplayName("Deve comparar trapézio quando não forem iguais")
+    void deveCompararTrapezioNaoIguais(){
+        Trapezio trapezio1 = new Trapezio(UUID.randomUUID(), 2, 2, 5);
+        Trapezio trapezio2 = new Trapezio(UUID.randomUUID(), 3, 3, 15);
+
+        assertNotEquals(trapezio1, trapezio2);
+        assertNotEquals(trapezio1.hashCode(), trapezio2.hashCode());
+    }
+
+    @Test
+    @DisplayName("Deve comparar trapézio quando forem iguais")
+    void deveCompararTrapezioIguais(){
+        UUID id = UUID.randomUUID();
+        Integer baseMaior = 43;
+        Integer baseMenor = 33;
+        Integer altura = 13;
+        Trapezio trapezio1 = new Trapezio(id, baseMaior, baseMenor, altura);
+        Trapezio trapezio2 = new Trapezio(id, baseMaior, baseMenor, altura);
+
+        assertEquals(trapezio1, trapezio2);
+        assertEquals(trapezio1.hashCode(), trapezio2.hashCode());
+    }
+
 }

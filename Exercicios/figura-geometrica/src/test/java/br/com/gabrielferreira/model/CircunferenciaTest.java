@@ -44,4 +44,26 @@ class CircunferenciaTest {
         assertNotNull(circunferencia.toString());
     }
 
+    @Test
+    @DisplayName("Deve comparar circunferência quando não forem iguais")
+    void deveCompararCircunferenciaNaoIguais(){
+        Circunferencia circunferencia1 = new Circunferencia(UUID.randomUUID(), 3);
+        Circunferencia circunferencia2 = new Circunferencia(UUID.randomUUID(), 4);
+
+        assertNotEquals(circunferencia1, circunferencia2);
+        assertNotEquals(circunferencia1.hashCode(), circunferencia2.hashCode());
+    }
+
+    @Test
+    @DisplayName("Deve comparar circunferência quando forem iguais")
+    void deveCompararCircunferenciaIguais(){
+        UUID id = UUID.randomUUID();
+        Integer raio = 3;
+        Circunferencia circunferencia1 = new Circunferencia(id, raio);
+        Circunferencia circunferencia2 = new Circunferencia(id, raio);
+
+        assertEquals(circunferencia1, circunferencia2);
+        assertEquals(circunferencia1.hashCode(), circunferencia2.hashCode());
+    }
+
 }

@@ -9,9 +9,8 @@ import java.util.UUID;
 
 import static br.com.gabrielferreira.validate.ValidarCalcularArea.*;
 
-@AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @ToString
 public class Triangulo extends Figura{
 
@@ -20,16 +19,17 @@ public class Triangulo extends Figura{
 
     @Getter
     @Setter
-    @EqualsAndHashCode.Include
-    private UUID id;
-
-    @Getter
-    @Setter
     private Integer base;
 
     @Getter
     @Setter
     private Integer altura;
+
+    public Triangulo(UUID id, Integer base, Integer altura){
+        super(id);
+        this.base = base;
+        this.altura = altura;
+    }
 
     @Override
     public BigDecimal calcularArea() {
