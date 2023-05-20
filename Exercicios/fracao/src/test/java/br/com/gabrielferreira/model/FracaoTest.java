@@ -21,4 +21,27 @@ class FracaoTest {
         assertNotNull(fracao.getId());
         assertNotNull(fracao.toString());
     }
+
+    @Test
+    @DisplayName("Deve comparar fração quando não forem iguais")
+    void deveCompararFracaoNaoIguais(){
+        Fracao fracao1 = new Fracao(UUID.randomUUID(), 10, 20);
+        Fracao fracao2 = new Fracao(UUID.randomUUID(), 20, 30);
+
+        assertNotEquals(fracao1, fracao2);
+        assertNotEquals(fracao1.hashCode(), fracao2.hashCode());
+    }
+
+    @Test
+    @DisplayName("Deve comparar aluno quando forem iguais")
+    void deveCompararAlunoIguais(){
+        UUID id = UUID.randomUUID();
+        Integer numerador = 10;
+        Integer denominador = 20;
+        Fracao fracao1 = new Fracao(id, numerador, denominador);
+        Fracao fracao2 = new Fracao(id, numerador, denominador);
+
+        assertEquals(fracao1, fracao2);
+        assertEquals(fracao1.hashCode(), fracao2.hashCode());
+    }
 }
