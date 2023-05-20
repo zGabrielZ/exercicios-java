@@ -42,4 +42,26 @@ class QuadradoTest {
         assertNotNull(quadrado.getId());
         assertNotNull(quadrado.toString());
     }
+
+    @Test
+    @DisplayName("Deve comparar quadrado quando não forem iguais")
+    void deveCompararQuadradoNaoIguais(){
+        Quadrado quadrado1 = new Quadrado(UUID.randomUUID(), 3);
+        Quadrado quadrado2 = new Quadrado(UUID.randomUUID(), 4);
+
+        assertNotEquals(quadrado1, quadrado2);
+        assertNotEquals(quadrado1.hashCode(), quadrado2.hashCode());
+    }
+
+    @Test
+    @DisplayName("Deve comparar quadrado quando forem iguais")
+    void deveCompararQuadradoIguais(){
+        UUID uuid = UUID.randomUUID();
+        Integer lado = 5;
+        Quadrado quadrado1 = new Quadrado(uuid, lado);
+        Quadrado quadrado2 = new Quadrado(uuid, lado);
+
+        assertEquals(quadrado1, quadrado2);
+        assertEquals(quadrado1.hashCode(), quadrado2.hashCode());
+    }
 }

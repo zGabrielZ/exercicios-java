@@ -51,4 +51,27 @@ class RetanguloTest {
         assertNotNull(retangulo.getId());
         assertNotNull(retangulo.toString());
     }
+
+    @Test
+    @DisplayName("Deve comparar retângulo quando não forem iguais")
+    void deveCompararRetanguloNaoIguais(){
+        Retangulo retangulo1 = new Retangulo(UUID.randomUUID(), 3, 3);
+        Retangulo retangulo2 = new Retangulo(UUID.randomUUID(), 5, 5);
+
+        assertNotEquals(retangulo1, retangulo2);
+        assertNotEquals(retangulo1.hashCode(), retangulo2.hashCode());
+    }
+
+    @Test
+    @DisplayName("Deve comparar retângulo quando forem iguais")
+    void deveCompararRetanguloIguais(){
+        UUID id = UUID.randomUUID();
+        Integer base = 3;
+        Integer altura = 5;
+        Retangulo retangulo1 = new Retangulo(id, base, altura);
+        Retangulo retangulo2 = new Retangulo(id, base, altura);
+
+        assertEquals(retangulo1, retangulo2);
+        assertEquals(retangulo1.hashCode(), retangulo2.hashCode());
+    }
 }
