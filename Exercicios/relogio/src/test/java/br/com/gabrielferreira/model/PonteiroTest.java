@@ -19,4 +19,26 @@ class PonteiroTest {
         assertNotNull(ponteiro.getId());
         assertNotNull(ponteiro.toString());
     }
+
+    @Test
+    @DisplayName("Deve comparar ponteiro quando não forem iguais")
+    void deveCompararPonteiroNaoIguais(){
+        Ponteiro ponteiro1 = new Ponteiro(UUID.randomUUID(), 1);
+        Ponteiro ponteiro2 = new Ponteiro(UUID.randomUUID(), 2);
+
+        assertNotEquals(ponteiro1, ponteiro2);
+        assertNotEquals(ponteiro1.hashCode(), ponteiro2.hashCode());
+    }
+
+    @Test
+    @DisplayName("Deve comparar ponteiro quando forem iguais")
+    void deveCompararPonteiroIguais(){
+        UUID id = UUID.randomUUID();
+        Integer posicao = 1;
+        Ponteiro ponteiro1 = new Ponteiro(id, posicao);
+        Ponteiro ponteiro2 = new Ponteiro(id, posicao);
+
+        assertEquals(ponteiro1, ponteiro2);
+        assertEquals(ponteiro1.hashCode(), ponteiro2.hashCode());
+    }
 }
