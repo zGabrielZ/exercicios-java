@@ -1,42 +1,47 @@
 package br.com.gabrielferreira.model;
 
-import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.UUID;
+
+import static br.com.gabrielferreira.validate.ValidarCalculo.*;
+import static br.com.gabrielferreira.utils.CalcularUtils.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@Builder
 @ToString
-@Generated
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Prova implements Serializable {
 
     @Serial
     private static final long serialVersionUID = -1449377219367520562L;
 
+    @Getter
+    @Setter
     @EqualsAndHashCode.Include
     private UUID id;
 
+    @Getter
+    @Setter
     private String disciplina;
 
-    private Double notaParte1;
+    @Getter
+    @Setter
+    private BigDecimal notaParte1;
 
-    private Double notaParte2;
+    @Getter
+    @Setter
+    private BigDecimal notaParte2;
 
-    public Double calcularNotaTotal(){
-        if(notaParte1 == null || notaParte2 == null){
-            throw new RegraDeNegocioException("É necessário informar as duas notas");
-        }
+    public BigDecimal calcularNotaTotal(){
+        validarValorInformado(notaParte1, "É necessário informar a primeira nota");
+        validarValorInformado(notaParte2, "É necessário informar a segunda nota");
 
-        double soma = notaParte1 + notaParte2;
-        if(soma > 10.0){
-            throw new RegraDeNegocioException("A soma das duas notas não pode ultrapassar de 10.0");
-        }
+        BigDecimal soma = somar(notaParte1, notaParte2);
+        validarLimteNota(soma);
         return soma;
     }
 }
