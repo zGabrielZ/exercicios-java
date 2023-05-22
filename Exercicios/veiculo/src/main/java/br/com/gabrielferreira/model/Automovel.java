@@ -5,7 +5,6 @@ import lombok.*;
 import java.io.Serial;
 
 @EqualsAndHashCode(callSuper = true)
-@Generated
 public class Automovel extends Veiculo {
 
     @Serial
