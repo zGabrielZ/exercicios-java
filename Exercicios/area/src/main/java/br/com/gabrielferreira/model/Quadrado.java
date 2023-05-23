@@ -2,10 +2,12 @@ package br.com.gabrielferreira.model;
 
 import lombok.*;
 import static br.com.gabrielferreira.validate.ValidacaoCalculoArea.*;
+import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.UUID;
 
 @Data
@@ -26,6 +28,7 @@ public class Quadrado implements AreaCalculavel, Serializable {
     @Override
     public BigDecimal calcularArea() {
         validarNumeroInformado(lado, "É necessário infomar o lado do quadrado");
-        return BigDecimal.valueOf(lado).multiply(BigDecimal.valueOf(lado));
+        BigDecimal ladoBigDecimal = toBigDecimal(lado);
+        return multiplicar(ladoBigDecimal, ladoBigDecimal, 2, RoundingMode.HALF_EVEN);
     }
 }

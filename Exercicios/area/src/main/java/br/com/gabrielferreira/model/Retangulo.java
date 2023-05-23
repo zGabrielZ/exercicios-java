@@ -3,10 +3,12 @@ package br.com.gabrielferreira.model;
 import lombok.*;
 
 import static br.com.gabrielferreira.validate.ValidacaoCalculoArea.*;
+import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.UUID;
 
 @Data
@@ -30,6 +32,6 @@ public class Retangulo implements AreaCalculavel, Serializable {
     public BigDecimal calcularArea() {
         validarNumeroInformado(base, "É necessário infomar a base do retângulo");
         validarNumeroInformado(altura, "É necessário infomar a altura do retângulo");
-        return BigDecimal.valueOf(base).multiply(BigDecimal.valueOf(altura));
+        return multiplicar(toBigDecimal(base), toBigDecimal(altura), 2, RoundingMode.HALF_EVEN);
     }
 }

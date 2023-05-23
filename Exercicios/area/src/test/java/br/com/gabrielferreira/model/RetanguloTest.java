@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -32,7 +33,7 @@ class RetanguloTest {
 
         BigDecimal resultado = retangulo.calcularArea();
 
-        assertEquals(BigDecimal.valueOf(35), resultado);
+        assertEquals(BigDecimal.valueOf(35.00).setScale(2, RoundingMode.HALF_EVEN), resultado);
     }
 
     @Test
@@ -45,7 +46,7 @@ class RetanguloTest {
 
         BigDecimal resultado = retangulo.calcularArea();
 
-        assertEquals(BigDecimal.valueOf(35), resultado);
+        assertEquals(BigDecimal.valueOf(35.00).setScale(2, RoundingMode.HALF_EVEN), resultado);
         assertEquals(5, retangulo.getBase());
         assertEquals(7, retangulo.getAltura());
         assertNotNull(retangulo.getId());

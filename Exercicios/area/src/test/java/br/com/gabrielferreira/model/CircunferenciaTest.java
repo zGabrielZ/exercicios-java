@@ -26,7 +26,7 @@ class CircunferenciaTest {
 
         BigDecimal resultado = circunferencia.calcularArea();
 
-        assertEquals(BigDecimal.valueOf(78.54), resultado.setScale(2, RoundingMode.HALF_EVEN));
+        assertEquals(BigDecimal.valueOf(78.54).setScale(2, RoundingMode.HALF_EVEN), resultado);
     }
 
     @Test
