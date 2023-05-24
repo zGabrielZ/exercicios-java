@@ -1,10 +1,12 @@
 package br.com.gabrielferreira.validate;
 
 import br.com.gabrielferreira.exception.ErroInesperadoException;
+import lombok.Generated;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+@Generated
 public class ValidarEntrada {
 
     private ValidarEntrada(){}

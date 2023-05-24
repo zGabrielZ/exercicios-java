@@ -32,6 +32,7 @@ public class Retangulo implements AreaCalculavel, Serializable {
     public BigDecimal calcularArea() {
         validarNumeroInformado(base, "É necessário infomar a base do retângulo");
         validarNumeroInformado(altura, "É necessário infomar a altura do retângulo");
-        return multiplicar(toBigDecimal(base), toBigDecimal(altura), 2, RoundingMode.HALF_EVEN);
+        BigDecimal resultado = multiplicar(toBigDecimal(base), toBigDecimal(altura));
+        return toRetorno(resultado, 2, RoundingMode.HALF_EVEN);
     }
 }

@@ -15,7 +15,11 @@ public class CalculoUtils {
         return BigDecimal.valueOf(valor);
     }
 
-    public static BigDecimal multiplicar(BigDecimal valorParte1, BigDecimal valorParte2, int escala, RoundingMode tipoArredondamento){
-        return valorParte1.multiply(valorParte2).setScale(escala, tipoArredondamento);
+    public static BigDecimal multiplicar(BigDecimal valorParte1, BigDecimal valorParte2){
+        return valorParte1.multiply(valorParte2);
+    }
+
+    public static BigDecimal toRetorno(BigDecimal valor, int escala, RoundingMode tipoArredondamento){
+        return valor.setScale(escala, tipoArredondamento);
     }
 }

@@ -29,6 +29,7 @@ public class Quadrado implements AreaCalculavel, Serializable {
     public BigDecimal calcularArea() {
         validarNumeroInformado(lado, "É necessário infomar o lado do quadrado");
         BigDecimal ladoBigDecimal = toBigDecimal(lado);
-        return multiplicar(ladoBigDecimal, ladoBigDecimal, 2, RoundingMode.HALF_EVEN);
+        BigDecimal resultado = multiplicar(ladoBigDecimal, ladoBigDecimal);
+        return toRetorno(resultado, 2, RoundingMode.HALF_EVEN);
     }
 }

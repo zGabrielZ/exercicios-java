@@ -4,6 +4,7 @@ import br.com.gabrielferreira.exception.ErroInesperadoException;
 import br.com.gabrielferreira.model.Circunferencia;
 import br.com.gabrielferreira.model.Quadrado;
 import br.com.gabrielferreira.model.Retangulo;
+import lombok.Generated;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
@@ -13,6 +14,7 @@ import java.util.UUID;
 
 import static br.com.gabrielferreira.validate.ValidarEntrada.*;
 
+@Generated
 public class AplicacaoArea {
 
     public static void main(String[] args) {

@@ -31,6 +31,7 @@ public class Circunferencia implements AreaCalculavel, Serializable {
     @Override
     public BigDecimal calcularArea() {
         validarNumeroInformado(raio, "É necessário infomar o raio da circunferência");
-        return multiplicar(toBigDecimal(raio).pow(2), toBigDecimal(PI), 2, RoundingMode.HALF_EVEN);
+        BigDecimal resultado = multiplicar(toBigDecimal(raio).pow(2), toBigDecimal(PI));
+        return toRetorno(resultado, 2, RoundingMode.HALF_EVEN);
     }
 }
