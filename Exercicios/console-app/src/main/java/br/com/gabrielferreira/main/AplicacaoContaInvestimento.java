@@ -7,7 +7,7 @@ import lombok.Generated;
 import java.math.BigDecimal;
 
 import static br.com.gabrielferreira.utils.CalculoUtils.toBigDecimal;
-import static br.com.gabrielferreira.utils.Mascaras.valorMonetarioBrasil;
+import static br.com.gabrielferreira.utils.MascarasUtils.*;
 
 @Generated
 public class AplicacaoContaInvestimento {

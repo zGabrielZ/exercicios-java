@@ -5,7 +5,7 @@ import lombok.Generated;
 
 import java.math.BigDecimal;
 import static br.com.gabrielferreira.utils.CalculoUtils.*;
-import static br.com.gabrielferreira.utils.Mascaras.*;
+import static br.com.gabrielferreira.utils.MascarasUtils.*;
 
 @Generated
 public class AplicacaoContaCorrente {

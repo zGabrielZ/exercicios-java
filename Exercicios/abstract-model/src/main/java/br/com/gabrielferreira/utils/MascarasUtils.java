@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class Mascaras {
+public class MascarasUtils {
 
-    private Mascaras(){}
+    private MascarasUtils(){}
 
     private static final Locale BRASIL = new Locale("pt", "BR");
 
