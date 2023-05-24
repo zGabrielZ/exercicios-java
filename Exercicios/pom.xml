@@ -92,6 +92,7 @@
         <module>conta-bancaria</module>
         <module>numeros-primos</module>
         <module>console-app</module>
+        <module>produto</module>
     </modules>
 
 </project>

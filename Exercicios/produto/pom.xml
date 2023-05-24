@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>console-app</artifactId>
+    <artifactId>produto</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -19,22 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>br.com.gabrielferreira</groupId>
-            <artifactId>area</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>br.com.gabrielferreira</groupId>
-            <artifactId>conta-bancaria</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>br.com.gabrielferreira</groupId>
-            <artifactId>data</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>br.com.gabrielferreira</groupId>
-            <artifactId>produto</artifactId>
+            <artifactId>abstract-model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
