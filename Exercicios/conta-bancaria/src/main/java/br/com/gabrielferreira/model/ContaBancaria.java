@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 import static br.com.gabrielferreira.validate.ValidarConta.*;
+import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -28,14 +29,14 @@ public abstract class ContaBancaria implements Serializable {
     public void depositar(BigDecimal saldo){
         validarSaldoInformado(saldo, "É necessário informar o valor para depositar");
         validarSaldoNegativoOuZerado(saldo, "Não é possível depositar com o valor zerado ou negativo");
-        this.saldo = this.saldo.add(saldo);
+        this.saldo = somar(this.saldo, saldo);
     }
 
     public void sacar(BigDecimal saldo){
         validarSaldoInformado(saldo, "É necessário informar o valor para sacar");
         validarSaldoNegativoOuZerado(saldo, "Não é possível sacar com o valor zerado ou negativo");
         validarSaldoTotalMenorQueSaldoInformado(this.getSaldo(), saldo, "Não é possível sacar pois o valor final é menor que o valor informado");
-        this.saldo = this.saldo.subtract(saldo);
+        this.saldo = subtrair(this.saldo, saldo);
     }
 
     public void transferir(BigDecimal saldoParaTransferir, ContaBancaria contaBancariaDestino){

@@ -19,6 +19,14 @@ public class CalculoUtils {
         return valorParte1.multiply(valorParte2);
     }
 
+    public static BigDecimal somar(BigDecimal valorParte1, BigDecimal valorParte2){
+        return valorParte1.add(valorParte2);
+    }
+
+    public static BigDecimal subtrair(BigDecimal valorParte1, BigDecimal valorParte2){
+        return valorParte1.subtract(valorParte2);
+    }
+
     public static BigDecimal toRetorno(BigDecimal valor, int escala, RoundingMode tipoArredondamento){
         return valor.setScale(escala, tipoArredondamento);
     }
