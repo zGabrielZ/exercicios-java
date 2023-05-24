@@ -4,6 +4,7 @@ import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import lombok.*;
 
 import static br.com.gabrielferreira.validate.ValidarData.*;
+import static br.com.gabrielferreira.model.Constantes.*;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -15,6 +16,14 @@ public class Data implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 537563925647530667L;
+
+    private static final Integer MEIA_NOITE = 0;
+    private static final Integer DOZE_HORAS = 12;
+    private static final Integer UMA_HORA = 1;
+    private static final Integer VINTE_QUATRO_HORAS = 24;
+    private static final String FORMATO_AM = "AM";
+    private static final String FORMATO_PM = "PM";
+
 
     @EqualsAndHashCode.Include
     @Getter
@@ -68,17 +77,17 @@ public class Data implements Serializable {
             return getFormatoSemHorario();
         }
 
-        if(formato.equals(1)){
-            if(this.hora.equals(0)){
-                return getFormatoComHorario("AM", 12);
-            } else if(this.hora >= 1 && this.hora < 12){
-                return getFormatoComHorario("AM", this.hora);
-            } else if(this.hora >= 12 && this.hora < 24){
-                return getFormatoComHorario("PM", this.hora + 12 - 24);
+        if(formato.equals(FORMATO_12H)){
+            if(this.hora.equals(MEIA_NOITE)){
+                return getFormatoComHorario(FORMATO_AM, DOZE_HORAS);
+            } else if(this.hora >= UMA_HORA && this.hora < DOZE_HORAS){
+                return getFormatoComHorario(FORMATO_AM, this.hora);
+            } else if(this.hora >= DOZE_HORAS && this.hora < VINTE_QUATRO_HORAS){
+                return getFormatoComHorario(FORMATO_PM, this.hora + DOZE_HORAS - VINTE_QUATRO_HORAS);
             }
-        } else if(formato.equals(2)){
+        } else if(formato.equals(FORMATO_24H)){
             return getFormatoComHorario("", this.hora).trim();
-        } else if(!(formato >= 1 && formato <= 2)){
+        } else if(!(formato >= FORMATO_12H && formato <= FORMATO_24H)){
             throw new RegraDeNegocioException("Informe o formato correto");
         }
 
