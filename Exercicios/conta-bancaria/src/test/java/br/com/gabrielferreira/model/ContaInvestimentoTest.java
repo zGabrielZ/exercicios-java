@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
 class ContaInvestimentoTest {
 
@@ -18,12 +19,12 @@ class ContaInvestimentoTest {
         ContaBancaria contaBancariaOrigem = new ContaInvestimento();
         contaBancariaOrigem.setId(UUID.randomUUID());
 
-        contaBancariaOrigem.depositar(BigDecimal.valueOf(50.00));
-        contaBancariaOrigem.depositar(BigDecimal.valueOf(100.00));
+        contaBancariaOrigem.depositar(toBigDecimal(50.00));
+        contaBancariaOrigem.depositar(toBigDecimal(100.00));
 
         BigDecimal resultado = contaBancariaOrigem.calcularSaldoFinal();
 
-        assertEquals(BigDecimal.valueOf(225.0), resultado.setScale(1, RoundingMode.HALF_EVEN));
+        assertEquals(toBigDecimal(225.0), resultado.setScale(1, RoundingMode.HALF_EVEN));
     }
 
     @Test
