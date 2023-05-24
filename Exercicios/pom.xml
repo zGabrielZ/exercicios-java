@@ -91,6 +91,7 @@
         <module>area</module>
         <module>conta-bancaria</module>
         <module>numeros-primos</module>
+        <module>console-app</module>
     </modules>
 
 </project>
