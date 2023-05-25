@@ -93,6 +93,7 @@
         <module>numeros-primos</module>
         <module>console-app</module>
         <module>produto</module>
+        <module>processo</module>
     </modules>
 
 </project>
