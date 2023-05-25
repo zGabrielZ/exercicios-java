@@ -94,6 +94,7 @@
         <module>console-app</module>
         <module>produto</module>
         <module>processo</module>
+        <module>pessoa-data</module>
     </modules>
 
 </project>
