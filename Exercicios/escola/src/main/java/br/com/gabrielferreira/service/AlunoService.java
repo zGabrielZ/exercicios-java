@@ -5,6 +5,7 @@ import br.com.gabrielferreira.model.Peso;
 import br.com.gabrielferreira.model.Prova;
 
 import static br.com.gabrielferreira.validate.ValidarAluno.*;
+import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -36,13 +37,13 @@ public class AlunoService implements Serializable {
                 validarNotaProva(prova.getNota(), aluno.getNome());
                 validarPeso(prova.getPeso(), aluno.getNome());
 
-                somaProvas = somaProvas.add(prova.getNota().multiply(BigDecimal.valueOf(prova.getPeso().getValor())));
+                somaProvas = somar(somaProvas, (multiplicar(prova.getNota(), toBigDecimal(prova.getPeso().getValor()))));
                 somaPesos += prova.getPeso().getValor();
             }
 
             validarSomaPeso(somaPesos);
 
-            BigDecimal mediaProva = somaProvas.divide(BigDecimal.valueOf(somaPesos), RoundingMode.HALF_EVEN);
+            BigDecimal mediaProva = divide(somaProvas, toBigDecimal(somaPesos), RoundingMode.HALF_EVEN);
             sb.append("Aluno : ").append(aluno.getNome()).append(", Média : ").append(mediaProva).append("\n");
         });
 

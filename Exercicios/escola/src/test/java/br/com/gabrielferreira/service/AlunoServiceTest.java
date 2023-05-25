@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import static br.com.gabrielferreira.utils.CalculoUtils.*;
+
 class AlunoServiceTest {
 
     private AlunoService alunoService;
@@ -80,7 +82,7 @@ class AlunoServiceTest {
     @DisplayName("Deveria validar o nome da prova quando informar a prova como nulo")
     void deveValidarNomeProvaQuandoInformarNulo(){
         Aluno aluno = gerarAluno("José da Silva");
-        Prova prova = gerarProva(null, BigDecimal.valueOf(10.0));
+        Prova prova = gerarProva(null, toBigDecimal(10.0));
 
         aluno.getProvas().add(prova);
 
@@ -93,7 +95,7 @@ class AlunoServiceTest {
     @DisplayName("Deveria validar o nome da prova quando informar a prova como vazio")
     void deveValidarNomeProvaQuandoInformarVazio(){
         Aluno aluno = gerarAluno("José da Silva");
-        Prova prova = gerarProva("", BigDecimal.valueOf(10.0));
+        Prova prova = gerarProva("", toBigDecimal(10.0));
 
         aluno.getProvas().add(prova);
 
@@ -120,7 +122,7 @@ class AlunoServiceTest {
     @DisplayName("Deveria validar a nota da prova quando informar a nota diferente de 0 até 10")
     void deveValidarNotaProvaQuandoInformarDiferente0E10(double notas){
         Aluno aluno = gerarAluno("José da Silva");
-        Prova prova = gerarProva("Educação Física", BigDecimal.valueOf(notas));
+        Prova prova = gerarProva("Educação Física", toBigDecimal(notas));
 
         aluno.getProvas().add(prova);
 
@@ -133,7 +135,7 @@ class AlunoServiceTest {
     @DisplayName("Deveria validar a prova quando informar nulo")
     void deveValidarPesoQuandoInformarNulo(){
         Aluno aluno = gerarAluno("José da Silva");
-        Prova prova = gerarProva("Educação Física", BigDecimal.valueOf(5.0));
+        Prova prova = gerarProva("Educação Física", toBigDecimal(5.0));
         Peso peso = null;
 
         prova.setPeso(peso);
@@ -148,7 +150,7 @@ class AlunoServiceTest {
     @DisplayName("Deveria validar a nota do peso quando informar o peso")
     void deveValidarNotaPesoQuandoInformarNulo(){
         Aluno aluno = gerarAluno("José da Silva");
-        Prova prova = gerarProva("Educação Física", BigDecimal.valueOf(5.0));
+        Prova prova = gerarProva("Educação Física", toBigDecimal(5.0));
         Peso peso = gerarPeso(null);
 
         prova.setPeso(peso);
@@ -164,7 +166,7 @@ class AlunoServiceTest {
     @DisplayName("Deveria validar o peso da prova quando informar o peso diferente de 1 até 5")
     void deveValidarNotaPesoQuandoInformarDiferente1E5(int pesos){
         Aluno aluno = gerarAluno("José da Silva");
-        Prova prova = gerarProva("Educação Física", BigDecimal.valueOf(10.0));
+        Prova prova = gerarProva("Educação Física", toBigDecimal(10.0));
         Peso peso = gerarPeso(pesos);
 
         prova.setPeso(peso);
@@ -179,15 +181,15 @@ class AlunoServiceTest {
     @DisplayName("Deveria validar a soma de pesos ao informar aluno")
     void deveValidarSomaPesosAoInformarAluno(){
         Aluno aluno = gerarAluno("José da Silva");
-        Prova prova1 = gerarProva("Educação Física", BigDecimal.valueOf(8.5));
+        Prova prova1 = gerarProva("Educação Física", toBigDecimal(8.5));
         Peso peso1 = gerarPeso(5);
         prova1.setPeso(peso1);
 
-        Prova prova2 = gerarProva("Matemática", BigDecimal.valueOf(7.5));
+        Prova prova2 = gerarProva("Matemática", toBigDecimal(7.5));
         Peso peso2 = gerarPeso(5);
         prova2.setPeso(peso2);
 
-        Prova prova3 = gerarProva("Língua Portuguesa", BigDecimal.valueOf(6.0));
+        Prova prova3 = gerarProva("Língua Portuguesa", toBigDecimal(6.0));
         Peso peso3 = gerarPeso(5);
         prova3.setPeso(peso3);
 
@@ -204,15 +206,15 @@ class AlunoServiceTest {
     @DisplayName("Deveria criar aluno quando informar corretamente")
     void deveCriarAluno(){
         Aluno aluno = gerarAluno("José da Silva");
-        Prova prova1 = gerarProva("Educação Física", BigDecimal.valueOf(8.5));
+        Prova prova1 = gerarProva("Educação Física", toBigDecimal(8.5));
         Peso peso1 = gerarPeso(3);
         prova1.setPeso(peso1);
 
-        Prova prova2 = gerarProva("Matemática", BigDecimal.valueOf(7.5));
+        Prova prova2 = gerarProva("Matemática", toBigDecimal(7.5));
         Peso peso2 = gerarPeso(2);
         prova2.setPeso(peso2);
 
-        Prova prova3 = gerarProva("Língua Portuguesa", BigDecimal.valueOf(6.0));
+        Prova prova3 = gerarProva("Língua Portuguesa", toBigDecimal(6.0));
         Peso peso3 = gerarPeso(5);
         prova3.setPeso(peso3);
 
