@@ -4,6 +4,7 @@ import br.com.gabrielferreira.model.Aluno;
 import br.com.gabrielferreira.model.Peso;
 import br.com.gabrielferreira.model.Prova;
 import br.com.gabrielferreira.service.AlunoService;
+import lombok.Generated;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,6 +13,7 @@ import java.util.UUID;
 
 import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
+@Generated
 public class AplicacaoEscola {
 
     public static void main(String[] args) {

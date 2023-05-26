@@ -2,7 +2,9 @@ package br.com.gabrielferreira.main;
 
 import br.com.gabrielferreira.model.Relogio;
 import br.com.gabrielferreira.service.RelogioService;
+import lombok.Generated;
 
+@Generated
 public class AplicacaoRelogio {
 
     public static void main(String[] args) {

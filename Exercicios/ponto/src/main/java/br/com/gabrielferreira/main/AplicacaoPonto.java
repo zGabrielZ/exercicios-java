@@ -2,11 +2,13 @@ package br.com.gabrielferreira.main;
 
 import br.com.gabrielferreira.model.Ponto2D;
 import br.com.gabrielferreira.model.Ponto3D;
+import lombok.Generated;
 
 import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
 import java.util.UUID;
 
+@Generated
 public class AplicacaoPonto {
 
     public static void main(String[] args) {

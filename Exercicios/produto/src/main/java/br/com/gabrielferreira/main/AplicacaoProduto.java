@@ -2,6 +2,7 @@ package br.com.gabrielferreira.main;
 
 import br.com.gabrielferreira.model.Produto;
 import br.com.gabrielferreira.service.ProdutoService;
+import lombok.Generated;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.UUID;
 import static br.com.gabrielferreira.utils.CalculoUtils.*;
 import static br.com.gabrielferreira.utils.DataUtils.*;
 
+@Generated
 public class AplicacaoProduto {
 
     public static void main(String[] args) {

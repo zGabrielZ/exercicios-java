@@ -91,7 +91,6 @@
         <module>area</module>
         <module>conta-bancaria</module>
         <module>numeros-primos</module>
-        <module>console-app</module>
         <module>produto</module>
         <module>processo</module>
         <module>pessoa-data</module>

@@ -1,10 +1,12 @@
 package br.com.gabrielferreira.main;
 
 import br.com.gabrielferreira.model.Pessoa;
+import lombok.Generated;
 
 import java.util.UUID;
 import static br.com.gabrielferreira.utils.DataUtils.*;
 
+@Generated
 public class AplicacaoPessoaData {
 
     public static void main(String[] args) {

@@ -2,9 +2,11 @@ package br.com.gabrielferreira.main;
 
 import br.com.gabrielferreira.model.Fracao;
 import br.com.gabrielferreira.service.FracaoService;
+import lombok.Generated;
 
 import java.util.UUID;
 
+@Generated
 public class AplicacaoFracao {
 
     public static void main(String[] args) {

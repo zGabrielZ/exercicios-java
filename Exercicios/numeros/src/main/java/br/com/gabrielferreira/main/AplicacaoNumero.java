@@ -1,7 +1,9 @@
 package br.com.gabrielferreira.main;
 
 import br.com.gabrielferreira.model.Numero;
+import lombok.Generated;
 
+@Generated
 public class AplicacaoNumero {
 
     public static void main(String[] args) {

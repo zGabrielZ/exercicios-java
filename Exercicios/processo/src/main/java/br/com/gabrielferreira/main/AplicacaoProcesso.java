@@ -1,7 +1,9 @@
 package br.com.gabrielferreira.main;
 
 import br.com.gabrielferreira.model.Processo;
+import lombok.Generated;
 
+@Generated
 public class AplicacaoProcesso {
 
     public static void main(String[] args) {

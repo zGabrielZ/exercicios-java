@@ -4,11 +4,13 @@ import br.com.gabrielferreira.model.Circunferencia;
 import br.com.gabrielferreira.model.Quadrado;
 import br.com.gabrielferreira.model.Trapezio;
 import br.com.gabrielferreira.model.Triangulo;
+import lombok.Generated;
 
 import java.util.UUID;
 
 import static br.com.gabrielferreira.utils.MascarasUtils.*;
 
+@Generated
 public class AplicacaoFiguraGeometrica {
 
     public static void main(String[] args) {

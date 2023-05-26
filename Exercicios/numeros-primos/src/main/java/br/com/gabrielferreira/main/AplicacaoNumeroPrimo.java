@@ -1,9 +1,11 @@
 package br.com.gabrielferreira.main;
 
 import br.com.gabrielferreira.model.NumeroPrimo;
+import lombok.Generated;
 
 import java.util.UUID;
 
+@Generated
 public class AplicacaoNumeroPrimo {
 
     public static void main(String[] args) {
