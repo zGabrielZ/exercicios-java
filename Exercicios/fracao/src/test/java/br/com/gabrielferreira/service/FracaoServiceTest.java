@@ -26,7 +26,7 @@ class FracaoServiceTest {
 
         Fracao fracao = new Fracao(UUID.randomUUID(), 4, 10);
 
-        assertThrows(RegraDeNegocioException.class, () -> fracaoService.multiplicar(null, fracao));
+        assertThrows(RegraDeNegocioException.class, () -> fracaoService.multiplicarFracao(null, fracao));
     }
 
     @Test
@@ -36,7 +36,7 @@ class FracaoServiceTest {
         Fracao fracao = new Fracao(UUID.randomUUID(), 4, 10);
         Fracao fracao2 = new Fracao(UUID.randomUUID(), null, 10);
 
-        assertThrows(RegraDeNegocioException.class, () -> fracaoService.multiplicar(fracao, fracao2));
+        assertThrows(RegraDeNegocioException.class, () -> fracaoService.multiplicarFracao(fracao, fracao2));
     }
 
     @Test
@@ -46,7 +46,7 @@ class FracaoServiceTest {
         Fracao fracao = new Fracao(UUID.randomUUID(), 4, 10);
         Fracao fracao2 = new Fracao(UUID.randomUUID(), 4, null);
 
-        assertThrows(RegraDeNegocioException.class, () -> fracaoService.multiplicar(fracao, fracao2));
+        assertThrows(RegraDeNegocioException.class, () -> fracaoService.multiplicarFracao(fracao, fracao2));
     }
 
     @Test
@@ -56,7 +56,7 @@ class FracaoServiceTest {
         Fracao fracao = new Fracao(UUID.randomUUID(), 4, 10);
         Fracao fracao2 = new Fracao(UUID.randomUUID(), 3, 5);
 
-        Fracao resultado = fracaoService.multiplicar(fracao, fracao2);
+        Fracao resultado = fracaoService.multiplicarFracao(fracao, fracao2);
 
         assertEquals(12, resultado.getNumerador());
         assertEquals(50, resultado.getDenominador());

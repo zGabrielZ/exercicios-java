@@ -19,6 +19,10 @@ public class CalculoUtils {
         return valorParte1.multiply(valorParte2);
     }
 
+    public static Integer multiplicar(Integer valorParte1, Integer valorParte2){
+        return valorParte1 * valorParte2;
+    }
+
     public static BigDecimal somar(BigDecimal valorParte1, BigDecimal valorParte2){
         return valorParte1.add(valorParte2);
     }
