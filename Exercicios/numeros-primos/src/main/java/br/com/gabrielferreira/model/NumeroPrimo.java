@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static br.com.gabrielferreira.validate.ValidarNumero.*;
+import static br.com.gabrielferreira.validate.ValidarNumeroPrimo.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class Numero implements Serializable {
+public class NumeroPrimo implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1163211115637737045L;

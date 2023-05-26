@@ -2,9 +2,9 @@ package br.com.gabrielferreira.validate;
 
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 
-public class ValidarNumero {
+public class ValidarNumeroPrimo {
 
-    private ValidarNumero(){}
+    private ValidarNumeroPrimo(){}
 
     private static final Integer LIMITE = 0;
 

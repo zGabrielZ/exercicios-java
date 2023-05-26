@@ -9,30 +9,30 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.UUID;
 
-class NumeroTest {
+class NumeroPrimoTest {
 
     @Test
     @DisplayName("Deve validar o número informado quando verificar se é número primo")
     void deveValidarAoVerificarSeEhNumeroPrimo(){
-        Numero numero = new Numero(UUID.randomUUID(), null);
-        assertThrows(RegraDeNegocioException.class, numero::isNumeroPrimo);
+        NumeroPrimo numeroPrimo = new NumeroPrimo(UUID.randomUUID(), null);
+        assertThrows(RegraDeNegocioException.class, numeroPrimo::isNumeroPrimo);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {-1, 0, -31, -2, -3})
     @DisplayName("Deve verificar se o número informado é menor ou igual que zero quando verificar se é número primo")
     void deveValidarNumeroMenorOuIgualAoZero(int valor){
-        Numero numero = new Numero(UUID.randomUUID(), valor);
-        assertThrows(RegraDeNegocioException.class, numero::isNumeroPrimo);
+        NumeroPrimo numeroPrimo = new NumeroPrimo(UUID.randomUUID(), valor);
+        assertThrows(RegraDeNegocioException.class, numeroPrimo::isNumeroPrimo);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43})
     @DisplayName("Deve verificar se o número informado é primo")
     void deveValidarSeEhNumeroPrimo(int valor){
-        Numero numero = new Numero(UUID.randomUUID(), valor);
+        NumeroPrimo numeroPrimo = new NumeroPrimo(UUID.randomUUID(), valor);
 
-        boolean resultado = numero.isNumeroPrimo();
+        boolean resultado = numeroPrimo.isNumeroPrimo();
 
         assertTrue(resultado);
     }
@@ -41,9 +41,9 @@ class NumeroTest {
     @ValueSource(ints = {1, 4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20, 21, 22, 24, 25, 26, 27, 28, 30})
     @DisplayName("Deve verificar se o número informado não é primo")
     void deveValidarSeNaoEhNumeroPrimo(int valor){
-        Numero numero = new Numero(UUID.randomUUID(), valor);
+        NumeroPrimo numeroPrimo = new NumeroPrimo(UUID.randomUUID(), valor);
 
-        boolean resultado = numero.isNumeroPrimo();
+        boolean resultado = numeroPrimo.isNumeroPrimo();
 
         assertFalse(resultado);
     }
@@ -52,26 +52,26 @@ class NumeroTest {
     @ValueSource(ints = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43})
     @DisplayName("Deve verificar se o número informado é primo")
     void deveValidarSeEhNumeroPrimoComGettersSetters(int valor){
-        Numero numero = new Numero();
-        numero.setId(UUID.randomUUID());
-        numero.setValor(valor);
+        NumeroPrimo numeroPrimo = new NumeroPrimo();
+        numeroPrimo.setId(UUID.randomUUID());
+        numeroPrimo.setValor(valor);
 
-        boolean resultado = numero.isNumeroPrimo();
+        boolean resultado = numeroPrimo.isNumeroPrimo();
 
         assertTrue(resultado);
-        assertNotNull(numero.getId());
-        assertNotNull(numero.getValor());
-        assertNotNull(numero.toString());
+        assertNotNull(numeroPrimo.getId());
+        assertNotNull(numeroPrimo.getValor());
+        assertNotNull(numeroPrimo.toString());
     }
 
     @Test
     @DisplayName("Deve comparar número quando não forem iguais")
     void deveCompararNumeroNaoIguais(){
-        Numero numero1 = new Numero(UUID.randomUUID(), 11);
-        Numero numero2 = new Numero(UUID.randomUUID(), 10);
+        NumeroPrimo numeroPrimo1 = new NumeroPrimo(UUID.randomUUID(), 11);
+        NumeroPrimo numeroPrimo2 = new NumeroPrimo(UUID.randomUUID(), 10);
 
-        assertNotEquals(numero1, numero2);
-        assertNotEquals(numero1.hashCode(), numero2.hashCode());
+        assertNotEquals(numeroPrimo1, numeroPrimo2);
+        assertNotEquals(numeroPrimo1.hashCode(), numeroPrimo2.hashCode());
     }
 
     @Test
@@ -79,10 +79,10 @@ class NumeroTest {
     void deveCompararAlunoIguais(){
         UUID id = UUID.randomUUID();
         Integer numero = 10;
-        Numero numero1 = new Numero(id, numero);
-        Numero numero2 = new Numero(id, numero);
+        NumeroPrimo numeroPrimo1 = new NumeroPrimo(id, numero);
+        NumeroPrimo numeroPrimo2 = new NumeroPrimo(id, numero);
 
-        assertEquals(numero1, numero2);
-        assertEquals(numero1.hashCode(), numero2.hashCode());
+        assertEquals(numeroPrimo1, numeroPrimo2);
+        assertEquals(numeroPrimo1.hashCode(), numeroPrimo2.hashCode());
     }
 }
