@@ -5,10 +5,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
 class CircunferenciaTest {
 
@@ -26,7 +26,7 @@ class CircunferenciaTest {
 
         BigDecimal resultado = circunferencia.calcularArea();
 
-        assertEquals(BigDecimal.valueOf(28.27), resultado.setScale(2, RoundingMode.HALF_EVEN));
+        assertEquals(toBigDecimal(28.27), resultado);
     }
 
     @Test
@@ -38,7 +38,7 @@ class CircunferenciaTest {
 
         BigDecimal resultado = circunferencia.calcularArea();
 
-        assertEquals(BigDecimal.valueOf(28.27), resultado.setScale(2, RoundingMode.HALF_EVEN));
+        assertEquals(toBigDecimal(28.27), resultado);
         assertEquals(3, circunferencia.getRaio());
         assertNotNull(circunferencia.getId());
         assertNotNull(circunferencia.toString());

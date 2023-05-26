@@ -4,9 +4,11 @@ import lombok.*;
 
 import java.io.Serial;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.UUID;
 
 import static br.com.gabrielferreira.validate.ValidarCalcularArea.*;
+import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
@@ -41,6 +43,8 @@ public class Trapezio extends Figura{
         validarValorInformado(baseMaior, "É necessário informar a base maior");
         validarValorInformado(baseMenor, "É necessário informar a base menor");
         validarValorInformado(altura, "É necessário informar a altura");
-        return BigDecimal.valueOf(((baseMaior + baseMenor) / 2.0) * altura);
+        BigDecimal resultadoSomaBaseMaiorComBaseMenor = somar(toBigDecimal(baseMaior), toBigDecimal(baseMenor));
+        BigDecimal resultadoDivisao = divide(resultadoSomaBaseMaiorComBaseMenor, toBigDecimal(2.0), RoundingMode.HALF_EVEN);
+        return multiplicar(resultadoDivisao, toBigDecimal(altura));
     }
 }

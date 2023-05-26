@@ -4,9 +4,11 @@ import lombok.*;
 
 import java.io.Serial;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.UUID;
 
 import static br.com.gabrielferreira.validate.ValidarCalcularArea.*;
+import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
@@ -28,6 +30,7 @@ public class Quadrado extends Figura{
     @Override
     public BigDecimal calcularArea() {
         validarValorInformado(lado, "É necessário informar o lado");
-        return BigDecimal.valueOf(Math.pow(lado, 2));
+        BigDecimal resultado = toBigDecimal(lado).pow(2);
+        return toRetorno(resultado, 2, RoundingMode.HALF_EVEN);
     }
 }

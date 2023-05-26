@@ -8,6 +8,7 @@ import java.math.RoundingMode;
 import java.util.UUID;
 
 import static br.com.gabrielferreira.validate.ValidarCalcularArea.*;
+import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
@@ -35,7 +36,7 @@ public class Triangulo extends Figura{
     public BigDecimal calcularArea() {
         validarValorInformado(base, "É necessário informar a base");
         validarValorInformado(altura, "É necessário informar a altura");
-        int resultadoBaseAltura = base * altura;
-        return BigDecimal.valueOf(resultadoBaseAltura).divide(BigDecimal.valueOf(2.0), RoundingMode.HALF_EVEN);
+        BigDecimal baseAltura = multiplicar(toBigDecimal(base), toBigDecimal(altura));
+        return divide(baseAltura, toBigDecimal(2.0), RoundingMode.HALF_EVEN);
     }
 }

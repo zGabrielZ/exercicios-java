@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
 class TrapezioTest {
 
@@ -39,7 +40,7 @@ class TrapezioTest {
 
         BigDecimal resultado = trapezio.calcularArea();
 
-        assertEquals(BigDecimal.valueOf(10.0), resultado);
+        assertEquals(toBigDecimal(10), resultado);
     }
 
     @Test
@@ -53,7 +54,7 @@ class TrapezioTest {
 
         BigDecimal resultado = trapezio.calcularArea();
 
-        assertEquals(BigDecimal.valueOf(10.0), resultado);
+        assertEquals(toBigDecimal(10), resultado);
         assertNotNull(trapezio.getId());
         assertEquals(2, trapezio.getBaseMaior());
         assertEquals(2, trapezio.getBaseMenor());

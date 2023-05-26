@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
 class TrianguloTest {
 
@@ -32,7 +33,7 @@ class TrianguloTest {
 
         BigDecimal resultado = triangulo.calcularArea();
 
-        assertEquals(BigDecimal.valueOf(25), resultado);
+        assertEquals(toBigDecimal(25), resultado);
     }
 
     @Test
@@ -45,7 +46,7 @@ class TrianguloTest {
 
         BigDecimal resultado = triangulo.calcularArea();
 
-        assertEquals(BigDecimal.valueOf(25), resultado);
+        assertEquals(toBigDecimal(25), resultado);
         assertNotNull(triangulo.getId());
         assertEquals(10, triangulo.getBase());
         assertEquals(5, triangulo.getAltura());

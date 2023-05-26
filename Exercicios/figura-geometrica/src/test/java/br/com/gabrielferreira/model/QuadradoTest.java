@@ -5,9 +5,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
 class QuadradoTest {
 
@@ -25,7 +27,7 @@ class QuadradoTest {
 
         BigDecimal resultado = quadrado.calcularArea();
 
-        assertEquals(BigDecimal.valueOf(36.0), resultado);
+        assertEquals(toRetorno(toBigDecimal(36.00), 2, RoundingMode.HALF_EVEN), resultado);
     }
 
     @Test
@@ -37,7 +39,7 @@ class QuadradoTest {
 
         BigDecimal resultado = quadrado.calcularArea();
 
-        assertEquals(BigDecimal.valueOf(36.0), resultado);
+        assertEquals(toRetorno(toBigDecimal(36.00), 2, RoundingMode.HALF_EVEN), resultado);
         assertEquals(6, quadrado.getLado());
         assertNotNull(quadrado.getId());
         assertNotNull(quadrado.toString());

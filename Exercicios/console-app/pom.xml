@@ -52,6 +52,11 @@
             <artifactId>escola</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>br.com.gabrielferreira</groupId>
+            <artifactId>figura-geometrica</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>
