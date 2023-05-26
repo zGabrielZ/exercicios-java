@@ -7,12 +7,12 @@ import br.com.gabrielferreira.model.Retangulo;
 import lombok.Generated;
 
 import java.math.BigDecimal;
-import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.UUID;
 
 import static br.com.gabrielferreira.validate.ValidarEntrada.*;
+import static br.com.gabrielferreira.utils.MascarasUtils.*;
 
 @Generated
 public class AplicacaoArea {
@@ -30,7 +30,7 @@ public class AplicacaoArea {
         Character letraInformada = scanner.next().charAt(0);
         try {
             BigDecimal resultado = verificarLetraInformada(letraInformada, scanner);
-            System.out.println("Resultado : " + NumberFormat.getNumberInstance(locale).format(resultado));
+            System.out.println("Resultado : " + valorFormatadoBrasil(resultado));
         } catch (Exception e){
             System.out.println("Mensagem : " + e.getMessage());
         }

@@ -13,6 +13,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
+import static br.com.gabrielferreira.utils.MascarasUtils.*;
+
 public class AlunoService implements Serializable {
 
     @Serial
@@ -44,7 +46,7 @@ public class AlunoService implements Serializable {
             validarSomaPeso(somaPesos);
 
             BigDecimal mediaProva = divide(somaProvas, toBigDecimal(somaPesos), RoundingMode.HALF_EVEN);
-            sb.append("Aluno : ").append(aluno.getNome()).append(", Média : ").append(mediaProva).append("\n");
+            sb.append("Aluno : ").append(aluno.getNome()).append(", Média : ").append(valorFormatadoBrasil(mediaProva)).append("\n");
         });
 
 
