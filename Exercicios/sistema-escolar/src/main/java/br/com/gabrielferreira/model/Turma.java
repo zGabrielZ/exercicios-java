@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static br.com.gabrielferreira.utils.CalcularUtils.*;
+import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
 @AllArgsConstructor
 @NoArgsConstructor

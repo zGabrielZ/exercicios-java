@@ -27,6 +27,14 @@ public class CalculoUtils {
         return valorParte1.add(valorParte2);
     }
 
+    public static BigDecimal somar(BigDecimal...valores){
+        BigDecimal valorTotal = BigDecimal.ZERO;
+        for (BigDecimal valor : valores) {
+            valorTotal = valorTotal.add(valor);
+        }
+        return valorTotal;
+    }
+
     public static BigDecimal subtrair(BigDecimal valorParte1, BigDecimal valorParte2){
         return valorParte1.subtract(valorParte2);
     }

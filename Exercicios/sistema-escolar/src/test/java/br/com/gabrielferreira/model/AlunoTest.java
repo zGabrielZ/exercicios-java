@@ -9,34 +9,35 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
 class AlunoTest {
 
     @Test
     @DisplayName("Deve validar o cálculo quando não informar a prova 1")
     void deveValidarProva1(){
-        Aluno aluno = new Aluno(UUID.randomUUID(), "José", null, new Prova(UUID.randomUUID(), "Programação", BigDecimal.valueOf(4.5)
-                , BigDecimal.valueOf(2.0)));
+        Aluno aluno = new Aluno(UUID.randomUUID(), "José", null, new Prova(UUID.randomUUID(), "Programação", toBigDecimal(4.5)
+                , toBigDecimal(2.0)));
         assertThrows(RegraDeNegocioException.class, aluno::calcularMedia);
     }
 
     @Test
     @DisplayName("Deve validar o cálculo quando não informar a prova 2")
     void deveValidarProva2(){
-        Aluno aluno = new Aluno(UUID.randomUUID(), "José", new Prova(UUID.randomUUID(), "Programação", BigDecimal.valueOf(4.5),
-                BigDecimal.valueOf(2.0)), null);
+        Aluno aluno = new Aluno(UUID.randomUUID(), "José", new Prova(UUID.randomUUID(), "Programação", toBigDecimal(4.5),
+                toBigDecimal(2.0)), null);
         assertThrows(RegraDeNegocioException.class, aluno::calcularMedia);
     }
 
     @Test
     @DisplayName("Deve calcular nota quando informar corretamente")
     void deveCalcularNota(){
-        Aluno aluno = new Aluno(UUID.randomUUID(), "José", new Prova(UUID.randomUUID(), "Programação", BigDecimal.valueOf(4.0), BigDecimal.valueOf(2.5)),
-                new Prova(UUID.randomUUID(), "Matemática", BigDecimal.valueOf(1.0), BigDecimal.valueOf(7.0)));
+        Aluno aluno = new Aluno(UUID.randomUUID(), "José", new Prova(UUID.randomUUID(), "Programação", toBigDecimal(4.0), toBigDecimal(2.5)),
+                new Prova(UUID.randomUUID(), "Matemática", toBigDecimal(1.0), toBigDecimal(7.0)));
 
         BigDecimal resultado = aluno.calcularMedia();
 
-        assertEquals(BigDecimal.valueOf(7.2), resultado);
+        assertEquals(toBigDecimal(7.2), resultado);
     }
 
     @Test

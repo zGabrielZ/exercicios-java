@@ -9,7 +9,7 @@ import java.math.RoundingMode;
 import java.util.UUID;
 
 import static br.com.gabrielferreira.validate.ValidarProva.*;
-import static br.com.gabrielferreira.utils.CalcularUtils.*;
+import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
