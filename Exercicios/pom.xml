@@ -94,6 +94,7 @@
         <module>produto</module>
         <module>processo</module>
         <module>pessoa-data</module>
+        <module>matematica</module>
     </modules>
 
 </project>
