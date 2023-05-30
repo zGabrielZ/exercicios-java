@@ -95,6 +95,7 @@
         <module>processo</module>
         <module>pessoa-data</module>
         <module>matematica</module>
+        <module>operacao</module>
     </modules>
 
 </project>
