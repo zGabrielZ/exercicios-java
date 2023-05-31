@@ -14,6 +14,7 @@ import static br.com.gabrielferreira.utils.CalculoUtils.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
 public class Circunferencia implements AreaCalculavel, Serializable {
