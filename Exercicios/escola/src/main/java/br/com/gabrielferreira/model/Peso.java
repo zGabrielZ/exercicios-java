@@ -8,6 +8,8 @@ import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
+@Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
 public class Peso implements Serializable {
@@ -15,12 +17,8 @@ public class Peso implements Serializable {
     @Serial
     private static final long serialVersionUID = -1998463533526511852L;
 
-    @Getter
-    @Setter
     @EqualsAndHashCode.Include
     private UUID id;
 
-    @Getter
-    @Setter
     private Integer valor;
 }

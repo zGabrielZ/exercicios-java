@@ -230,25 +230,26 @@ class AlunoServiceTest {
     }
 
     private Aluno gerarAluno(String nome){
-        Aluno aluno = new Aluno();
-        aluno.setId(UUID.randomUUID());
-        aluno.setNome(nome);
-        return aluno;
+        return Aluno.builder()
+                .id(UUID.randomUUID())
+                .nome(nome)
+                .provas(new ArrayList<>())
+                .build();
     }
 
     private Prova gerarProva(String nome, BigDecimal nota){
-        Prova prova = new Prova();
-        prova.setId(UUID.randomUUID());
-        prova.setNome(nome);
-        prova.setNota(nota);
-        return prova;
+        return Prova.builder()
+                .id(UUID.randomUUID())
+                .nota(nota)
+                .nome(nome)
+                .build();
     }
 
     private Peso gerarPeso(Integer valor){
-        Peso peso = new Peso();
-        peso.setId(UUID.randomUUID());
-        peso.setValor(valor);
-        return peso;
+        return Peso.builder()
+                .id(UUID.randomUUID())
+                .valor(valor)
+                .build();
     }
 
 }
