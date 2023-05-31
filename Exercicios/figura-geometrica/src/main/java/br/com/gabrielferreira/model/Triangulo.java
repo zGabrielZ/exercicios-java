@@ -13,17 +13,14 @@ import static br.com.gabrielferreira.utils.CalculoUtils.*;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @ToString
+@Data
 public class Triangulo extends Figura{
 
     @Serial
     private static final long serialVersionUID = -6040100702355337574L;
 
-    @Getter
-    @Setter
     private Integer base;
 
-    @Getter
-    @Setter
     private Integer altura;
 
     public Triangulo(UUID id, Integer base, Integer altura){

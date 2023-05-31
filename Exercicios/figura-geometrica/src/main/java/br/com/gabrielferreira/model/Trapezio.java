@@ -13,21 +13,16 @@ import static br.com.gabrielferreira.utils.CalculoUtils.*;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @ToString
+@Data
 public class Trapezio extends Figura{
 
     @Serial
     private static final long serialVersionUID = -6040100702355337574L;
 
-    @Getter
-    @Setter
     private Integer baseMaior;
 
-    @Getter
-    @Setter
     private Integer baseMenor;
 
-    @Getter
-    @Setter
     private Integer altura;
 
     public Trapezio(UUID id, Integer baseMaior, Integer baseMenor, Integer altura){

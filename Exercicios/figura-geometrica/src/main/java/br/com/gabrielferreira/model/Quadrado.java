@@ -13,13 +13,12 @@ import static br.com.gabrielferreira.utils.CalculoUtils.*;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @ToString
+@Data
 public class Quadrado extends Figura{
 
     @Serial
     private static final long serialVersionUID = -6040100702355337574L;
 
-    @Getter
-    @Setter
     private Integer lado;
 
     public Quadrado(UUID id, Integer lado){

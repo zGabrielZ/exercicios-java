@@ -13,6 +13,7 @@ import static br.com.gabrielferreira.utils.CalculoUtils.*;
 @EqualsAndHashCode(callSuper = true)
 @ToString
 @NoArgsConstructor
+@Data
 public class Circunferencia extends Figura{
 
     @Serial
@@ -20,8 +21,6 @@ public class Circunferencia extends Figura{
 
     private static final double PI = 3.141592653589793;
 
-    @Getter
-    @Setter
     private Integer raio;
 
     public Circunferencia(UUID id, Integer raio){

@@ -9,14 +9,13 @@ import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public abstract class Figura implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 5746766629285155713L;
 
-    @Getter
-    @Setter
     @EqualsAndHashCode.Include
     private UUID id;
 
