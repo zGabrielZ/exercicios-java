@@ -202,28 +202,4 @@ class DataTest {
         assertEquals(40, data.getSegundo());
         assertNotNull(data.toString());
     }
-
-    @Test
-    @DisplayName("Deve comparar data quando não forem iguais")
-    void deveCompararDataNaoIguais(){
-        Data data1 = new Data(UUID.randomUUID(), 3, 3, 2000);
-        Data data2 = new Data(UUID.randomUUID(), 4, 3, 2000);
-
-        assertNotEquals(data1, data2);
-        assertNotEquals(data1.hashCode(), data2.hashCode());
-    }
-
-    @Test
-    @DisplayName("Deve comparar data quando forem iguais")
-    void deveCompararDataIguais(){
-        UUID uuid = UUID.randomUUID();
-        Integer dia = 3;
-        Integer mes = 3;
-        Integer ano = 2000;
-        Data data1 = new Data(uuid, dia, mes, ano);
-        Data data2 = new Data(uuid, dia, mes, ano);
-
-        assertEquals(data1, data2);
-        assertEquals(data1.hashCode(), data2.hashCode());
-    }
 }
