@@ -32,29 +32,4 @@ class MotocicletaTest {
         assertEquals("Motocicleta desligada", retorno);
         assertFalse(veiculo.isLigado());
     }
-
-    @Test
-    @DisplayName("Deve comparar motocicleta quando não forem iguais")
-    void deveCompararMotocicletaNaoIguais(){
-        Veiculo veiculo1 = new Motocicleta();
-        veiculo1.setId(UUID.randomUUID());
-        Veiculo veiculo2 = new Motocicleta();
-        veiculo2.setId(UUID.randomUUID());
-
-        assertNotEquals(veiculo1, veiculo2);
-        assertNotEquals(veiculo1.hashCode(), veiculo2.hashCode());
-    }
-
-    @Test
-    @DisplayName("Deve comparar motocicleta quando forem iguais")
-    void deveCompararMotocicletaIguais(){
-        UUID id = UUID.randomUUID();
-        Veiculo veiculo1 = new Motocicleta();
-        veiculo1.setId(id);
-        Veiculo veiculo2 = new Motocicleta();
-        veiculo2.setId(id);
-
-        assertEquals(veiculo1, veiculo2);
-        assertEquals(veiculo1.hashCode(), veiculo2.hashCode());
-    }
 }

@@ -6,6 +6,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.UUID;
 
+@Data
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -14,13 +15,9 @@ public abstract class Veiculo implements Serializable {
     @Serial
     private static final long serialVersionUID = 4221872999738486158L;
 
-    @Setter
-    @Getter
     @EqualsAndHashCode.Include
     private UUID id;
 
-    @Getter
-    @Setter
     private boolean ligado;
 
     protected void ligar(){
