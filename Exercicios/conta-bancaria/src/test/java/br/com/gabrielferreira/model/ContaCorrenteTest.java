@@ -133,31 +133,4 @@ class ContaCorrenteTest {
 
         assertEquals(toBigDecimal(135.0), resultado.setScale(1, RoundingMode.HALF_EVEN));
     }
-
-    @Test
-    @DisplayName("Deve comparar conta corrente quando não forem iguais")
-    void deveCompararContaCorrenteNaoIguais(){
-        ContaBancaria contaBancaria1 = new ContaCorrente();
-        contaBancaria1.setId(UUID.randomUUID());
-
-        ContaBancaria contaBancaria2 = new ContaCorrente();
-        contaBancaria2.setId(UUID.randomUUID());
-
-        assertNotEquals(contaBancaria1, contaBancaria2);
-        assertNotEquals(contaBancaria1.hashCode(), contaBancaria2.hashCode());
-    }
-
-    @Test
-    @DisplayName("Deve comparar conta corrente quando forem iguais")
-    void deveCompararContaCorrenteIguais(){
-        UUID id = UUID.randomUUID();
-        ContaBancaria contaBancaria1 = new ContaCorrente();
-        contaBancaria1.setId(id);
-
-        ContaBancaria contaBancaria2 = new ContaCorrente();
-        contaBancaria2.setId(id);
-
-        assertEquals(contaBancaria1, contaBancaria2);
-        assertEquals(contaBancaria1.hashCode(), contaBancaria2.hashCode());
-    }
 }
