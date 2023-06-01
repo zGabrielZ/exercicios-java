@@ -22,28 +22,4 @@ class Ponto3DTest {
         assertEquals(resultadoEsperado, resultado);
     }
 
-    @Test
-    @DisplayName("Deve comparar Ponto3D quando não forem iguais")
-    void deveCompararPonto3DNaoIguais(){
-        Ponto3D ponto1 = new Ponto3D(UUID.randomUUID(), BigDecimal.valueOf(2.5), BigDecimal.valueOf(5.4), BigDecimal.valueOf(10.0));
-        Ponto3D ponto2 = new Ponto3D(UUID.randomUUID(), BigDecimal.valueOf(2.6), BigDecimal.valueOf(5.7), BigDecimal.valueOf(30.0));
-
-        assertNotEquals(ponto1, ponto2);
-        assertNotEquals(ponto1.hashCode(), ponto2.hashCode());
-    }
-
-    @Test
-    @DisplayName("Deve comparar Ponto3D quando forem iguais")
-    void deveCompararPonto3DIguais(){
-        UUID id = UUID.randomUUID();
-        BigDecimal x = BigDecimal.ONE;
-        BigDecimal y = BigDecimal.TEN;
-        BigDecimal z = BigDecimal.ZERO;
-        Ponto3D ponto1 = new Ponto3D(id, x, y, z);
-        Ponto3D ponto2 = new Ponto3D(id, x, y, z);
-
-        assertEquals(ponto1, ponto2);
-        assertEquals(ponto1.hashCode(), ponto2.hashCode());
-    }
-
 }

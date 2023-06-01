@@ -12,6 +12,8 @@ import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
+@Builder
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Prova implements Serializable {
@@ -19,21 +21,13 @@ public class Prova implements Serializable {
     @Serial
     private static final long serialVersionUID = -1449377219367520562L;
 
-    @Getter
-    @Setter
     @EqualsAndHashCode.Include
     private UUID id;
 
-    @Getter
-    @Setter
     private String disciplina;
 
-    @Getter
-    @Setter
     private BigDecimal notaParte1;
 
-    @Getter
-    @Setter
     private BigDecimal notaParte2;
 
     public BigDecimal calcularNotaTotal(){

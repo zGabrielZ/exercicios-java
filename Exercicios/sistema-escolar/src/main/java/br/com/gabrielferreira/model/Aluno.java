@@ -13,6 +13,8 @@ import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
+@Builder
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Aluno implements Serializable {
@@ -22,21 +24,13 @@ public class Aluno implements Serializable {
 
     private static final BigDecimal MEDIA_PROVA = BigDecimal.valueOf(2.0);
 
-    @Getter
-    @Setter
     @EqualsAndHashCode.Include
     private UUID id;
 
-    @Getter
-    @Setter
     private String nome;
 
-    @Getter
-    @Setter
     private Prova provaParte1;
 
-    @Getter
-    @Setter
     private Prova provaParte2;
 
     public BigDecimal calcularMedia(){

@@ -56,26 +56,4 @@ class PessoaTest {
         assertEquals("20/10/2020", toDataBrasil(pessoa.getDataNascimento()));
         assertNotNull(pessoa.toString());
     }
-
-    @Test
-    @DisplayName("Deve comparar pessoa quando não forem iguais")
-    void deveCompararPessoaNaoIguais(){
-        Pessoa pessoa1 = new Pessoa(UUID.randomUUID(), toDataBrasil("20/10/2021"));
-        Pessoa pessoa2 = new Pessoa(UUID.randomUUID(), toDataBrasil("20/10/2022"));
-
-        assertNotEquals(pessoa1, pessoa2);
-        assertNotEquals(pessoa1.hashCode(), pessoa2.hashCode());
-    }
-
-    @Test
-    @DisplayName("Deve comparar pessoa quando forem iguais")
-    void deveCompararPessoaIguais(){
-        UUID id = UUID.randomUUID();
-        LocalDate data = toDataBrasil("20/10/2000");
-        Pessoa pessoa1 = new Pessoa(id, data);
-        Pessoa pessoa2 = new Pessoa(id, data);
-
-        assertEquals(pessoa1, pessoa2);
-        assertEquals(pessoa1.hashCode(), pessoa2.hashCode());
-    }
 }

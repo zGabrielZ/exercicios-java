@@ -14,6 +14,8 @@ import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
+@Builder
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Turma implements Serializable {
@@ -21,17 +23,11 @@ public class Turma implements Serializable {
     @Serial
     private static final long serialVersionUID = 7813397152218587592L;
 
-    @Getter
-    @Setter
     @EqualsAndHashCode.Include
     private UUID id;
 
-    @Getter
-    @Setter
     private String descricao;
 
-    @Getter
-    @Setter
     private List<Aluno> alunos = new ArrayList<>();
 
     public BigDecimal calcularMedia(){

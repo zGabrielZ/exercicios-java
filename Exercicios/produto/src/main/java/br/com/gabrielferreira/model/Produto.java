@@ -10,6 +10,8 @@ import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
+@Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
 public class Produto implements Serializable {
@@ -17,24 +19,14 @@ public class Produto implements Serializable {
     @Serial
     private static final long serialVersionUID = 537563925647530667L;
 
-    @Getter
-    @Setter
     @EqualsAndHashCode.Include
     private UUID id;
 
-    @Getter
-    @Setter
     private Integer codigo;
 
-    @Getter
-    @Setter
     private String nome;
 
-    @Getter
-    @Setter
     private BigDecimal peso = BigDecimal.ZERO;
 
-    @Setter
-    @Getter
     private LocalDate dataValidade;
 }

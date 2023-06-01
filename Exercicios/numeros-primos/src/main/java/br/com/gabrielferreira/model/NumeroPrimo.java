@@ -12,6 +12,8 @@ import static br.com.gabrielferreira.validate.ValidarNumeroPrimo.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
+@Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
 public class NumeroPrimo implements Serializable {
@@ -19,13 +21,9 @@ public class NumeroPrimo implements Serializable {
     @Serial
     private static final long serialVersionUID = 1163211115637737045L;
 
-    @Getter
-    @Setter
     @EqualsAndHashCode.Include
     private UUID id;
 
-    @Getter
-    @Setter
     private Integer valor;
 
     public boolean isNumeroPrimo(){

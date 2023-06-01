@@ -52,7 +52,13 @@ class ProdutoServiceTest {
     @DisplayName("Deve validar nome produto quando informar como vazio")
     void deveValidarNomeProdutoVazio(){
         List<Produto> produtos = new ArrayList<>();
-        produtos.add(new Produto(UUID.randomUUID(), 1, "", toBigDecimal(2.5), toDataBrasil("20/12/2010")));
+        produtos.add(Produto.builder()
+                .id(UUID.randomUUID())
+                .codigo(1)
+                .nome("")
+                .peso(toBigDecimal(2.5))
+                .dataValidade(toDataBrasil("20/12/2010"))
+                .build());
         assertThrows(RegraDeNegocioException.class, () -> produtoService.criarProdutos(produtos));
     }
 
@@ -60,7 +66,13 @@ class ProdutoServiceTest {
     @DisplayName("Deve validar nome produto quando o nome for maior que o tamanho (1 até 12)")
     void deveValidarNomeProdutoTamanho(){
         List<Produto> produtos = new ArrayList<>();
-        produtos.add(new Produto(UUID.randomUUID(), 1, "Teste do Produto Feijão 123", toBigDecimal(2.5), toDataBrasil("20/12/2010")));
+        produtos.add(Produto.builder()
+                .id(UUID.randomUUID())
+                .codigo(1)
+                .nome("Teste do Produto Feijão 123")
+                .peso(toBigDecimal(2.5))
+                .dataValidade(toDataBrasil("20/12/2010"))
+                .build());
         assertThrows(RegraDeNegocioException.class, () -> produtoService.criarProdutos(produtos));
     }
 
@@ -68,7 +80,13 @@ class ProdutoServiceTest {
     @DisplayName("Deve validar peso produto quando informar como nulo")
     void deveValidarPesoProdutoNulo(){
         List<Produto> produtos = new ArrayList<>();
-        produtos.add(new Produto(UUID.randomUUID(), 1, "Feijão", null, toDataBrasil("20/12/2010")));
+        produtos.add(Produto.builder()
+                .id(UUID.randomUUID())
+                .codigo(1)
+                .nome("Feijão")
+                .peso(null)
+                .dataValidade(toDataBrasil("20/12/2010"))
+                .build());
         assertThrows(RegraDeNegocioException.class, () -> produtoService.criarProdutos(produtos));
     }
 
@@ -77,7 +95,13 @@ class ProdutoServiceTest {
     @DisplayName("Deve validar peso produto quando informar como negativo")
     void deveValidarPesoProdutoNegativo(double valor){
         List<Produto> produtos = new ArrayList<>();
-        produtos.add(new Produto(UUID.randomUUID(), 1, "Feijão", toBigDecimal(valor), toDataBrasil("20/12/2010")));
+        produtos.add(Produto.builder()
+                .id(UUID.randomUUID())
+                .codigo(1)
+                .nome("Feijão")
+                .peso(toBigDecimal(valor))
+                .dataValidade(toDataBrasil("20/12/2010"))
+                .build());
         assertThrows(RegraDeNegocioException.class, () -> produtoService.criarProdutos(produtos));
     }
 
@@ -85,7 +109,13 @@ class ProdutoServiceTest {
     @DisplayName("Deve validar data produto quando informar como nulo")
     void deveValidarDataProdutoNulo(){
         List<Produto> produtos = new ArrayList<>();
-        produtos.add(new Produto(UUID.randomUUID(), 1, "Feijão", toBigDecimal(1.0), null));
+        produtos.add(Produto.builder()
+                .id(UUID.randomUUID())
+                .codigo(1)
+                .nome("Feijão")
+                .peso(toBigDecimal(1.0))
+                .dataValidade(null)
+                .build());
         assertThrows(RegraDeNegocioException.class, () -> produtoService.criarProdutos(produtos));
     }
 
@@ -93,7 +123,13 @@ class ProdutoServiceTest {
     @DisplayName("Deve criar produto quando informar corretamente")
     void deveCriarProduto(){
         List<Produto> produtos = new ArrayList<>();
-        produtos.add(new Produto(UUID.randomUUID(), 1, "Feijão", toBigDecimal(1.0), toDataBrasil("20/10/2022")));
+        produtos.add(Produto.builder()
+                .id(UUID.randomUUID())
+                .codigo(1)
+                .nome("Feijão")
+                .peso(toBigDecimal(1.0))
+                .dataValidade(toDataBrasil("20/10/2022"))
+                .build());
 
         String resultado = produtoService.criarProdutos(produtos);
 

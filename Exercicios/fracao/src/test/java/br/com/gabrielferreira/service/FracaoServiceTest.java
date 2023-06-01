@@ -24,7 +24,11 @@ class FracaoServiceTest {
     @DisplayName("Deveria validar a fração quando não informar ela")
     void deveValidarFracaoNula(){
 
-        Fracao fracao = new Fracao(UUID.randomUUID(), 4, 10);
+        Fracao fracao =  Fracao.builder()
+                .id(UUID.randomUUID())
+                .numerador(4)
+                .denominador(10)
+                .build();
 
         assertThrows(RegraDeNegocioException.class, () -> fracaoService.multiplicarFracao(null, fracao));
     }
@@ -33,8 +37,17 @@ class FracaoServiceTest {
     @DisplayName("Deveria validar o numerador quando não informar ela")
     void deveValidarFracaoNumerador(){
 
-        Fracao fracao = new Fracao(UUID.randomUUID(), 4, 10);
-        Fracao fracao2 = new Fracao(UUID.randomUUID(), null, 10);
+        Fracao fracao = Fracao.builder()
+                .id(UUID.randomUUID())
+                .numerador(4)
+                .denominador(10)
+                .build();
+
+        Fracao fracao2 = Fracao.builder()
+                .id(UUID.randomUUID())
+                .numerador(null)
+                .denominador(10)
+                .build();
 
         assertThrows(RegraDeNegocioException.class, () -> fracaoService.multiplicarFracao(fracao, fracao2));
     }
@@ -43,8 +56,17 @@ class FracaoServiceTest {
     @DisplayName("Deveria validar o denominador quando não informar ela")
     void deveValidarFracaoDenominador(){
 
-        Fracao fracao = new Fracao(UUID.randomUUID(), 4, 10);
-        Fracao fracao2 = new Fracao(UUID.randomUUID(), 4, null);
+        Fracao fracao = Fracao.builder()
+                .id(UUID.randomUUID())
+                .numerador(4)
+                .denominador(10)
+                .build();
+
+        Fracao fracao2 = Fracao.builder()
+                .id(UUID.randomUUID())
+                .numerador(4)
+                .denominador(null)
+                .build();
 
         assertThrows(RegraDeNegocioException.class, () -> fracaoService.multiplicarFracao(fracao, fracao2));
     }
@@ -53,8 +75,17 @@ class FracaoServiceTest {
     @DisplayName("Deveria criar multiplicação quando informar corretamente")
     void deveMultiplicarFracao(){
 
-        Fracao fracao = new Fracao(UUID.randomUUID(), 4, 10);
-        Fracao fracao2 = new Fracao(UUID.randomUUID(), 3, 5);
+        Fracao fracao = Fracao.builder()
+                .id(UUID.randomUUID())
+                .numerador(4)
+                .denominador(10)
+                .build();
+
+        Fracao fracao2 = Fracao.builder()
+                .id(UUID.randomUUID())
+                .numerador(3)
+                .denominador(5)
+                .build();
 
         Fracao resultado = fracaoService.multiplicarFracao(fracao, fracao2);
 

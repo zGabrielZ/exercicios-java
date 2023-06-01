@@ -8,6 +8,8 @@ import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
+@Builder
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Relogio implements Serializable {
@@ -15,21 +17,13 @@ public class Relogio implements Serializable {
     @Serial
     private static final long serialVersionUID = -4495104636182544600L;
 
-    @Getter
-    @Setter
     @EqualsAndHashCode.Include
     private UUID id;
 
-    @Getter
-    @Setter
     private Ponteiro ponteiroHora;
 
-    @Getter
-    @Setter
     private Ponteiro ponteiroMinuto;
 
-    @Getter
-    @Setter
     private Ponteiro ponteiroSegundo;
 
     public Integer lerHora(){
