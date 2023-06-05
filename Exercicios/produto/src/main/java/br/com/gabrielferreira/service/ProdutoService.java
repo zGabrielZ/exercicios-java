@@ -2,6 +2,7 @@ package br.com.gabrielferreira.service;
 
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Produto;
+import br.com.gabrielferreira.utils.PesoCrescenteComparator;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -9,6 +10,7 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -18,6 +20,12 @@ public class ProdutoService implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 6730307453958143191L;
+
+    private final List<Produto> produtos;
+
+    public ProdutoService(){
+        produtos = new ArrayList<>();
+    }
 
     public String criarProdutos(List<Produto> produtos){
         validarProdutos(produtos);
@@ -35,9 +43,23 @@ public class ProdutoService implements Serializable {
             gerarRetorno(sb, produto);
 
             codigoGerado++;
+            this.produtos.add(produto);
         }
 
         return sb.toString();
+    }
+
+    public List<Produto> imprimirProdutosOrdemCrescentePeso(){
+        if(produtos.isEmpty()){
+            return new ArrayList<>();
+        }
+
+        produtos.sort(new PesoCrescenteComparator());
+        return produtos;
+    }
+
+    public void limparProdutos(){
+        this.produtos.clear();
     }
 
     private void validarProdutos(List<Produto> produtos){

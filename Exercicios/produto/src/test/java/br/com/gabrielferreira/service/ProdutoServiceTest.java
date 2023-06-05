@@ -9,6 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -134,5 +135,74 @@ class ProdutoServiceTest {
         String resultado = produtoService.criarProdutos(produtos);
 
         assertNotNull(resultado);
+    }
+
+    @Test
+    @DisplayName("Deve imprimir produtos")
+    void deveImprimirProdutos(){
+        Produto produto1 = Produto.builder()
+                .id(UUID.randomUUID())
+                .codigo(null)
+                .nome("Laranja")
+                .peso(toBigDecimal(2.5))
+                .dataValidade(toDataBrasil("04/10/2024"))
+                .build();
+
+        Produto produto2 = Produto.builder()
+                .id(UUID.randomUUID())
+                .codigo(null)
+                .nome("Maça")
+                .peso(toBigDecimal(3.5))
+                .dataValidade(toDataBrasil("04/10/2022"))
+                .build();
+
+        Produto produto3 = Produto.builder()
+                .id(UUID.randomUUID())
+                .codigo(null)
+                .nome("Banana")
+                .peso(toBigDecimal(4.5))
+                .dataValidade(toDataBrasil("04/10/2024"))
+                .build();
+
+        Produto produto4 = Produto.builder()
+                .id(UUID.randomUUID())
+                .codigo(null)
+                .nome("Limão")
+                .peso(toBigDecimal(4.5))
+                .dataValidade(toDataBrasil("04/10/2024"))
+                .build();
+
+        produtoService.criarProdutos(Arrays.asList(produto1, produto2, produto3, produto4));
+        List<Produto> produtos = produtoService.imprimirProdutosOrdemCrescentePeso();
+
+        assertEquals(toBigDecimal(2.5), produtos.get(0).getPeso());
+        assertEquals(toBigDecimal(3.5), produtos.get(1).getPeso());
+        assertEquals(toBigDecimal(4.5), produtos.get(2).getPeso());
+    }
+
+    @Test
+    @DisplayName("Deve imprimir produtos")
+    void deveLimparProdutos(){
+        Produto produto1 = Produto.builder()
+                .id(UUID.randomUUID())
+                .codigo(null)
+                .nome("Laranja")
+                .peso(toBigDecimal(2.5))
+                .dataValidade(toDataBrasil("04/10/2024"))
+                .build();
+
+        produtoService.criarProdutos(List.of(produto1));
+        List<Produto> produtos = produtoService.imprimirProdutosOrdemCrescentePeso();
+        produtoService.limparProdutos();
+
+        assertTrue(produtos.isEmpty());
+    }
+
+    @Test
+    @DisplayName("Deve retornar lista vazia quando não informar nenhum produto")
+    void deveImprimirProdutosVazios(){
+        List<Produto> produtos = produtoService.imprimirProdutosOrdemCrescentePeso();
+
+        assertTrue(produtos.isEmpty());
     }
 }
