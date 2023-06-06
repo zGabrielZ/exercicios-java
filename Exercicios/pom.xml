@@ -96,6 +96,7 @@
         <module>pessoa-data</module>
         <module>matematica</module>
         <module>operacao</module>
+        <module>colecao</module>
     </modules>
 
 </project>
