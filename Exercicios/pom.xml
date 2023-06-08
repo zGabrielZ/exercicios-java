@@ -98,6 +98,7 @@
         <module>operacao</module>
         <module>colecao</module>
         <module>item-compras</module>
+        <module>autor-livros</module>
     </modules>
 
 </project>
