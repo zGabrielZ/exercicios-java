@@ -97,6 +97,7 @@
         <module>matematica</module>
         <module>operacao</module>
         <module>colecao</module>
+        <module>item-compras</module>
     </modules>
 
 </project>
