@@ -5,6 +5,7 @@ import br.com.gabrielferreira.model.Circunferencia;
 import br.com.gabrielferreira.model.Quadrado;
 import br.com.gabrielferreira.model.Retangulo;
 import lombok.Generated;
+import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;
 import java.util.InputMismatchException;
@@ -14,6 +15,7 @@ import java.util.UUID;
 
 import static br.com.gabrielferreira.utils.MascarasUtils.*;
 
+@Slf4j
 @Generated
 public class AplicacaoArea {
 
@@ -32,7 +34,7 @@ public class AplicacaoArea {
             BigDecimal resultado = verificarLetraInformada(letraInformada, scanner);
             System.out.println("Resultado : " + valorFormatadoBrasil(resultado));
         } catch (Exception e){
-            System.out.println("Mensagem : " + e.getMessage());
+            log.warn("Ocorreu erro na aplicação. Causa : {}", e.getMessage());
         }
 
         scanner.close();

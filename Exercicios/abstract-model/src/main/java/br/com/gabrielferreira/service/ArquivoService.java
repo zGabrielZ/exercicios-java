@@ -1,25 +1,25 @@
 package br.com.gabrielferreira.service;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
+@Slf4j
 public class ArquivoService implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 537563925647530667L;
 
-    //: FIXME SUBSTITUIR O SYSOUT PARA LOG NESTE METODO
     public void gerarArquivoEscrita(String texto, String saida){
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(saida, StandardCharsets.UTF_8))){
             bufferedWriter.write(texto);
-            System.out.println("Arquivo gerado com sucesso !!");
+            log.info("Arquivo gerado com sucesso !!");
         } catch (Exception e){
-            System.out.println("Ocorreu um erro ao gerar o arquivo : " + e.getMessage());
-            e.printStackTrace();
+            log.warn("Ocorreu um erro ao gerar o arquivo : {}", e.getMessage());
         }
     }
 
-    //: FIXME SUBSTITUIR O SYSOUT PARA LOG NESTE METODO
     public String lerArquivo(String entrada){
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(entrada, StandardCharsets.UTF_8))){
 
@@ -33,8 +33,7 @@ public class ArquivoService implements Serializable {
             return stringBuilder.toString().trim();
 
         } catch (Exception e){
-            System.out.println("Ocorreu erro ao ler o arquivo : " + e.getMessage());
-            e.printStackTrace();
+            log.warn("Ocorreu erro ao ler o arquivo : {}", e.getMessage());
         }
 
         return null;

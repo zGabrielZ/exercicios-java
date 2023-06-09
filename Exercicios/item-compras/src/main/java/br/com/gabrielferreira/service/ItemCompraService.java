@@ -3,6 +3,8 @@ package br.com.gabrielferreira.service;
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.ItemCompra;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -13,6 +15,7 @@ import java.util.UUID;
 import static br.com.gabrielferreira.utils.MascarasUtils.*;
 import static br.com.gabrielferreira.utils.DataUtils.*;
 
+@Slf4j
 @AllArgsConstructor
 public class ItemCompraService implements Serializable {
 
@@ -33,12 +36,11 @@ public class ItemCompraService implements Serializable {
                 .build();
     }
 
-    //: FIXME SUBSTITUIR O SYSOUT PARA LOG NESTE METODO
     public void gerarArquivoItemCompra(List<ItemCompra> itens, String saida){
         validarItens(itens);
         String texto = gerarConcatenacao(itens);
         arquivoService.gerarArquivoEscrita(texto, System.getProperty("user.home") + "/Downloads/" + saida);
-        System.out.println("Arquivo gerado na pasta de downloads");
+        log.info("Arquivo gerado na pasta de downloads");
     }
 
     private void validarItens(List<ItemCompra> itens){

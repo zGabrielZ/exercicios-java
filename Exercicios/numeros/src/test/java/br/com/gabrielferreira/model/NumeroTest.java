@@ -107,7 +107,6 @@ class NumeroTest {
         Numero numero = new Numero();
 
         List<Integer> resultado = numero.imprimirAteUltrapassarMil(4);
-        System.out.println(resultado);
 
         assertTrue(resultado.contains(9));
         assertFalse(resultado.contains(10));
