@@ -8,12 +8,12 @@ import lombok.Generated;
 import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;
-import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.UUID;
 
 import static br.com.gabrielferreira.utils.MascarasUtils.valorFormatadoBrasil;
+import static br.com.gabrielferreira.validate.ValidarEntrada.*;
 
 @Slf4j
 @Generated
@@ -74,13 +74,5 @@ public class AplicacaoArea {
         System.out.println("Informe a altura como inteiro : ");
         Integer altura = validarEntrada(scanner);
         return new Retangulo(UUID.randomUUID(), base, altura).calcularArea();
-    }
-
-    public static Integer validarEntrada(Scanner scanner){
-        try {
-            return scanner.nextInt();
-        } catch (InputMismatchException e){
-            throw new ErroInesperadoException("Apenas números inteiros");
-        }
     }
 }

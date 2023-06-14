@@ -5,26 +5,55 @@ import br.com.gabrielferreira.model.Quadrado;
 import br.com.gabrielferreira.model.Retangulo;
 import br.com.gabrielferreira.service.CalculadorService;
 import lombok.Generated;
+import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.UUID;
+import java.util.*;
 
 import static br.com.gabrielferreira.utils.MascarasUtils.valorFormatadoBrasil;
+import static br.com.gabrielferreira.validate.ValidarEntrada.*;
 
+@Slf4j
 @Generated
 public class AplicacaoFiguraComplexa {
 
     public static void main(String[] args) {
-        System.out.println("Iniciando aplicação figura complexa");
-
-        AreaCalculavel quadrado1 = new Quadrado(UUID.randomUUID(), 3);
-        AreaCalculavel quadrado2 = new Quadrado(UUID.randomUUID(), 10);
-        AreaCalculavel retangulo1 = new Retangulo(UUID.randomUUID(), 2, 7);
-        AreaCalculavel retangulo2 = new Retangulo(UUID.randomUUID(), 5, 3);
+        Locale locale = new Locale("pt", "BR");
+        Scanner scanner = new Scanner(System.in);
+        scanner.useLocale(locale);
 
         CalculadorService calculadorService = new CalculadorService();
-        BigDecimal resultado = calculadorService.somarCalculoAreas(Arrays.asList(quadrado1, quadrado2, retangulo1, retangulo2));
-        System.out.println("Resultado : " + valorFormatadoBrasil(resultado));
+        List<AreaCalculavel> areas = new ArrayList<>();
+
+        System.out.println("Informe o lado como inteiro do primeiro quadrado : ");
+        Integer lado1 = validarEntrada(scanner);
+        areas.add(new Quadrado(UUID.randomUUID(), lado1));
+
+        System.out.println("Informe o lado como inteiro do segundo quadrado : ");
+        Integer lado2 = validarEntrada(scanner);
+        areas.add(new Quadrado(UUID.randomUUID(), lado2));
+
+        System.out.println("Informe a base como inteiro do primeiro retângulo : ");
+        Integer base1 = validarEntrada(scanner);
+
+        System.out.println("Informe a altura como inteiro do primeiro retângulo : ");
+        Integer altura1 = validarEntrada(scanner);
+        areas.add(new Retangulo(UUID.randomUUID(), base1, altura1));
+
+        System.out.println("Informe a base como inteiro do segundo retângulo : ");
+        Integer base2 = validarEntrada(scanner);
+
+        System.out.println("Informe a altura como inteiro do segundo retângulo : ");
+        Integer altura2 = validarEntrada(scanner);
+        areas.add(new Retangulo(UUID.randomUUID(), base2, altura2));
+
+        try {
+            BigDecimal resultado = calculadorService.somarCalculoAreas(areas);
+            System.out.println("Resultado : " + valorFormatadoBrasil(resultado));
+        } catch (Exception e){
+            log.warn("Ocorreu erro na aplicação. Causa : {}", e.getMessage());
+        }
+
+        scanner.close();
     }
 }
