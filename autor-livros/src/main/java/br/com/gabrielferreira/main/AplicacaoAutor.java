@@ -18,8 +18,6 @@ import static br.com.gabrielferreira.utils.DataUtils.toDataBrasil;
 public class AplicacaoAutor {
 
     public static void main(String[] args) {
-        System.out.println("Iniciando aplicação autor");
-
         AutorService autorService = new AutorService(new ArquivoService());
 
         System.out.println("Criando autores");
@@ -45,7 +43,11 @@ public class AplicacaoAutor {
                 .livros(livros2)
                 .build();
 
-        autorService.gerarArquivoAutores(Arrays.asList(autor1, autor2), "autores.txt");
+        try {
+            autorService.gerarArquivoAutores(Arrays.asList(autor1, autor2), "autores.txt");
+        } catch (Exception e){
+            log.warn("Ocorreu erro na aplicação para gerar arquivo dos autores. Causa {}", e.getMessage());
+        }
 
         System.out.println();
         System.out.println("Lendo o nosso arquivo gerado pelo console");
