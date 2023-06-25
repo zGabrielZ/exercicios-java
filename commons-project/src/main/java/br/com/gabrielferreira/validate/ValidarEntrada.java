@@ -25,4 +25,12 @@ public class ValidarEntrada {
             throw new ErroInesperadoException("Apenas números");
         }
     }
+
+    public static Double validarEntradaDouble(Scanner scanner){
+        try {
+            return scanner.nextDouble();
+        } catch (InputMismatchException e){
+            throw new ErroInesperadoException("Apenas números");
+        }
+    }
 }

@@ -10,6 +10,7 @@ import java.util.Locale;
 import java.util.Scanner;
 import static br.com.gabrielferreira.utils.MascarasUtils.*;
 import static br.com.gabrielferreira.utils.CalculoUtils.*;
+import static br.com.gabrielferreira.validate.ValidarEntrada.*;
 
 @Slf4j
 @Generated
@@ -22,17 +23,17 @@ public class AplicacaoTriangulo {
 
         TrianguloService trianguloService = new TrianguloService();
 
-        System.out.println("Digite os lados (A, B, C) do triângulo x : ");
-        Double ladoAx = scanner.nextDouble();
-        Double ladoBx = scanner.nextDouble();
-        Double ladoCx = scanner.nextDouble();
-
-        System.out.println("Digite os lados (A, B, C) do triângulo y : ");
-        Double ladoAy = scanner.nextDouble();
-        Double ladoBy = scanner.nextDouble();
-        Double ladoCy = scanner.nextDouble();
-
         try {
+            System.out.println("Digite os lados (A, B, C) do triângulo x : ");
+            Double ladoAx = validarEntradaDouble(scanner);
+            Double ladoBx = validarEntradaDouble(scanner);
+            Double ladoCx = validarEntradaDouble(scanner);
+
+            System.out.println("Digite os lados (A, B, C) do triângulo y : ");
+            Double ladoAy = validarEntradaDouble(scanner);
+            Double ladoBy = validarEntradaDouble(scanner);
+            Double ladoCy = validarEntradaDouble(scanner);
+
             Triangulo trianguloX = trianguloService.criarTriangulo(ladoAx, ladoBx, ladoCx, 'X');
             Triangulo trianguloY = trianguloService.criarTriangulo(ladoAy, ladoBy, ladoCy, 'Y');
             Character maiorTipoTriangulo = trianguloService.maiorAreaTipoTriangulo(Arrays.asList(trianguloX, trianguloY));
