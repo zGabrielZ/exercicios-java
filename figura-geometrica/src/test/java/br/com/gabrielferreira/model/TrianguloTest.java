@@ -5,9 +5,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.UUID;
 
 import static br.com.gabrielferreira.utils.CalculoUtils.toBigDecimal;
+import static br.com.gabrielferreira.utils.CalculoUtils.toRetorno;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -34,7 +36,7 @@ class TrianguloTest {
 
         BigDecimal resultado = triangulo.calcularArea();
 
-        assertEquals(toBigDecimal(25), resultado);
+        assertEquals(toRetorno(toBigDecimal(25.00), 2, RoundingMode.HALF_EVEN), resultado);
     }
 
 }

@@ -8,8 +8,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.UUID;
 
-import static br.com.gabrielferreira.utils.CalculoUtils.divide;
-import static br.com.gabrielferreira.utils.CalculoUtils.somar;
+import static br.com.gabrielferreira.utils.CalculoUtils.*;
 import static br.com.gabrielferreira.validate.ValidarProva.validarProvaInformada;
 
 @AllArgsConstructor
@@ -38,6 +37,6 @@ public class Aluno implements Serializable {
         validarProvaInformada(provaParte1, "É necessário informar a primeira prova do aluno");
         validarProvaInformada(provaParte2, "É necessário informar a segunda prova do aluno");
         BigDecimal somaProvas = somar(provaParte1.calcularNotaTotal(), provaParte2.calcularNotaTotal());
-        return divide(somaProvas, MEDIA_PROVA, RoundingMode.HALF_EVEN);
+        return toRetorno(divide(somaProvas, MEDIA_PROVA), 2, RoundingMode.HALF_EVEN);
     }
 }

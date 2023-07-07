@@ -5,9 +5,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.UUID;
 
 import static br.com.gabrielferreira.utils.CalculoUtils.toBigDecimal;
+import static br.com.gabrielferreira.utils.CalculoUtils.toRetorno;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -69,6 +71,6 @@ class AlunoTest {
 
         BigDecimal resultado = aluno.calcularMedia();
 
-        assertEquals(toBigDecimal(7.2), resultado);
+        assertEquals(toRetorno(toBigDecimal(7.25), 2, RoundingMode.HALF_EVEN), resultado);
     }
 }

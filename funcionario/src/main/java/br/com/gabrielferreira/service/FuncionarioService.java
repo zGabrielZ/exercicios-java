@@ -6,7 +6,6 @@ import br.com.gabrielferreira.model.Funcionario;
 import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.UUID;
 
 import static br.com.gabrielferreira.utils.CalculoUtils.*;
@@ -36,7 +35,7 @@ public class FuncionarioService implements Serializable {
         verificarFuncionario(funcionario);
         validarPorcentagem(porcentagem);
 
-        BigDecimal porcentagemCalculada = divide(porcentagem, toBigDecimal(100), RoundingMode.HALF_EVEN);
+        BigDecimal porcentagemCalculada = divide(porcentagem, toBigDecimal(100));
         funcionario.setSalarioLiquido(somar(funcionario.getSalarioLiquido(), multiplicar(funcionario.getSalarioBruto(), porcentagemCalculada)));
     }
 

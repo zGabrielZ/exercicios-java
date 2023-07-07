@@ -8,7 +8,6 @@ import br.com.gabrielferreira.utils.NumeroFuncionarioComparator;
 import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.List;
 import java.util.UUID;
 
@@ -46,7 +45,7 @@ public class FuncionarioService implements Serializable {
                     .findFirst().orElseThrow(() -> new RegraDeNegocioException("Funcionário não encontrado com este número informado : " + numeroFuncionarioIdentificador));
 
             validarValor(porcentagemInformado, "É necessário informar a porcentagem", "Porcentagem não pode ser negativo");
-            BigDecimal valorPorcentagem = divide(porcentagemInformado, PORCENTAGEM, RoundingMode.HALF_EVEN);
+            BigDecimal valorPorcentagem = divide(porcentagemInformado, PORCENTAGEM);
             BigDecimal aumentoSalario = multiplicar(funcionarioEncontrado.getSalario(), valorPorcentagem);
             funcionarioEncontrado.setSalario(somar(funcionarioEncontrado.getSalario(), aumentoSalario));
         }

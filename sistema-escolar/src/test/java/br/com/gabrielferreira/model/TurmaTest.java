@@ -4,10 +4,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.UUID;
 
 import static br.com.gabrielferreira.utils.CalculoUtils.toBigDecimal;
+import static br.com.gabrielferreira.utils.CalculoUtils.toRetorno;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TurmaTest {
@@ -86,6 +88,6 @@ class TurmaTest {
 
         BigDecimal resultado = turma.calcularMedia();
 
-        assertEquals(toBigDecimal(7.5), resultado);
+        assertEquals(toRetorno(toBigDecimal(7.50), 2, RoundingMode.HALF_EVEN), resultado);
     }
 }

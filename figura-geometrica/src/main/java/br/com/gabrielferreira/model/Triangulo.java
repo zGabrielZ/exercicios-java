@@ -37,6 +37,6 @@ public class Triangulo extends Figura{
         validarValorInformado(base, "É necessário informar a base");
         validarValorInformado(altura, "É necessário informar a altura");
         BigDecimal baseAltura = multiplicar(toBigDecimal(base), toBigDecimal(altura));
-        return divide(baseAltura, toBigDecimal(2.0), RoundingMode.HALF_EVEN);
+        return toRetorno(divide(baseAltura, toBigDecimal(2.0)), 2, RoundingMode.HALF_EVEN);
     }
 }

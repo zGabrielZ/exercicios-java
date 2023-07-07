@@ -44,8 +44,9 @@ public class AlunoService implements Serializable {
 
             validarSomaPeso(somaPesos);
 
-            BigDecimal mediaProva = divide(somaProvas, toBigDecimal(somaPesos), RoundingMode.HALF_EVEN);
-            sb.append("Aluno : ").append(aluno.getNome()).append(", Média : ").append(valorFormatadoBrasil(mediaProva)).append("\n");
+            BigDecimal mediaProva = divide(somaProvas, toBigDecimal(somaPesos));
+            BigDecimal retornoMediaProva = toRetorno(mediaProva, 2, RoundingMode.HALF_EVEN);
+            sb.append("Aluno : ").append(aluno.getNome()).append(", Média : ").append(valorFormatadoBrasil(retornoMediaProva)).append("\n");
         });
 
 

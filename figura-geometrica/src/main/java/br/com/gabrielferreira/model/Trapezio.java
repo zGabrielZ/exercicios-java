@@ -42,7 +42,7 @@ public class Trapezio extends Figura{
         validarValorInformado(baseMenor, "É necessário informar a base menor");
         validarValorInformado(altura, "É necessário informar a altura");
         BigDecimal resultadoSomaBaseMaiorComBaseMenor = somar(toBigDecimal(baseMaior), toBigDecimal(baseMenor));
-        BigDecimal resultadoDivisao = divide(resultadoSomaBaseMaiorComBaseMenor, toBigDecimal(2.0), RoundingMode.HALF_EVEN);
-        return multiplicar(resultadoDivisao, toBigDecimal(altura));
+        BigDecimal resultadoDivisao = divide(resultadoSomaBaseMaiorComBaseMenor, toBigDecimal(2.0));
+        return toRetorno(multiplicar(resultadoDivisao, toBigDecimal(altura)), 2, RoundingMode.HALF_EVEN);
     }
 }

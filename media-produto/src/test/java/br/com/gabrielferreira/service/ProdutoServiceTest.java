@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -72,6 +73,6 @@ class ProdutoServiceTest {
 
         BigDecimal media = produtoService.calcularMediaProdutoPreco(produtos);
 
-        assertEquals(toBigDecimal(12.5), media);
+        assertEquals(toRetorno(toBigDecimal(12.50), 2, RoundingMode.HALF_EVEN), media);
     }
 }
