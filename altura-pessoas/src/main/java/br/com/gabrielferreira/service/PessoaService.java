@@ -3,16 +3,11 @@ package br.com.gabrielferreira.service;
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Pessoa;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-public class PessoaService implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 537563925647530667L;
+public class PessoaService {
 
     public Pessoa criarPessoa(Double altura){
         validarAltura(altura);

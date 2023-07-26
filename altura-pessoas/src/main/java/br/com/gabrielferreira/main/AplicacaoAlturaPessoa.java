@@ -4,15 +4,14 @@ import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Pessoa;
 import br.com.gabrielferreira.service.PessoaService;
 import lombok.Generated;
-import lombok.extern.slf4j.Slf4j;
 import java.util.Locale;
 import java.util.Scanner;
 import static br.com.gabrielferreira.validate.ValidarEntrada.validarEntrada;
 import static br.com.gabrielferreira.validate.ValidarEntrada.validarEntradaDouble;
 import static br.com.gabrielferreira.utils.MascarasUtils.*;
 import static br.com.gabrielferreira.utils.CalculoUtils.*;
+import static br.com.gabrielferreira.utils.LogUtils.*;
 
-@Slf4j
 @Generated
 public class AplicacaoAlturaPessoa {
 
@@ -40,7 +39,7 @@ public class AplicacaoAlturaPessoa {
             System.out.println("Média das altura informadas : " + valorFormatadoBrasil(toBigDecimal(pessoaService.calcularMediaAlturaPessoas(pessoas))));
 
         } catch (Exception e){
-            log.warn("Ocorreu erro na aplicação. Causa : {}", e.getMessage());
+            gerarLogWarn("Ocorreu erro na aplicação. Causa : {}", e);
         }
 
         scanner.close();
