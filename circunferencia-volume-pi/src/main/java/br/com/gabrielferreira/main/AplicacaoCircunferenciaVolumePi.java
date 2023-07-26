@@ -1,6 +1,5 @@
 package br.com.gabrielferreira.main;
 import lombok.Generated;
-import lombok.extern.slf4j.Slf4j;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -8,8 +7,8 @@ import static br.com.gabrielferreira.utils.MascarasUtils.valorFormatadoBrasil;
 import static br.com.gabrielferreira.validate.ValidarEntrada.validarEntradaDouble;
 import static br.com.gabrielferreira.utils.CalcularRaioUtils.*;
 import static br.com.gabrielferreira.utils.CalculoUtils.*;
+import static br.com.gabrielferreira.utils.LogUtils.*;
 
-@Slf4j
 @Generated
 public class AplicacaoCircunferenciaVolumePi {
 
@@ -29,7 +28,7 @@ public class AplicacaoCircunferenciaVolumePi {
             System.out.println("Volume : " + valorFormatadoBrasil(toBigDecimal(volume)));
             System.out.println("PI : " + valorFormatadoBrasil(toBigDecimal(PI)));
         } catch (Exception e){
-            log.warn("Ocorreu erro na aplicação. Causa : {}", e.getMessage());
+            gerarLogWarn("Ocorreu erro na aplicação. Causa : {}", e);
         }
 
         scanner.close();
