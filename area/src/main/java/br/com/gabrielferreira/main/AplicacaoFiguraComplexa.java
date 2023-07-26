@@ -5,15 +5,14 @@ import br.com.gabrielferreira.model.Quadrado;
 import br.com.gabrielferreira.model.Retangulo;
 import br.com.gabrielferreira.service.CalculadorService;
 import lombok.Generated;
-import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;
 import java.util.*;
 
 import static br.com.gabrielferreira.utils.MascarasUtils.valorFormatadoBrasil;
 import static br.com.gabrielferreira.validate.ValidarEntrada.*;
+import static br.com.gabrielferreira.utils.LogUtils.*;
 
-@Slf4j
 @Generated
 public class AplicacaoFiguraComplexa {
 
@@ -51,7 +50,7 @@ public class AplicacaoFiguraComplexa {
             BigDecimal resultado = calculadorService.somarCalculoAreas(areas);
             System.out.println("Resultado : " + valorFormatadoBrasil(resultado));
         } catch (Exception e){
-            log.warn("Ocorreu erro na aplicação. Causa : {}", e.getMessage());
+            gerarLogWarn("Ocorreu erro na aplicação. Causa : {}", e);
         }
 
         scanner.close();
