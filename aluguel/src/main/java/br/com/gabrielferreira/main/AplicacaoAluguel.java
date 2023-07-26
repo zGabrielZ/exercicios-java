@@ -5,13 +5,12 @@ import br.com.gabrielferreira.model.Pessoa;
 import br.com.gabrielferreira.model.dto.QuartosReservadosDTO;
 import br.com.gabrielferreira.service.PessoaService;
 import lombok.Generated;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
 
 import static br.com.gabrielferreira.validate.ValidarEntrada.validarEntrada;
+import static br.com.gabrielferreira.utils.LogUtils.*;
 
-@Slf4j
 @Generated
 public class AplicacaoAluguel {
 
@@ -53,7 +52,7 @@ public class AplicacaoAluguel {
             System.out.println(pessoaService.imprimirPessoas(pessoas));
 
         } catch (Exception e){
-            log.warn("Ocorreu erro na aplicação. Causa : {}", e.getMessage());
+            gerarLogWarn("Ocorreu erro na aplicação. Causa : {}", e);
         }
 
         scanner.close();

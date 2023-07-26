@@ -6,18 +6,12 @@ import br.com.gabrielferreira.model.Quarto;
 import br.com.gabrielferreira.model.dto.QuartosReservadosDTO;
 import br.com.gabrielferreira.utils.NumeroQuartoComparator;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
-public class PessoaService implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 537563925647530667L;
-
+public class PessoaService {
 
     public Pessoa criarPessoa(String nome, String email, Integer numeroQuarto, List<QuartosReservadosDTO> quartosJaAlugados, Integer numeroPessoa){
         validarNome(nome);
