@@ -6,8 +6,6 @@ import br.com.gabrielferreira.model.Livro;
 import lombok.AllArgsConstructor;
 
 import java.io.File;
-import java.io.Serial;
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -16,10 +14,7 @@ import static br.com.gabrielferreira.utils.DataUtils.toDataAtualBrasil;
 import static br.com.gabrielferreira.utils.DataUtils.toDataBrasil;
 
 @AllArgsConstructor
-public class AutorService implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 537563925647530667L;
+public class AutorService {
 
     private ArquivoService arquivoService;
 

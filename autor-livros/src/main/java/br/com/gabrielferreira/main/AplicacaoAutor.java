@@ -5,15 +5,14 @@ import br.com.gabrielferreira.model.Livro;
 import br.com.gabrielferreira.service.ArquivoService;
 import br.com.gabrielferreira.service.AutorService;
 import lombok.Generated;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static br.com.gabrielferreira.utils.DataUtils.toDataBrasil;
+import static br.com.gabrielferreira.utils.LogUtils.*;
 
-@Slf4j
 @Generated
 public class AplicacaoAutor {
 
@@ -46,7 +45,7 @@ public class AplicacaoAutor {
         try {
             autorService.gerarArquivoAutores(Arrays.asList(autor1, autor2), "autores.txt");
         } catch (Exception e){
-            log.warn("Ocorreu erro na aplicação para gerar arquivo dos autores. Causa {}", e.getMessage());
+            gerarLogWarn("Ocorreu erro na aplicação para gerar arquivo dos autores. Causa {}", e);
         }
 
         System.out.println();
@@ -56,7 +55,7 @@ public class AplicacaoAutor {
         try {
             System.out.println(autorService.lerArquivoAutores("C:\\Users\\gabri\\Downloads\\autores.txt"));
         } catch (Exception e){
-            log.warn("Ocorreu erro na aplicação. Causa : {}", e.getMessage());
+            gerarLogWarn("Ocorreu erro na aplicação. Causa : {}", e);
         }
     }
 }
