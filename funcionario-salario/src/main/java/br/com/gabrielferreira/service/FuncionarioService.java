@@ -5,8 +5,6 @@ import br.com.gabrielferreira.model.Funcionario;
 import br.com.gabrielferreira.model.dto.NumeroFuncionarioCadastradoDTO;
 import br.com.gabrielferreira.utils.NumeroFuncionarioComparator;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
@@ -14,10 +12,7 @@ import java.util.UUID;
 import static br.com.gabrielferreira.utils.CalculoUtils.*;
 import static br.com.gabrielferreira.utils.MascarasUtils.*;
 
-public class FuncionarioService implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 537563925647530667L;
+public class FuncionarioService {
 
     private static final BigDecimal PORCENTAGEM = toBigDecimal(100);
 
