@@ -3,9 +3,8 @@ package br.com.gabrielferreira.main;
 import br.com.gabrielferreira.model.Colecao;
 import br.com.gabrielferreira.model.Fila;
 import lombok.Generated;
-import lombok.extern.slf4j.Slf4j;
+import static br.com.gabrielferreira.utils.LogUtils.*;
 
-@Slf4j
 @Generated
 public class AplicacaoFila {
 
@@ -22,7 +21,7 @@ public class AplicacaoFila {
             colecao.inserirItem(5);
             colecao.inserirItem(10);
         } catch (Exception e){
-            log.warn("Ocorreu um erro ao inserir item na fila. Causa {}", e.getMessage());
+            gerarLogWarn("Ocorreu um erro ao inserir item na fila. Causa {}", e);
         }
         System.out.println("1, 4, 5, 10");
 
