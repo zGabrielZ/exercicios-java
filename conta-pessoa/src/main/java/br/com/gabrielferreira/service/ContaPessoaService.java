@@ -4,18 +4,12 @@ import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.ContaPessoa;
 import static br.com.gabrielferreira.utils.MascarasUtils.*;
 import static br.com.gabrielferreira.utils.CalculoUtils.*;
-
-import java.io.Serial;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-public class ContaPessoaService implements Serializable {
+public class ContaPessoaService {
 
     private static final BigDecimal TAXA_SAQUE_REAL = toBigDecimal(5.0);
-
-    @Serial
-    private static final long serialVersionUID = 537563925647530667L;
 
     public ContaPessoa criarContaPessoa(Integer numero, String nome, BigDecimal depositoInicial){
         validarNumero(numero);

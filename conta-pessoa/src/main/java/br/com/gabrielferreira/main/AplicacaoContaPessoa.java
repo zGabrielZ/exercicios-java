@@ -3,15 +3,14 @@ import br.com.gabrielferreira.exception.ErroInesperadoException;
 import br.com.gabrielferreira.model.ContaPessoa;
 import br.com.gabrielferreira.service.ContaPessoaService;
 import lombok.Generated;
-import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;
 import java.util.Locale;
 import java.util.Scanner;
 import static br.com.gabrielferreira.validate.ValidarEntrada.validarEntrada;
 import static br.com.gabrielferreira.validate.ValidarEntrada.validarEntradaBigDecimal;
+import static br.com.gabrielferreira.utils.LogUtils.*;
 
-@Slf4j
 @Generated
 public class AplicacaoContaPessoa {
 
@@ -57,7 +56,7 @@ public class AplicacaoContaPessoa {
 
 
         } catch (Exception e){
-            log.warn("Ocorreu erro na aplicação. Causa : {}", e.getMessage());
+            gerarLogWarn("Ocorreu erro na aplicação. Causa : {}", e);
         }
 
         scanner.close();
