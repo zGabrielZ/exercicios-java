@@ -2,19 +2,13 @@ package br.com.gabrielferreira.service;
 
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Funcionario;
-
-import java.io.Serial;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.UUID;
 
 import static br.com.gabrielferreira.utils.CalculoUtils.*;
 import static br.com.gabrielferreira.utils.MascarasUtils.*;
 
-public class FuncionarioService implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 537563925647530667L;
+public class FuncionarioService {
 
     public Funcionario criarFuncionario(String nome, BigDecimal salarioBruto, BigDecimal taxa){
         validarNome(nome);
