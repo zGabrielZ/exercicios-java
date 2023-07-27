@@ -3,9 +3,6 @@ package br.com.gabrielferreira.service;
 import br.com.gabrielferreira.model.Aluno;
 import br.com.gabrielferreira.model.Peso;
 import br.com.gabrielferreira.model.Prova;
-
-import java.io.Serial;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
@@ -14,10 +11,7 @@ import static br.com.gabrielferreira.utils.CalculoUtils.*;
 import static br.com.gabrielferreira.utils.MascarasUtils.valorFormatadoBrasil;
 import static br.com.gabrielferreira.validate.ValidarAluno.*;
 
-public class AlunoService implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 6730307453958143191L;
+public class AlunoService {
 
     public String criarAluno(List<Aluno> alunos){
 
