@@ -12,6 +12,11 @@ public class LogUtils {
         e.printStackTrace();
     }
 
+    public static void gerarLogErro(String mensagem, Exception e){
+        log.error(mensagem, e.getMessage());
+        e.printStackTrace();
+    }
+
     public static void gerarLogInfo(String mensagem){
         log.info(mensagem);
     }
