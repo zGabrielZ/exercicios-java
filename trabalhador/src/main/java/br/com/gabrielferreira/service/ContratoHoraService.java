@@ -2,17 +2,11 @@ package br.com.gabrielferreira.service;
 
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.ContratoHora;
-
-import java.io.Serial;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.UUID;
 import static br.com.gabrielferreira.utils.DataUtils.*;
 
-public class ContratoHoraService implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 537563925647530667L;
+public class ContratoHoraService {
 
     public ContratoHora criarContratoHora(String data, BigDecimal valorPorHora, Integer horas){
         validarData(data);

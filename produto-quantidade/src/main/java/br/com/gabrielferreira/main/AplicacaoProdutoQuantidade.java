@@ -2,15 +2,14 @@ package br.com.gabrielferreira.main;
 import br.com.gabrielferreira.model.Produto;
 import br.com.gabrielferreira.service.ProdutoService;
 import lombok.Generated;
-import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;
 import java.util.Locale;
 import java.util.Scanner;
 
 import static br.com.gabrielferreira.validate.ValidarEntrada.*;
+import static br.com.gabrielferreira.utils.LogUtils.*;
 
-@Slf4j
 @Generated
 public class AplicacaoProdutoQuantidade {
 
@@ -49,7 +48,7 @@ public class AplicacaoProdutoQuantidade {
             System.out.println(produtoService.imprimirProduto(produto));
 
         } catch (Exception e){
-            log.warn("Ocorreu erro na aplicação. Causa : {}", e.getMessage());
+            gerarLogWarn("Ocorreu erro na aplicação. Causa : {}", e);
         }
 
         scanner.close();

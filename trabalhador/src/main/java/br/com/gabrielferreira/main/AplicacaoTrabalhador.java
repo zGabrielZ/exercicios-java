@@ -5,14 +5,13 @@ import br.com.gabrielferreira.model.Trabalhador;
 import br.com.gabrielferreira.service.ContratoHoraService;
 import br.com.gabrielferreira.service.TrabalhadorService;
 import lombok.Generated;
-import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;
 import java.util.*;
 
 import static br.com.gabrielferreira.validate.ValidarEntrada.*;
+import static br.com.gabrielferreira.utils.LogUtils.*;
 
-@Slf4j
 @Generated
 public class AplicacaoTrabalhador {
 
@@ -73,7 +72,7 @@ public class AplicacaoTrabalhador {
 
 
         } catch (Exception e){
-            log.warn("Ocorreu erro na aplicação. Causa : {}", e.getMessage());
+            gerarLogWarn("Ocorreu erro na aplicação. Causa : {}", e);
         }
 
         scanner.close();

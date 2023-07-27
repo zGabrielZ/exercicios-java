@@ -2,15 +2,9 @@ package br.com.gabrielferreira.service;
 
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.enumeration.Operacao;
-
-import java.io.Serial;
-import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class CalculoService implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 6730307453958143191L;
+public class CalculoService {
 
     public BigDecimal calcular(BigDecimal valorParte1, BigDecimal valorParte2, Operacao operacao){
         validarValorInformado(valorParte1, "É necessário informar o valor parte 1");

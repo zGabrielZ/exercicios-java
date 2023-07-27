@@ -2,18 +2,12 @@ package br.com.gabrielferreira.service;
 
 import br.com.gabrielferreira.model.Triangulo;
 import br.com.gabrielferreira.utils.MaiorAreaTrianguloComparator;
-
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
 import static br.com.gabrielferreira.validate.ValidarCalculo.*;
 
-public class TrianguloService implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = -1083799102490754440L;
+public class TrianguloService {
 
     public Triangulo criarTriangulo(Double ladoA, Double ladoB, Double ladoC, Character tipoTriangulo){
         validarValorInformado(ladoA, "É necessário informar o lado A");

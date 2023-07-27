@@ -3,7 +3,6 @@ package br.com.gabrielferreira.main;
 import br.com.gabrielferreira.model.Triangulo;
 import br.com.gabrielferreira.service.TrianguloService;
 import lombok.Generated;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.Arrays;
 import java.util.Locale;
@@ -11,8 +10,8 @@ import java.util.Scanner;
 import static br.com.gabrielferreira.utils.MascarasUtils.*;
 import static br.com.gabrielferreira.utils.CalculoUtils.*;
 import static br.com.gabrielferreira.validate.ValidarEntrada.*;
+import static br.com.gabrielferreira.utils.LogUtils.*;
 
-@Slf4j
 @Generated
 public class AplicacaoTriangulo {
 
@@ -42,7 +41,7 @@ public class AplicacaoTriangulo {
             System.out.println("Triângulo Y : " + valorFormatadoBrasil(toBigDecimal(trianguloY.getResultadoFinalCalculoArea())));
             System.out.println("Maior Área : " + maiorTipoTriangulo);
         } catch (Exception e){
-            log.warn("Ocorreu erro na aplicação. Causa : {}", e.getMessage());
+            gerarLogWarn("Ocorreu erro na aplicação. Causa : {}", e);
         }
 
         scanner.close();

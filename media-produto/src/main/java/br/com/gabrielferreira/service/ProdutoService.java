@@ -2,9 +2,6 @@ package br.com.gabrielferreira.service;
 
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Produto;
-
-import java.io.Serial;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Arrays;
@@ -13,10 +10,7 @@ import java.util.UUID;
 
 import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
-public class ProdutoService implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 537563925647530667L;
+public class ProdutoService {
 
     public Produto criarProduto(String nome, BigDecimal preco){
         validarNome(nome);

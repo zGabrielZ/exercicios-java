@@ -2,15 +2,14 @@ package br.com.gabrielferreira.main;
 import br.com.gabrielferreira.model.Retangulo;
 import br.com.gabrielferreira.service.RetanguloService;
 import lombok.Generated;
-import lombok.extern.slf4j.Slf4j;
 import java.math.BigDecimal;
 import java.util.Locale;
 import java.util.Scanner;
 
 import static br.com.gabrielferreira.utils.MascarasUtils.valorFormatadoBrasil;
 import static br.com.gabrielferreira.validate.ValidarEntrada.validarEntradaBigDecimal;
+import static br.com.gabrielferreira.utils.LogUtils.*;
 
-@Slf4j
 @Generated
 public class AplicacaoRetangulo {
 
@@ -32,7 +31,7 @@ public class AplicacaoRetangulo {
             System.out.println("Perímetro : " + valorFormatadoBrasil(retangulo.getPerimetro()));
             System.out.println("Diagonal : " + valorFormatadoBrasil(retangulo.getDiagonal()));
         } catch (Exception e){
-            log.warn("Ocorreu erro na aplicação. Causa : {}", e.getMessage());
+            gerarLogWarn("Ocorreu erro na aplicação. Causa : {}", e);
         }
 
         scanner.close();

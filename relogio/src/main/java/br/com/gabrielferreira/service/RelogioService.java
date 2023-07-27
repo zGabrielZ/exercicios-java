@@ -2,17 +2,11 @@ package br.com.gabrielferreira.service;
 
 import br.com.gabrielferreira.model.Ponteiro;
 import br.com.gabrielferreira.model.Relogio;
-
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.UUID;
 
 import static br.com.gabrielferreira.validate.ValidarRelogio.validarValorInformado;
 
-public class RelogioService implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = -2417851471879996877L;
+public class RelogioService {
 
     public Relogio acertarRelogio(Integer hora, Integer minuto, Integer segundo){
 

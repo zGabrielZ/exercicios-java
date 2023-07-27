@@ -1,12 +1,10 @@
 package br.com.gabrielferreira.main;
 
 import lombok.Generated;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
 @Generated
 public class AplicacaoMatriz {
 

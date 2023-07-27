@@ -3,9 +3,6 @@ package br.com.gabrielferreira.service;
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Produto;
 import br.com.gabrielferreira.utils.PesoCrescenteComparator;
-
-import java.io.Serial;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -16,10 +13,7 @@ import java.util.Locale;
 
 import static br.com.gabrielferreira.utils.DataUtils.toDataBrasil;
 
-public class ProdutoService implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 6730307453958143191L;
+public class ProdutoService {
 
     private final List<Produto> produtos;
 

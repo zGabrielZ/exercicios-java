@@ -5,9 +5,6 @@ import br.com.gabrielferreira.model.ContratoHora;
 import br.com.gabrielferreira.model.Departamento;
 import br.com.gabrielferreira.model.Renda;
 import br.com.gabrielferreira.model.Trabalhador;
-
-import java.io.Serial;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,10 +17,7 @@ import static br.com.gabrielferreira.utils.DataUtils.*;
 import static br.com.gabrielferreira.utils.MascarasUtils.*;
 import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
-public class TrabalhadorService implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 537563925647530667L;
+public class TrabalhadorService {
 
     public Trabalhador criarTrabalhador(String nomeDepartamento, String nomeTrabalhador, String trabalhadorLevel, BigDecimal salario){
         validarNome(nomeDepartamento, "o departamento");
