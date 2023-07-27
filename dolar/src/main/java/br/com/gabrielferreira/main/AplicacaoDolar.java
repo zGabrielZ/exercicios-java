@@ -1,7 +1,6 @@
 package br.com.gabrielferreira.main;
 
 import lombok.Generated;
-import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;
 import java.util.Locale;
@@ -10,8 +9,8 @@ import java.util.Scanner;
 import static br.com.gabrielferreira.utils.CurrencyConverterUtils.*;
 import static br.com.gabrielferreira.utils.MascarasUtils.valorMonetarioBrasil;
 import static br.com.gabrielferreira.validate.ValidarEntrada.validarEntradaBigDecimal;
+import static br.com.gabrielferreira.utils.LogUtils.*;
 
-@Slf4j
 @Generated
 public class AplicacaoDolar {
 
@@ -31,7 +30,7 @@ public class AplicacaoDolar {
 
             System.out.println("Valor em reais que você precisa pagar : " + valorMonetarioBrasil(resultado));
         } catch (Exception e){
-            log.warn("Ocorreu erro na aplicação. Causa : {}", e.getMessage());
+            gerarLogWarn("Ocorreu erro na aplicação. Causa : {}", e);
         }
 
         scanner.close();
