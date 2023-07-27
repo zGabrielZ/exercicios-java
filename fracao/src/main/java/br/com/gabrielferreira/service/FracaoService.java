@@ -2,18 +2,13 @@ package br.com.gabrielferreira.service;
 
 import br.com.gabrielferreira.model.Fracao;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.UUID;
 
 import static br.com.gabrielferreira.utils.CalculoUtils.multiplicar;
 import static br.com.gabrielferreira.validate.ValidarFracao.validarObjeto;
 import static br.com.gabrielferreira.validate.ValidarFracao.validarValorInformado;
 
-public class FracaoService implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = -6405625430442826735L;
+public class FracaoService {
 
     public Fracao multiplicarFracao(Fracao primeiraFracao, Fracao segundaFracao){
         validarFracao(primeiraFracao);
