@@ -3,10 +3,6 @@ package br.com.gabrielferreira.service;
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.ItemCompra;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-
-import java.io.Serial;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,13 +10,10 @@ import java.util.UUID;
 
 import static br.com.gabrielferreira.utils.DataUtils.toDataBrasil;
 import static br.com.gabrielferreira.utils.MascarasUtils.valorMonetarioBrasil;
+import static br.com.gabrielferreira.utils.LogUtils.*;
 
-@Slf4j
 @AllArgsConstructor
-public class ItemCompraService implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 537563925647530667L;
+public class ItemCompraService {
 
     private ArquivoService arquivoService;
 
@@ -40,7 +33,7 @@ public class ItemCompraService implements Serializable {
         validarItens(itens);
         String texto = gerarConcatenacao(itens);
         arquivoService.gerarArquivoEscrita(texto, System.getProperty("user.home") + "/Downloads/" + saida);
-        log.info("Arquivo gerado na pasta de downloads");
+        gerarLogInfo("Arquivo gerado na pasta de downloads");
     }
 
     private void validarItens(List<ItemCompra> itens){
