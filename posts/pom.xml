@@ -52,7 +52,7 @@
     </dependencies>
 
     <build>
-        <finalName>triangulo</finalName>
+        <finalName>posts</finalName>
         <plugins>
             <plugin>
                 <groupId>org.jacoco</groupId>
