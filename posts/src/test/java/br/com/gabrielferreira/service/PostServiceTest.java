@@ -27,29 +27,29 @@ class PostServiceTest {
     @Test
     @DisplayName("Deve validar momento quando não informar")
     void deveValidarMomentoQuandoTiverNulo(){
-        String momemnto = null;
-        String titulo = "Viagem para Nova Zelandia";
-        String conteudo = "Adorei este lindo país";
+        String momento = getStringNula();
+        String titulo = getStringNaoNula();
+        String conteudo = getStringNaoNula();
         Integer likes = 12;
-        assertThrows(RegraDeNegocioException.class, () -> postService.criarPost(momemnto, titulo, conteudo, likes));
+        assertThrows(RegraDeNegocioException.class, () -> postService.criarPost(momento, titulo, conteudo, likes));
     }
 
     @Test
     @DisplayName("Deve validar momento quando tiver no formato errado")
     void deveValidarMomentoQuandoTiverFormatoErrado(){
-        String momemnto = "12";
-        String titulo = "Viagem para Nova Zelandia";
-        String conteudo = "Adorei este lindo país";
+        String momento = "12";
+        String titulo = getStringNaoNula();
+        String conteudo = getStringNaoNula();
         Integer likes = 12;
-        assertThrows(ErroInesperadoException.class, () -> postService.criarPost(momemnto, titulo, conteudo, likes));
+        assertThrows(ErroInesperadoException.class, () -> postService.criarPost(momento, titulo, conteudo, likes));
     }
 
     @Test
     @DisplayName("Deve validar momento quando tiver maior que data atual")
     void deveValidarMomentoQuandoTiverMaiorQueDataAtual(){
         String momento = toDataHoraBrasil(LocalDateTime.now().plusDays(5L));
-        String titulo = "Viagem para Nova Zelandia";
-        String conteudo = "Adorei este lindo país";
+        String titulo = getStringNaoNula();
+        String conteudo = getStringNaoNula();
         Integer likes = 12;
         assertThrows(RegraDeNegocioException.class, () -> postService.criarPost(momento, titulo, conteudo, likes));
     }
@@ -57,41 +57,41 @@ class PostServiceTest {
     @Test
     @DisplayName("Deve validar titulo quando não informar")
     void deveValidarTituloQuandoTiverNulo(){
-        String momemnto = "20/10/2022 10:00:00";
-        String titulo = null;
-        String conteudo = "Adorei este lindo país";
+        String momento = "20/10/2022 10:00:00";
+        String titulo = getStringNula();
+        String conteudo = getStringNaoNula();
         Integer likes = 12;
-        assertThrows(RegraDeNegocioException.class, () -> postService.criarPost(momemnto, titulo, conteudo, likes));
+        assertThrows(RegraDeNegocioException.class, () -> postService.criarPost(momento, titulo, conteudo, likes));
     }
 
     @Test
     @DisplayName("Deve validar conteudo quando não informar")
     void deveValidarConteudoQuandoTiverNulo(){
-        String momemnto = "20/10/2022 10:00:00";
-        String titulo = "Viagem para o Brasil";
-        String conteudo = null;
+        String momento = "20/10/2022 10:00:00";
+        String titulo = getStringNaoNula();
+        String conteudo = getStringNula();
         Integer likes = 12;
-        assertThrows(RegraDeNegocioException.class, () -> postService.criarPost(momemnto, titulo, conteudo, likes));
+        assertThrows(RegraDeNegocioException.class, () -> postService.criarPost(momento, titulo, conteudo, likes));
     }
 
     @Test
     @DisplayName("Deve validar likes quando não informar")
     void deveValidarLikesQuandoTiverNulo(){
-        String momemnto = "20/10/2022 10:00:00";
-        String titulo = "Viagem para o Brasil";
-        String conteudo = "Estou adorando esta viagem";
+        String momento = "20/10/2022 10:00:00";
+        String titulo = getStringNaoNula();
+        String conteudo = getStringNaoNula();
         Integer likes = null;
-        assertThrows(RegraDeNegocioException.class, () -> postService.criarPost(momemnto, titulo, conteudo, likes));
+        assertThrows(RegraDeNegocioException.class, () -> postService.criarPost(momento, titulo, conteudo, likes));
     }
 
     @Test
     @DisplayName("Deve validar likes quando for negativo")
     void deveValidarLikesQuandoTiverNegativo(){
-        String momemnto = "20/10/2022 10:00:00";
-        String titulo = "Viagem para o Brasil";
-        String conteudo = "Estou adorando esta viagem";
+        String momento = "20/10/2022 10:00:00";
+        String titulo = getStringNaoNula();
+        String conteudo = getStringNaoNula();
         Integer likes = -19;
-        assertThrows(RegraDeNegocioException.class, () -> postService.criarPost(momemnto, titulo, conteudo, likes));
+        assertThrows(RegraDeNegocioException.class, () -> postService.criarPost(momento, titulo, conteudo, likes));
     }
 
     @Test
@@ -116,5 +116,13 @@ class PostServiceTest {
         String imprimir = postService.imprimirPost(post);
 
         assertNotNull(imprimir);
+    }
+
+    private String getStringNula(){
+        return null;
+    }
+
+    private String getStringNaoNula(){
+        return "Teste teste teste";
     }
 }
