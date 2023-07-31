@@ -16,6 +16,8 @@ public class DataUtils {
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private static final DateTimeFormatter DATE_TIME_FORMATTER_MES_ANO = DateTimeFormatter.ofPattern("MM/yyyy");
     private static final DateTimeFormatter DATE_TIME_FORMATTER_HORA_MINUTO_SEGUNDO = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+    private static final String ZONE_ID_SAO_PAULO = "America/Sao_Paulo";
+    private static final DateTimeFormatter DATE_TIME_HORA_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
     public static LocalDate toDataBrasil(String data){
         try {
@@ -23,6 +25,15 @@ public class DataUtils {
         } catch (Exception e){
             gerarLogErro("Ocorreu um erro ao informar a data : {}", e);
             throw new ErroInesperadoException("Ocorreu um erro ao informar a data");
+        }
+    }
+
+    public static LocalDateTime toDataHoraBrasil(String dataHora){
+        try {
+            return LocalDateTime.parse(dataHora, DATE_TIME_HORA_FORMATTER);
+        } catch (Exception e){
+            gerarLogErro("Ocorreu um erro ao informar a data e a hora : {}", e);
+            throw new ErroInesperadoException("Ocorreu um erro ao informar a data e a hora");
         }
     }
 
@@ -38,7 +49,15 @@ public class DataUtils {
         return DATE_TIME_FORMATTER_HORA_MINUTO_SEGUNDO.format(date);
     }
 
+    public static String toDataHoraBrasil(LocalDateTime date){
+        return DATE_TIME_HORA_FORMATTER.format(date);
+    }
+
     public static LocalDate toDataAtualBrasil(){
-        return LocalDate.now(ZoneId.of("America/Sao_Paulo"));
+        return LocalDate.now(ZoneId.of(ZONE_ID_SAO_PAULO));
+    }
+
+    public static LocalDateTime toDataHoraAtualBrasil(){
+        return LocalDateTime.now(ZoneId.of(ZONE_ID_SAO_PAULO));
     }
 }
