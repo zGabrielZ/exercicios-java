@@ -45,7 +45,7 @@ class ProdutoServiceTest {
     @Test
     @DisplayName("Deve gerar arquivo quando informar valores corretamente")
     void deveGerarArquivo(){
-        produtoService.gerarArquivoCsv("C:\\Users\\gabri\\OneDrive\\Documentos\\sumario.csv", NOME_ARQUIVO);
+        produtoService.gerarArquivoCsv("D:\\CSV\\sumario.csv", NOME_ARQUIVO);
 
         File file = new File(CAMINHO_COMPLETO);
         assertTrue(file.exists());

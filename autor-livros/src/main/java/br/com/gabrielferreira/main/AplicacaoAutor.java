@@ -53,7 +53,8 @@ public class AplicacaoAutor {
         System.out.println();
 
         try {
-            System.out.println(autorService.lerArquivoAutores("C:\\Users\\gabri\\Downloads\\autores.txt"));
+            String caminhoGerado = System.getProperty("user.home") + "/Downloads/" + "autores.txt";
+            System.out.println(autorService.lerArquivoAutores(caminhoGerado));
         } catch (Exception e){
             gerarLogWarn("Ocorreu erro na aplicação. Causa : {}", e);
         }
