@@ -1,4 +1,6 @@
 package br.com.gabrielferreira.service;
+import br.com.gabrielferreira.exception.ErroInesperadoException;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import static br.com.gabrielferreira.utils.LogUtils.*;
@@ -14,6 +16,7 @@ public class ArquivoService implements Serializable {
             gerarLogInfo("Arquivo gerado com sucesso !!");
         } catch (Exception e){
             gerarLogWarn("Ocorreu um erro ao gerar o arquivo : {}", e);
+            throw new ErroInesperadoException("Ocorreu um erro ao gerar o arquivo");
         }
     }
 
@@ -31,8 +34,7 @@ public class ArquivoService implements Serializable {
 
         } catch (Exception e){
             gerarLogWarn("Ocorreu erro ao ler o arquivo : {}", e);
+            throw new ErroInesperadoException("Ocorreu um erro ler o arquivo");
         }
-
-        return null;
     }
 }
