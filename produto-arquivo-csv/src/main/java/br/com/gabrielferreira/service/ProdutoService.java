@@ -6,7 +6,8 @@ import br.com.gabrielferreira.model.Produto;
 import lombok.AllArgsConstructor;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -40,7 +41,8 @@ public class ProdutoService {
 
     private List<Produto> lerProdutosEntrada(String entrada){
         List<Produto> produtos = new ArrayList<>();
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(entrada, StandardCharsets.UTF_8))){
+        InputStream inputStream = arquivoService.buscarCaminho(entrada);
+        try(BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))){
 
             String lerArquivo;
 

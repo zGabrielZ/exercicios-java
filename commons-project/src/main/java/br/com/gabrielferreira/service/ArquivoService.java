@@ -21,7 +21,8 @@ public class ArquivoService implements Serializable {
     }
 
     public String lerArquivo(String entrada){
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(entrada, StandardCharsets.UTF_8))){
+        InputStream inputStream = buscarCaminho(entrada);
+        try(BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))){
 
             String lerArquivo;
             StringBuilder stringBuilder = new StringBuilder();

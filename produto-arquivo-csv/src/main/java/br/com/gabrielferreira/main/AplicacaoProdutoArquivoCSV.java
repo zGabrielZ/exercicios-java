@@ -14,7 +14,7 @@ public class AplicacaoProdutoArquivoCSV {
         ProdutoService produtoService = new ProdutoService(new ArquivoService());
 
         try {
-            String caminho = "D:\\CSV\\sumario.csv";
+            String caminho = "sumario.csv";
             produtoService.gerarArquivoCsv(caminho, "sumario-resultado.csv");
         } catch (Exception e){
             gerarLogWarn("Ocorreu erro na aplicação. Causa : {}", e);
