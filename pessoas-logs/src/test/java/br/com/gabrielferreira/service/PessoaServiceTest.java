@@ -12,7 +12,7 @@ class PessoaServiceTest {
 
     @BeforeEach
     public void criarInstancias(){
-        pessoaService = new PessoaService();
+        pessoaService = new PessoaService(new ArquivoService());
     }
 
     @Test
@@ -40,9 +40,9 @@ class PessoaServiceTest {
     @Test
     @DisplayName("Deve ler arquivo quando informar corretamente")
     void deveLerArquivo(){
-        Integer quantidade = pessoaService.totalUsuarioLog("D:\\TXT\\nomes-pessoas.txt");
+        Integer quantidade = pessoaService.totalUsuarioLog("nomes-pessoas-test.txt");
 
-        assertEquals(5, quantidade);
+        assertEquals(4, quantidade);
     }
 
 

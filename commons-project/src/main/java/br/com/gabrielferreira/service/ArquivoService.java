@@ -37,4 +37,13 @@ public class ArquivoService implements Serializable {
             throw new ErroInesperadoException("Ocorreu um erro ler o arquivo");
         }
     }
+    public InputStream buscarCaminho(String entrada){
+        try {
+            ClassLoader classLoader = ArquivoService.class.getClassLoader();
+            return classLoader.getResourceAsStream(entrada);
+        } catch (Exception e){
+            gerarLogWarn("Ocorreu erro ao buscar arquivo. Causa : {}", e);
+            throw new ErroInesperadoException("Arquivo não encontrado");
+        }
+    }
 }

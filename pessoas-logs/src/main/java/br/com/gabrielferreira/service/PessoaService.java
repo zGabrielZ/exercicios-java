@@ -3,9 +3,11 @@ package br.com.gabrielferreira.service;
 import br.com.gabrielferreira.exception.ErroInesperadoException;
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Pessoa;
+import lombok.AllArgsConstructor;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -13,7 +15,10 @@ import java.util.*;
 import static br.com.gabrielferreira.utils.LogUtils.gerarLogWarn;
 import static br.com.gabrielferreira.utils.DataUtils.*;
 
+@AllArgsConstructor
 public class PessoaService {
+
+    private ArquivoService arquivoService;
 
     public Integer totalUsuarioLog(String entrada){
         validarEntrada(entrada);
@@ -32,8 +37,10 @@ public class PessoaService {
     }
 
     private Set<Pessoa> lerPessoasEntrada(String entrada){
+        InputStream inputStream = arquivoService.buscarCaminho(entrada);
+
         Set<Pessoa> pessoas = new HashSet<>();
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(entrada, StandardCharsets.UTF_8))){
+        try(BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))){
 
             String lerArquivo;
 
