@@ -39,6 +39,7 @@ public class CalculoUtils {
         return valorParte1.subtract(valorParte2);
     }
 
+    // FIXME : CORRIGIR ISSO AQUI
     public static BigDecimal divide(BigDecimal valorParte1, BigDecimal valorParte2){
         return valorParte1.divide(valorParte2);
     }
