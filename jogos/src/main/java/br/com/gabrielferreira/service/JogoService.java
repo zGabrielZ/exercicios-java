@@ -27,11 +27,10 @@ public class JogoService {
         return jogos.stream().map(Jogo::getPreco).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    // FIXME: DIVIDE PRO CALCULO UTILS
     public BigDecimal calcularPrecoMedio(List<Jogo> jogos){
         BigDecimal somaTotal = calcularSomaTotal(jogos);
         BigDecimal quantidadeJogos = toBigDecimal(jogos.size());
-        return somaTotal.divide(quantidadeJogos, 2, RoundingMode.HALF_EVEN);
+        return divide(somaTotal, quantidadeJogos, 2, RoundingMode.HALF_EVEN);
     }
 
     public List<String> mostrarJogosOrdemDecrescente(List<Jogo> jogos){

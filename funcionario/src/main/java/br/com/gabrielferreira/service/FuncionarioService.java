@@ -3,6 +3,7 @@ package br.com.gabrielferreira.service;
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Funcionario;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.UUID;
 
 import static br.com.gabrielferreira.utils.CalculoUtils.*;
@@ -29,7 +30,7 @@ public class FuncionarioService {
         verificarFuncionario(funcionario);
         validarPorcentagem(porcentagem);
 
-        BigDecimal porcentagemCalculada = divide(porcentagem, toBigDecimal(100));
+        BigDecimal porcentagemCalculada = divide(porcentagem, toBigDecimal(100), 2, RoundingMode.HALF_EVEN);
         funcionario.setSalarioLiquido(somar(funcionario.getSalarioLiquido(), multiplicar(funcionario.getSalarioBruto(), porcentagemCalculada)));
     }
 

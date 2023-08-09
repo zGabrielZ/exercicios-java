@@ -37,6 +37,6 @@ public class Aluno implements Serializable {
         validarProvaInformada(provaParte1, "É necessário informar a primeira prova do aluno");
         validarProvaInformada(provaParte2, "É necessário informar a segunda prova do aluno");
         BigDecimal somaProvas = somar(provaParte1.calcularNotaTotal(), provaParte2.calcularNotaTotal());
-        return toRetorno(divide(somaProvas, MEDIA_PROVA), 2, RoundingMode.HALF_EVEN);
+        return divide(somaProvas, MEDIA_PROVA, 2, RoundingMode.HALF_EVEN);
     }
 }

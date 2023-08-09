@@ -6,8 +6,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import static br.com.gabrielferreira.utils.CalculoUtils.toBigDecimal;
+import static br.com.gabrielferreira.utils.CalculoUtils.toRetorno;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculoServiceTest {
@@ -77,6 +79,6 @@ class CalculoServiceTest {
     @DisplayName("Deve dividir quando informar valores correto")
     void deveDividir(){
         BigDecimal retorno = calculoService.calcular(toBigDecimal(2), toBigDecimal(2), Operacao.DIVISAO);
-        assertEquals(toBigDecimal(1), retorno);
+        assertEquals(toRetorno(toBigDecimal(1), 2, RoundingMode.HALF_EVEN), retorno);
     }
 }

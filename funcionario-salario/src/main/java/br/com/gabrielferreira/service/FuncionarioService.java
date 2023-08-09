@@ -6,6 +6,7 @@ import br.com.gabrielferreira.model.dto.NumeroFuncionarioCadastradoDTO;
 import br.com.gabrielferreira.utils.NumeroFuncionarioComparator;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.UUID;
 
@@ -40,7 +41,7 @@ public class FuncionarioService {
                     .findFirst().orElseThrow(() -> new RegraDeNegocioException("Funcionário não encontrado com este número informado : " + numeroFuncionarioIdentificador));
 
             validarValor(porcentagemInformado, "É necessário informar a porcentagem", "Porcentagem não pode ser negativo");
-            BigDecimal valorPorcentagem = divide(porcentagemInformado, PORCENTAGEM);
+            BigDecimal valorPorcentagem = divide(porcentagemInformado, PORCENTAGEM, 2, RoundingMode.HALF_EVEN);
             BigDecimal aumentoSalario = multiplicar(funcionarioEncontrado.getSalario(), valorPorcentagem);
             funcionarioEncontrado.setSalario(somar(funcionarioEncontrado.getSalario(), aumentoSalario));
         }

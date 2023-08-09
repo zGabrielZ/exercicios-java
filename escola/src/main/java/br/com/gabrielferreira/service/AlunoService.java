@@ -38,7 +38,7 @@ public class AlunoService {
 
             validarSomaPeso(somaPesos);
 
-            BigDecimal mediaProva = divide(somaProvas, toBigDecimal(somaPesos));
+            BigDecimal mediaProva = divide(somaProvas, toBigDecimal(somaPesos), 2, RoundingMode.HALF_EVEN);
             BigDecimal retornoMediaProva = toRetorno(mediaProva, 2, RoundingMode.HALF_EVEN);
             sb.append("Aluno : ").append(aluno.getNome()).append(", Média : ").append(valorFormatadoBrasil(retornoMediaProva)).append("\n");
         });

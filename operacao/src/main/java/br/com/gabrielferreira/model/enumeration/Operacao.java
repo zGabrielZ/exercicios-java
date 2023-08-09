@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import static br.com.gabrielferreira.utils.CalculoUtils.*;
 
@@ -32,7 +33,7 @@ public enum Operacao {
     DIVISAO{
         @Override
         public BigDecimal calcular(BigDecimal valorParte1, BigDecimal valorParte2) {
-            return divide(valorParte1, valorParte2);
+            return divide(valorParte1, valorParte2, 2, RoundingMode.HALF_EVEN);
         }
     };
 

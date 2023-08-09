@@ -33,6 +33,6 @@ public class Turma implements Serializable {
     public BigDecimal calcularMedia(){
         List<BigDecimal> valores = alunos.stream().map(Aluno::calcularMedia).toList();
         BigDecimal somaTotal = somar(valores.toArray(new BigDecimal[alunos.size()]));
-        return toRetorno(divide(somaTotal, BigDecimal.valueOf(alunos.size())), 2, RoundingMode.HALF_EVEN);
+        return divide(somaTotal, toBigDecimal(alunos.size()), 2, RoundingMode.HALF_EVEN);
     }
 }

@@ -39,9 +39,8 @@ public class CalculoUtils {
         return valorParte1.subtract(valorParte2);
     }
 
-    // FIXME : CORRIGIR ISSO AQUI
-    public static BigDecimal divide(BigDecimal valorParte1, BigDecimal valorParte2){
-        return valorParte1.divide(valorParte2);
+    public static BigDecimal divide(BigDecimal valorParte1, BigDecimal valorParte2, int escala, RoundingMode roundingMode){
+        return valorParte1.divide(valorParte2, escala, roundingMode);
     }
 
     public static BigDecimal toRetorno(BigDecimal valor, int escala, RoundingMode tipoArredondamento){

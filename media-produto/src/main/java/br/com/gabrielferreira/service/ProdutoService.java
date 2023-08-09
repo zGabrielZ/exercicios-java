@@ -28,7 +28,7 @@ public class ProdutoService {
         BigDecimal[] precos = produtoList.stream().map(Produto::getPreco).
                 toList().toArray(new BigDecimal[0]);
         BigDecimal soma = somar(precos);
-        return toRetorno(divide(soma, toBigDecimal(produtoList.size())), 2, RoundingMode.HALF_EVEN);
+        return divide(soma, toBigDecimal(produtoList.size()), 2, RoundingMode.HALF_EVEN);
     }
 
     private void validarProduto(List<Produto> produtos){
