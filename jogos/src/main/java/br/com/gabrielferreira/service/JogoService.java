@@ -44,6 +44,16 @@ public class JogoService {
                 .map(Jogo::getNome).sorted(new NomeComparator()).toList();
     }
 
+    public List<String> mostrarJogosOrdemDecrescenteComPrecoMaiorOuIgualInformado(List<Jogo> jogos, BigDecimal preco){
+        return jogos.stream().filter(jogo -> jogo.getPreco().compareTo(preco) >= 0)
+                .map(Jogo::getNome).sorted(new NomeComparator()).toList();
+    }
+
+    public BigDecimal calcularSomaTotalComLetraInformada(List<Jogo> jogos, Character letra){
+        return jogos.stream().filter(jogo -> letra.equals(jogo.getNome().charAt(0)))
+                .map(Jogo::getPreco).reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
     private void validarNome(String nome){
         if(nome == null || nome.isBlank()){
             throw new RegraDeNegocioException("É necessário informar o nome");

@@ -35,6 +35,11 @@ public class AplicacaoJogo {
             System.out.println("Jogos abaixo ordem decrescente inferior a preço médio : ");
             System.out.println(jogoService.mostrarJogosOrdemDecrescenteInferiorPrecoMedio(jogos));
 
+            System.out.println("Jogos abaixo ordem decrescente maior ou igual ao preço informado : ");
+            System.out.println(jogoService.mostrarJogosOrdemDecrescenteComPrecoMaiorOuIgualInformado(jogos, toBigDecimal(200.00)));
+
+            System.out.println("Soma total dos jogos com a letra informada : " + valorMonetarioBrasil(jogoService.calcularSomaTotalComLetraInformada(jogos, 'M')));
+
         } catch (Exception e){
             gerarLogWarn("Ocorreu erro na aplicação. Causa : {}", e);
         }

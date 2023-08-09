@@ -108,4 +108,30 @@ class JogoServiceTest {
         assertEquals("Fifa 23", nomes.get(1));
         assertEquals(2, nomes.size());
     }
+
+    @Test
+    @DisplayName("Deve mostrar jogos em ordem decrescente com o preço maior ou igual quando informar o preço")
+    void deveMostrarJogosOrdemDecrescenteMaiorOuIgualPrecoInformado(){
+        Jogo jogo1 = jogoService.criarJogo("God of War", toBigDecimal(200.00));
+        Jogo jogo2 = jogoService.criarJogo("Fifa 23", toBigDecimal(500.00));
+        Jogo jogo3 = jogoService.criarJogo("Call of Duty", toBigDecimal(1000.00));
+
+        List<String> nomes = jogoService.mostrarJogosOrdemDecrescenteComPrecoMaiorOuIgualInformado(Arrays.asList(jogo1, jogo2, jogo3), toBigDecimal(450.00));
+
+        assertEquals("Fifa 23", nomes.get(0));
+        assertEquals("Call of Duty", nomes.get(1));
+        assertEquals(2, nomes.size());
+    }
+
+    @Test
+    @DisplayName("Deve calcular soma total com a letra informada")
+    void deveCalcularSomaTotalComLetraInformada(){
+        Jogo jogo1 = jogoService.criarJogo("God of War", toBigDecimal(200.00));
+        Jogo jogo2 = jogoService.criarJogo("Fifa 23", toBigDecimal(500.00));
+        Jogo jogo3 = jogoService.criarJogo("Call of Duty", toBigDecimal(1000.00));
+
+        BigDecimal resultado = jogoService.calcularSomaTotalComLetraInformada(Arrays.asList(jogo1, jogo2, jogo3), 'F');
+
+        assertEquals(toBigDecimal(500.00), resultado);
+    }
 }
