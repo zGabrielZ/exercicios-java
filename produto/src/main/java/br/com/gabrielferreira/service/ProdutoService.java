@@ -2,7 +2,7 @@ package br.com.gabrielferreira.service;
 
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Produto;
-import br.com.gabrielferreira.utils.PesoCrescenteComparator;
+import br.com.gabrielferreira.utils.PesoCrescenteComparatorUtils;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -48,7 +48,7 @@ public class ProdutoService {
             return new ArrayList<>();
         }
 
-        produtos.sort(new PesoCrescenteComparator());
+        produtos.sort(new PesoCrescenteComparatorUtils());
         return produtos;
     }
 

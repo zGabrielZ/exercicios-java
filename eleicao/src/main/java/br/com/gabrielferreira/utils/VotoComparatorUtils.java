@@ -4,7 +4,7 @@ import br.com.gabrielferreira.model.Candidato;
 
 import java.util.Comparator;
 
-public class VotoComparator implements Comparator<Candidato> {
+public class VotoComparatorUtils implements Comparator<Candidato> {
 
     @Override
     public int compare(Candidato o1, Candidato o2) {

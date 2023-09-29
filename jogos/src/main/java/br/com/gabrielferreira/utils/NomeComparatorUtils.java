@@ -2,7 +2,7 @@ package br.com.gabrielferreira.utils;
 
 import java.util.Comparator;
 
-public class NomeComparator implements Comparator<String> {
+public class NomeComparatorUtils implements Comparator<String> {
 
     @Override
     public int compare(String o1, String o2) {

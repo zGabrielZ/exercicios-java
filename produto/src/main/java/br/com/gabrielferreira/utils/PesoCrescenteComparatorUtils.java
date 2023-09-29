@@ -4,7 +4,7 @@ import br.com.gabrielferreira.model.Produto;
 
 import java.util.Comparator;
 
-public class PesoCrescenteComparator implements Comparator<Produto> {
+public class PesoCrescenteComparatorUtils implements Comparator<Produto> {
 
     @Override
     public int compare(Produto o1, Produto o2) {

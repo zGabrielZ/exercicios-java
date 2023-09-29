@@ -3,7 +3,7 @@ package br.com.gabrielferreira.service;
 import br.com.gabrielferreira.exception.ErroInesperadoException;
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Candidato;
-import br.com.gabrielferreira.utils.VotoComparator;
+import br.com.gabrielferreira.utils.VotoComparatorUtils;
 import lombok.AllArgsConstructor;
 
 import java.io.BufferedReader;
@@ -22,7 +22,7 @@ public class CandidatoService {
     public List<Candidato> imprimirCandidatos(String entrada){
         validarEntrada(entrada);
         List<Candidato> candidatos = lerCandidatosEntrada(entrada);
-        candidatos.sort(new VotoComparator());
+        candidatos.sort(new VotoComparatorUtils());
         return candidatos;
     }
 

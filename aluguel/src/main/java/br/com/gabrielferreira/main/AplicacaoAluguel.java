@@ -1,8 +1,8 @@
 package br.com.gabrielferreira.main;
 
+import br.com.gabrielferreira.domain.QuartosReservadosDomain;
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Pessoa;
-import br.com.gabrielferreira.model.dto.QuartosReservadosDTO;
 import br.com.gabrielferreira.service.PessoaService;
 import lombok.Generated;
 
@@ -27,7 +27,7 @@ public class AplicacaoAluguel {
 
             Pessoa[] pessoas = new Pessoa[totalQuartos];
 
-            List<QuartosReservadosDTO> quartosJaAlugados = new ArrayList<>();
+            List<QuartosReservadosDomain> quartosJaAlugados = new ArrayList<>();
 
             int numeroPessoa = 1;
             for (int i = 0; i < totalQuartos; i++){
@@ -43,7 +43,7 @@ public class AplicacaoAluguel {
                 System.out.println("Número do quarto : ");
                 Integer numeroQuarto = validarEntrada(scanner);
 
-                quartosJaAlugados.add(QuartosReservadosDTO.builder().numeroPessoa(numeroPessoa).quartoReservado(numeroQuarto).build());
+                quartosJaAlugados.add(QuartosReservadosDomain.builder().numeroPessoa(numeroPessoa).quartoReservado(numeroQuarto).build());
 
                 pessoas[i] = pessoaService.criarPessoa(nome, email, numeroQuarto, quartosJaAlugados, numeroPessoa);
                 numeroPessoa++;

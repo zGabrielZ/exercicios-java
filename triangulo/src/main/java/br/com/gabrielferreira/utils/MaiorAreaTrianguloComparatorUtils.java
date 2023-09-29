@@ -4,7 +4,7 @@ import br.com.gabrielferreira.model.Triangulo;
 
 import java.util.Comparator;
 
-public class MaiorAreaTrianguloComparator implements Comparator<Triangulo> {
+public class MaiorAreaTrianguloComparatorUtils implements Comparator<Triangulo> {
 
     @Override
     public int compare(Triangulo o1, Triangulo o2) {

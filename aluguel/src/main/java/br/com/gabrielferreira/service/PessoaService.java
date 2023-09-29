@@ -1,10 +1,10 @@
 package br.com.gabrielferreira.service;
 
+import br.com.gabrielferreira.domain.QuartosReservadosDomain;
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Pessoa;
 import br.com.gabrielferreira.model.Quarto;
-import br.com.gabrielferreira.model.dto.QuartosReservadosDTO;
-import br.com.gabrielferreira.utils.NumeroQuartoComparator;
+import br.com.gabrielferreira.utils.NumeroQuartoComparatorUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 public class PessoaService {
 
-    public Pessoa criarPessoa(String nome, String email, Integer numeroQuarto, List<QuartosReservadosDTO> quartosJaAlugados, Integer numeroPessoa){
+    public Pessoa criarPessoa(String nome, String email, Integer numeroQuarto, List<QuartosReservadosDomain> quartosJaAlugados, Integer numeroPessoa){
         validarNome(nome);
         validarEmail(email);
         validarNumeroQuarto(numeroQuarto, quartosJaAlugados, numeroPessoa);
@@ -34,7 +34,7 @@ public class PessoaService {
     public String imprimirPessoas(Pessoa...pessoas){
         if(pessoas != null){
             List<Pessoa> pessoaList = Arrays.asList(pessoas);
-            pessoaList.sort(new NumeroQuartoComparator());
+            pessoaList.sort(new NumeroQuartoComparatorUtils());
 
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("Quartos Alugados : \n");
@@ -69,7 +69,7 @@ public class PessoaService {
         }
     }
 
-    private void validarNumeroQuarto(Integer numeroQuarto, List<QuartosReservadosDTO> quartosJaAlugados, Integer numeroPessoa){
+    private void validarNumeroQuarto(Integer numeroQuarto, List<QuartosReservadosDomain> quartosJaAlugados, Integer numeroPessoa){
         if(numeroQuarto == null){
             throw new RegraDeNegocioException("É necessário informar o número do quarto");
         }
@@ -78,7 +78,7 @@ public class PessoaService {
             throw new RegraDeNegocioException("O número do quarto tem que ser de 0 até 9");
         }
 
-        for (QuartosReservadosDTO quartosJaAlugado : quartosJaAlugados) {
+        for (QuartosReservadosDomain quartosJaAlugado : quartosJaAlugados) {
             if(!quartosJaAlugado.getNumeroPessoa().equals(numeroPessoa) && quartosJaAlugado.getQuartoReservado().equals(numeroQuarto)){
                 throw new RegraDeNegocioException(String.format("Este quarto do número %s já foi alugado", numeroQuarto));
             }

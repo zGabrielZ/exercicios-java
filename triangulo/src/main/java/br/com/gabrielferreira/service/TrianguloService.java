@@ -1,7 +1,7 @@
 package br.com.gabrielferreira.service;
 
 import br.com.gabrielferreira.model.Triangulo;
-import br.com.gabrielferreira.utils.MaiorAreaTrianguloComparator;
+import br.com.gabrielferreira.utils.MaiorAreaTrianguloComparatorUtils;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,7 +30,7 @@ public class TrianguloService {
 
     public Character maiorAreaTipoTriangulo(List<Triangulo> triangulos){
         validarTipoTrianguloRepetido(triangulos.stream().map(Triangulo::getTipoTriangulo).toList());
-        triangulos.sort(new MaiorAreaTrianguloComparator());
+        triangulos.sort(new MaiorAreaTrianguloComparatorUtils());
         return triangulos.get(0).getTipoTriangulo();
     }
 

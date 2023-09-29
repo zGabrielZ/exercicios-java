@@ -2,8 +2,8 @@ package br.com.gabrielferreira.service;
 
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Funcionario;
-import br.com.gabrielferreira.model.dto.NumeroFuncionarioCadastradoDTO;
-import br.com.gabrielferreira.utils.NumeroFuncionarioComparator;
+import br.com.gabrielferreira.domain.NumeroFuncionarioCadastradoDomain;
+import br.com.gabrielferreira.utils.NumeroFuncionarioComparatorUtils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -17,7 +17,7 @@ public class FuncionarioService {
 
     private static final BigDecimal PORCENTAGEM = toBigDecimal(100);
 
-    public Funcionario criarFuncionario(Integer numeroFuncionarioIdentificador, String nome, BigDecimal salario, List<NumeroFuncionarioCadastradoDTO> numeroFuncionariosJaCadastrado
+    public Funcionario criarFuncionario(Integer numeroFuncionarioIdentificador, String nome, BigDecimal salario, List<NumeroFuncionarioCadastradoDomain> numeroFuncionariosJaCadastrado
             , Integer numeroFuncionario){
         validarNumeroFuncionario(numeroFuncionarioIdentificador);
         validarNumeroFuncionarioCadastrados(numeroFuncionarioIdentificador, numeroFuncionariosJaCadastrado, numeroFuncionario);
@@ -49,7 +49,7 @@ public class FuncionarioService {
 
     public String imprimirFuncionarios(List<Funcionario> funcionarios){
         if(funcionarios != null && !funcionarios.isEmpty()){
-            funcionarios.sort(new NumeroFuncionarioComparator());
+            funcionarios.sort(new NumeroFuncionarioComparatorUtils());
 
             StringBuilder stringBuilder = new StringBuilder();
 
@@ -76,8 +76,8 @@ public class FuncionarioService {
         }
     }
 
-    private void validarNumeroFuncionarioCadastrados(Integer numeroFuncionarioIdentificador ,List<NumeroFuncionarioCadastradoDTO> numeroFuncionarioCadastradoDTOS, Integer numeroFuncionario){
-        for (NumeroFuncionarioCadastradoDTO numeroFuncionarioCadastrado : numeroFuncionarioCadastradoDTOS) {
+    private void validarNumeroFuncionarioCadastrados(Integer numeroFuncionarioIdentificador , List<NumeroFuncionarioCadastradoDomain> numeroFuncionarioCadastradoDomains, Integer numeroFuncionario){
+        for (NumeroFuncionarioCadastradoDomain numeroFuncionarioCadastrado : numeroFuncionarioCadastradoDomains) {
             if(!numeroFuncionarioCadastrado.getNumeroFuncionario().equals(numeroFuncionario)
                     && numeroFuncionarioCadastrado.getNumeroFuncionarioIdentificador().equals(numeroFuncionarioIdentificador)){
                 throw new RegraDeNegocioException(String.format("Este número do funcionário %s já foi cadastrado", numeroFuncionarioIdentificador));

@@ -5,11 +5,11 @@ import br.com.gabrielferreira.model.enumeration.TipoAngulo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static br.com.gabrielferreira.utils.Matematica.*;
+import static br.com.gabrielferreira.utils.MatematicaUtils.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class MatematicaTest {
+class MatematicaUtilsTest {
 
     @Test
     @DisplayName("Deve validar a conversão do ângulo quando não informar o valor")

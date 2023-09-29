@@ -2,7 +2,7 @@ package br.com.gabrielferreira.service;
 
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Jogo;
-import br.com.gabrielferreira.utils.NomeComparator;
+import br.com.gabrielferreira.utils.NomeComparatorUtils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -34,18 +34,18 @@ public class JogoService {
     }
 
     public List<String> mostrarJogosOrdemDecrescente(List<Jogo> jogos){
-        return jogos.stream().map(Jogo::getNome).sorted(new NomeComparator()).toList();
+        return jogos.stream().map(Jogo::getNome).sorted(new NomeComparatorUtils()).toList();
     }
 
     public List<String> mostrarJogosOrdemDecrescenteInferiorPrecoMedio(List<Jogo> jogos){
         BigDecimal precoMedio = calcularPrecoMedio(jogos);
         return jogos.stream().filter(jogo -> jogo.getPreco().compareTo(precoMedio) <= 0)
-                .map(Jogo::getNome).sorted(new NomeComparator()).toList();
+                .map(Jogo::getNome).sorted(new NomeComparatorUtils()).toList();
     }
 
     public List<String> mostrarJogosOrdemDecrescenteComPrecoMaiorOuIgualInformado(List<Jogo> jogos, BigDecimal preco){
         return jogos.stream().filter(jogo -> jogo.getPreco().compareTo(preco) >= 0)
-                .map(Jogo::getNome).sorted(new NomeComparator()).toList();
+                .map(Jogo::getNome).sorted(new NomeComparatorUtils()).toList();
     }
 
     public BigDecimal calcularSomaTotalComLetraInformada(List<Jogo> jogos, Character letra){

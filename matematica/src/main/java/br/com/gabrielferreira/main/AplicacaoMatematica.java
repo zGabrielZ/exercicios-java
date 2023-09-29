@@ -4,7 +4,7 @@ package br.com.gabrielferreira.main;
 import br.com.gabrielferreira.model.enumeration.TipoAngulo;
 import lombok.Generated;
 
-import static br.com.gabrielferreira.utils.Matematica.*;
+import static br.com.gabrielferreira.utils.MatematicaUtils.*;
 
 @Generated
 public class AplicacaoMatematica {

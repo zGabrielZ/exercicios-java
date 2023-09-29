@@ -4,7 +4,7 @@ import br.com.gabrielferreira.model.Funcionario;
 
 import java.util.Comparator;
 
-public class NumeroFuncionarioComparator implements Comparator<Funcionario> {
+public class NumeroFuncionarioComparatorUtils implements Comparator<Funcionario> {
 
     @Override
     public int compare(Funcionario o1, Funcionario o2) {

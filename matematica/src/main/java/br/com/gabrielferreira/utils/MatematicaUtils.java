@@ -5,9 +5,9 @@ import br.com.gabrielferreira.model.enumeration.TipoAngulo;
 
 import static br.com.gabrielferreira.model.enumeration.TipoAngulo.*;
 
-public class Matematica {
+public class MatematicaUtils {
 
-    private Matematica(){}
+    private MatematicaUtils(){}
 
     public static Double converterAngulo(Double angulo, TipoAngulo tipoAngulo){
         validarTipoAngulo(angulo, tipoAngulo);
