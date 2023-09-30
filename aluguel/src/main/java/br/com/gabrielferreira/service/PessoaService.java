@@ -1,6 +1,6 @@
 package br.com.gabrielferreira.service;
 
-import br.com.gabrielferreira.domain.QuartosReservadosDomain;
+import br.com.gabrielferreira.dto.QuartosReservadosDTO;
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Pessoa;
 import br.com.gabrielferreira.model.Quarto;
@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 public class PessoaService {
 
-    public Pessoa criarPessoa(String nome, String email, Integer numeroQuarto, List<QuartosReservadosDomain> quartosJaAlugados, Integer numeroPessoa){
+    public Pessoa criarPessoa(String nome, String email, Integer numeroQuarto, List<QuartosReservadosDTO> quartosJaAlugados, Integer numeroPessoa){
         validarNome(nome);
         validarEmail(email);
         validarNumeroQuarto(numeroQuarto, quartosJaAlugados, numeroPessoa);
@@ -69,7 +69,7 @@ public class PessoaService {
         }
     }
 
-    private void validarNumeroQuarto(Integer numeroQuarto, List<QuartosReservadosDomain> quartosJaAlugados, Integer numeroPessoa){
+    private void validarNumeroQuarto(Integer numeroQuarto, List<QuartosReservadosDTO> quartosJaAlugados, Integer numeroPessoa){
         if(numeroQuarto == null){
             throw new RegraDeNegocioException("É necessário informar o número do quarto");
         }
@@ -78,7 +78,7 @@ public class PessoaService {
             throw new RegraDeNegocioException("O número do quarto tem que ser de 0 até 9");
         }
 
-        for (QuartosReservadosDomain quartosJaAlugado : quartosJaAlugados) {
+        for (QuartosReservadosDTO quartosJaAlugado : quartosJaAlugados) {
             if(!quartosJaAlugado.getNumeroPessoa().equals(numeroPessoa) && quartosJaAlugado.getQuartoReservado().equals(numeroQuarto)){
                 throw new RegraDeNegocioException(String.format("Este quarto do número %s já foi alugado", numeroQuarto));
             }

@@ -2,7 +2,7 @@ package br.com.gabrielferreira.service;
 
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Funcionario;
-import br.com.gabrielferreira.domain.NumeroFuncionarioCadastradoDomain;
+import br.com.gabrielferreira.dto.NumeroFuncionarioCadastradoDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,8 +31,8 @@ class FuncionarioServiceTest {
         Integer numeroFuncionarioIdentificador = null;
         String nome = "José";
         BigDecimal salario = toBigDecimal(100.00);
-        List<NumeroFuncionarioCadastradoDomain> cadastros = new ArrayList<>();
-        cadastros.add(NumeroFuncionarioCadastradoDomain.builder().numeroFuncionarioIdentificador(111).numeroFuncionario(1).build());
+        List<NumeroFuncionarioCadastradoDTO> cadastros = new ArrayList<>();
+        cadastros.add(NumeroFuncionarioCadastradoDTO.builder().numeroFuncionarioIdentificador(111).numeroFuncionario(1).build());
         Integer numeroFuncionario = 2;
         assertThrows(RegraDeNegocioException.class, () -> funcionarioService
                 .criarFuncionario(numeroFuncionarioIdentificador, nome, salario, cadastros, numeroFuncionario));
@@ -44,8 +44,8 @@ class FuncionarioServiceTest {
         Integer numeroFuncionarioIdentificador = -1;
         String nome = "José";
         BigDecimal salario = toBigDecimal(100.00);
-        List<NumeroFuncionarioCadastradoDomain> cadastros = new ArrayList<>();
-        cadastros.add(NumeroFuncionarioCadastradoDomain.builder().numeroFuncionarioIdentificador(111).numeroFuncionario(1).build());
+        List<NumeroFuncionarioCadastradoDTO> cadastros = new ArrayList<>();
+        cadastros.add(NumeroFuncionarioCadastradoDTO.builder().numeroFuncionarioIdentificador(111).numeroFuncionario(1).build());
         Integer numeroFuncionario = 2;
         assertThrows(RegraDeNegocioException.class, () -> funcionarioService
                 .criarFuncionario(numeroFuncionarioIdentificador, nome, salario, cadastros, numeroFuncionario));
@@ -57,8 +57,8 @@ class FuncionarioServiceTest {
         Integer numeroFuncionarioIdentificador = 100;
         String nome = "José";
         BigDecimal salario = toBigDecimal(100.00);
-        List<NumeroFuncionarioCadastradoDomain> cadastros = new ArrayList<>();
-        cadastros.add(NumeroFuncionarioCadastradoDomain.builder().numeroFuncionarioIdentificador(100).numeroFuncionario(1).build());
+        List<NumeroFuncionarioCadastradoDTO> cadastros = new ArrayList<>();
+        cadastros.add(NumeroFuncionarioCadastradoDTO.builder().numeroFuncionarioIdentificador(100).numeroFuncionario(1).build());
         Integer numeroFuncionario = 2;
         assertThrows(RegraDeNegocioException.class, () -> funcionarioService
                 .criarFuncionario(numeroFuncionarioIdentificador, nome, salario, cadastros, numeroFuncionario));
@@ -70,8 +70,8 @@ class FuncionarioServiceTest {
         Integer numeroFuncionarioIdentificador = 200;
         String nome = null;
         BigDecimal salario = toBigDecimal(100.00);
-        List<NumeroFuncionarioCadastradoDomain> cadastros = new ArrayList<>();
-        cadastros.add(NumeroFuncionarioCadastradoDomain.builder().numeroFuncionarioIdentificador(100).numeroFuncionario(1).build());
+        List<NumeroFuncionarioCadastradoDTO> cadastros = new ArrayList<>();
+        cadastros.add(NumeroFuncionarioCadastradoDTO.builder().numeroFuncionarioIdentificador(100).numeroFuncionario(1).build());
         Integer numeroFuncionario = 2;
         assertThrows(RegraDeNegocioException.class, () -> funcionarioService
                 .criarFuncionario(numeroFuncionarioIdentificador, nome, salario, cadastros, numeroFuncionario));
@@ -83,8 +83,8 @@ class FuncionarioServiceTest {
         Integer numeroFuncionarioIdentificador = 200;
         String nome = "José";
         BigDecimal salario = null;
-        List<NumeroFuncionarioCadastradoDomain> cadastros = new ArrayList<>();
-        cadastros.add(NumeroFuncionarioCadastradoDomain.builder().numeroFuncionarioIdentificador(100).numeroFuncionario(1).build());
+        List<NumeroFuncionarioCadastradoDTO> cadastros = new ArrayList<>();
+        cadastros.add(NumeroFuncionarioCadastradoDTO.builder().numeroFuncionarioIdentificador(100).numeroFuncionario(1).build());
         Integer numeroFuncionario = 2;
         assertThrows(RegraDeNegocioException.class, () -> funcionarioService
                 .criarFuncionario(numeroFuncionarioIdentificador, nome, salario, cadastros, numeroFuncionario));
@@ -96,8 +96,8 @@ class FuncionarioServiceTest {
         Integer numeroFuncionarioIdentificador = 200;
         String nome = "José";
         BigDecimal salario = toBigDecimal(-200.00);
-        List<NumeroFuncionarioCadastradoDomain> cadastros = new ArrayList<>();
-        cadastros.add(NumeroFuncionarioCadastradoDomain.builder().numeroFuncionarioIdentificador(100).numeroFuncionario(1).build());
+        List<NumeroFuncionarioCadastradoDTO> cadastros = new ArrayList<>();
+        cadastros.add(NumeroFuncionarioCadastradoDTO.builder().numeroFuncionarioIdentificador(100).numeroFuncionario(1).build());
         Integer numeroFuncionario = 2;
         assertThrows(RegraDeNegocioException.class, () -> funcionarioService
                 .criarFuncionario(numeroFuncionarioIdentificador, nome, salario, cadastros, numeroFuncionario));
@@ -109,8 +109,8 @@ class FuncionarioServiceTest {
         Integer numeroFuncionarioIdentificador = 200;
         String nome = "José";
         BigDecimal salario = toBigDecimal(200.00);
-        List<NumeroFuncionarioCadastradoDomain> cadastros = new ArrayList<>();
-        cadastros.add(NumeroFuncionarioCadastradoDomain.builder().numeroFuncionarioIdentificador(100).numeroFuncionario(1).build());
+        List<NumeroFuncionarioCadastradoDTO> cadastros = new ArrayList<>();
+        cadastros.add(NumeroFuncionarioCadastradoDTO.builder().numeroFuncionarioIdentificador(100).numeroFuncionario(1).build());
         Integer numeroFuncionario = 2;
 
         Funcionario funcionario = funcionarioService.criarFuncionario(numeroFuncionarioIdentificador, nome, salario, cadastros, numeroFuncionario);

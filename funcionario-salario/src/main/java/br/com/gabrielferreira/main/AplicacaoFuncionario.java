@@ -2,7 +2,7 @@ package br.com.gabrielferreira.main;
 
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Funcionario;
-import br.com.gabrielferreira.domain.NumeroFuncionarioCadastradoDomain;
+import br.com.gabrielferreira.dto.NumeroFuncionarioCadastradoDTO;
 import br.com.gabrielferreira.service.FuncionarioService;
 import lombok.Generated;
 
@@ -29,7 +29,7 @@ public class AplicacaoFuncionario {
         try {
 
             List<Funcionario> funcionarios = new ArrayList<>();
-            List<NumeroFuncionarioCadastradoDomain> numerosFuncionariosCadastrados = new ArrayList<>();
+            List<NumeroFuncionarioCadastradoDTO> numerosFuncionariosCadastrados = new ArrayList<>();
 
             System.out.println("Quantos funcionários vai ser registrados ?, não pode ser negativo o número : ");
             int totalFuncionarios = verificarEntradaTotalFuncionarios(scanner);
@@ -48,7 +48,7 @@ public class AplicacaoFuncionario {
                 System.out.println("Salário : ");
                 BigDecimal salario = validarEntradaBigDecimal(scanner);
 
-                numerosFuncionariosCadastrados.add(NumeroFuncionarioCadastradoDomain.builder().numeroFuncionario(numeroFuncionario)
+                numerosFuncionariosCadastrados.add(NumeroFuncionarioCadastradoDTO.builder().numeroFuncionario(numeroFuncionario)
                         .numeroFuncionarioIdentificador(numeroFuncionarioId).build());
                 Funcionario funcionario = funcionarioService.criarFuncionario(numeroFuncionarioId, nome, salario, numerosFuncionariosCadastrados, numeroFuncionario);
                 funcionarios.add(funcionario);

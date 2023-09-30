@@ -1,6 +1,6 @@
 package br.com.gabrielferreira.service;
 
-import br.com.gabrielferreira.domain.QuartosReservadosDomain;
+import br.com.gabrielferreira.dto.QuartosReservadosDTO;
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Pessoa;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,7 +29,7 @@ class PessoaServiceTest {
         String nome = null;
         String email = "jose@gmail.com";
         Integer numeroQuarto = 5;
-        List<QuartosReservadosDomain> quartosReservadosDTOS = new ArrayList<>();
+        List<QuartosReservadosDTO> quartosReservadosDTOS = new ArrayList<>();
         Integer numeroPessoa = 1;
         assertThrows(RegraDeNegocioException.class, () -> pessoaService.criarPessoa(nome, email, numeroQuarto, quartosReservadosDTOS, numeroPessoa));
     }
@@ -40,7 +40,7 @@ class PessoaServiceTest {
         String nome = "José da Silva";
         String email = null;
         Integer numeroQuarto = 5;
-        List<QuartosReservadosDomain> quartosReservadosDTOS = new ArrayList<>();
+        List<QuartosReservadosDTO> quartosReservadosDTOS = new ArrayList<>();
         Integer numeroPessoa = 1;
         assertThrows(RegraDeNegocioException.class, () -> pessoaService.criarPessoa(nome, email, numeroQuarto, quartosReservadosDTOS, numeroPessoa));
     }
@@ -51,7 +51,7 @@ class PessoaServiceTest {
     void deveValidarCriarPessoaEmailInvalido(String email){
         String nome = "José da Silva";
         Integer numeroQuarto = 5;
-        List<QuartosReservadosDomain> quartosReservadosDTOS = new ArrayList<>();
+        List<QuartosReservadosDTO> quartosReservadosDTOS = new ArrayList<>();
         Integer numeroPessoa = 1;
         assertThrows(RegraDeNegocioException.class, () -> pessoaService.criarPessoa(nome, email, numeroQuarto, quartosReservadosDTOS, numeroPessoa));
     }
@@ -62,7 +62,7 @@ class PessoaServiceTest {
         String nome = "José da Silva";
         String email = "jose@gmail.com";
         Integer numeroQuarto = null;
-        List<QuartosReservadosDomain> quartosReservadosDTOS = new ArrayList<>();
+        List<QuartosReservadosDTO> quartosReservadosDTOS = new ArrayList<>();
         Integer numeroPessoa = 1;
         assertThrows(RegraDeNegocioException.class, () -> pessoaService.criarPessoa(nome, email, numeroQuarto, quartosReservadosDTOS, numeroPessoa));
     }
@@ -73,7 +73,7 @@ class PessoaServiceTest {
     void deveValidarCriarPessoaNumeroQuartoForaPeriodo(int numeroQuarto){
         String nome = "José da Silva";
         String email = "jose@gmail.com";
-        List<QuartosReservadosDomain> quartosReservadosDTOS = new ArrayList<>();
+        List<QuartosReservadosDTO> quartosReservadosDTOS = new ArrayList<>();
         Integer numeroPessoa = 1;
         assertThrows(RegraDeNegocioException.class, () -> pessoaService.criarPessoa(nome, email, numeroQuarto, quartosReservadosDTOS, numeroPessoa));
     }
@@ -84,8 +84,8 @@ class PessoaServiceTest {
         String nome = "José da Silva";
         String email = "jose@gmail.com";
         Integer numeroQuarto = 5;
-        List<QuartosReservadosDomain> quartosReservadosDTOS = new ArrayList<>();
-        quartosReservadosDTOS.add(QuartosReservadosDomain.builder().numeroPessoa(2).quartoReservado(5).build());
+        List<QuartosReservadosDTO> quartosReservadosDTOS = new ArrayList<>();
+        quartosReservadosDTOS.add(QuartosReservadosDTO.builder().numeroPessoa(2).quartoReservado(5).build());
         Integer numeroPessoa = 1;
         assertThrows(RegraDeNegocioException.class, () -> pessoaService.criarPessoa(nome, email, numeroQuarto, quartosReservadosDTOS, numeroPessoa));
     }

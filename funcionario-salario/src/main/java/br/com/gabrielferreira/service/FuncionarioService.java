@@ -2,7 +2,7 @@ package br.com.gabrielferreira.service;
 
 import br.com.gabrielferreira.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.model.Funcionario;
-import br.com.gabrielferreira.domain.NumeroFuncionarioCadastradoDomain;
+import br.com.gabrielferreira.dto.NumeroFuncionarioCadastradoDTO;
 import br.com.gabrielferreira.utils.NumeroFuncionarioComparatorUtils;
 
 import java.math.BigDecimal;
@@ -17,7 +17,7 @@ public class FuncionarioService {
 
     private static final BigDecimal PORCENTAGEM = toBigDecimal(100);
 
-    public Funcionario criarFuncionario(Integer numeroFuncionarioIdentificador, String nome, BigDecimal salario, List<NumeroFuncionarioCadastradoDomain> numeroFuncionariosJaCadastrado
+    public Funcionario criarFuncionario(Integer numeroFuncionarioIdentificador, String nome, BigDecimal salario, List<NumeroFuncionarioCadastradoDTO> numeroFuncionariosJaCadastrado
             , Integer numeroFuncionario){
         validarNumeroFuncionario(numeroFuncionarioIdentificador);
         validarNumeroFuncionarioCadastrados(numeroFuncionarioIdentificador, numeroFuncionariosJaCadastrado, numeroFuncionario);
@@ -76,8 +76,8 @@ public class FuncionarioService {
         }
     }
 
-    private void validarNumeroFuncionarioCadastrados(Integer numeroFuncionarioIdentificador , List<NumeroFuncionarioCadastradoDomain> numeroFuncionarioCadastradoDomains, Integer numeroFuncionario){
-        for (NumeroFuncionarioCadastradoDomain numeroFuncionarioCadastrado : numeroFuncionarioCadastradoDomains) {
+    private void validarNumeroFuncionarioCadastrados(Integer numeroFuncionarioIdentificador , List<NumeroFuncionarioCadastradoDTO> numeroFuncionarioCadastradoDTOS, Integer numeroFuncionario){
+        for (NumeroFuncionarioCadastradoDTO numeroFuncionarioCadastrado : numeroFuncionarioCadastradoDTOS) {
             if(!numeroFuncionarioCadastrado.getNumeroFuncionario().equals(numeroFuncionario)
                     && numeroFuncionarioCadastrado.getNumeroFuncionarioIdentificador().equals(numeroFuncionarioIdentificador)){
                 throw new RegraDeNegocioException(String.format("Este número do funcionário %s já foi cadastrado", numeroFuncionarioIdentificador));

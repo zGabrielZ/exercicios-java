@@ -1,4 +1,4 @@
-package br.com.gabrielferreira.domain;
+package br.com.gabrielferreira.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +12,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 @Builder
-public class NumeroFuncionarioCadastradoDomain implements Serializable {
+public class NumeroFuncionarioCadastradoDTO implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 537563925647530667L;
