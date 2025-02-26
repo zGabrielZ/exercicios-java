@@ -1,6 +1,8 @@
 package br.com.gabrielferreira.produto.service;
 
 import br.com.gabrielferreira.commons.service.ArquivoService;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,6 +12,7 @@ import java.io.File;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
+@Slf4j
 class ProdutoServiceTest {
 
     private static final String NOME_ARQUIVO = "sumario-resultado-teste.csv";
@@ -51,7 +54,12 @@ class ProdutoServiceTest {
 
         File file = new File(CAMINHO_COMPLETO);
         assertTrue(file.exists());
+    }
 
-        file.delete();
+    @AfterAll
+    static void afterAll() {
+        File file = new File(CAMINHO_COMPLETO);
+        boolean delete = file.delete();
+        log.info("Arquivo deletado: {}", delete);
     }
 }

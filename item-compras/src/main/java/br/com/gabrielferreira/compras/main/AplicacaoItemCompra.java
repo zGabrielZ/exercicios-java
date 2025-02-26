@@ -5,6 +5,7 @@ import br.com.gabrielferreira.commons.service.ArquivoService;
 import br.com.gabrielferreira.compras.service.ItemCompraService;
 import lombok.Generated;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,6 +13,8 @@ import static br.com.gabrielferreira.commons.utils.CalculoUtils.toBigDecimal;
 
 @Generated
 public class AplicacaoItemCompra {
+
+    private static final String CAMINHO_COMPLETO = System.getProperty("user.home") + "/Downloads/".concat("lista.txt");
 
     public static void main(String[] args) {
         System.out.println("Iniciando a aplicação item compra");
@@ -31,5 +34,10 @@ public class AplicacaoItemCompra {
         System.out.println("Gerando o arquivo");
 
         itemCompraService.gerarArquivoItemCompra(itemCompras, "lista.txt");
+
+        System.out.println("Deletando arquivo lista.txt");
+        File file = new File(CAMINHO_COMPLETO);
+        boolean delete = file.delete();
+        System.out.println("Arquivo deletado? " + delete);
     }
 }

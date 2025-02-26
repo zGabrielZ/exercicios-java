@@ -6,6 +6,7 @@ import br.com.gabrielferreira.commons.service.ArquivoService;
 import br.com.gabrielferreira.autor.service.AutorService;
 import lombok.Generated;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,6 +16,8 @@ import static br.com.gabrielferreira.commons.utils.LogUtils.*;
 
 @Generated
 public class AplicacaoAutor {
+
+    private static final String CAMINHO_COMPLETO = System.getProperty("user.home") + "/Downloads/".concat("autores.txt");
 
     public static void main(String[] args) {
         AutorService autorService = new AutorService(new ArquivoService());
@@ -58,5 +61,10 @@ public class AplicacaoAutor {
         } catch (Exception e){
             gerarLogWarn("Ocorreu erro na aplicação. Causa : {}", e);
         }
+
+        System.out.println("Deletando arquivo agenda.txt");
+        File file = new File(CAMINHO_COMPLETO);
+        boolean delete = file.delete();
+        System.out.println("Arquivo deletado? " + delete);
     }
 }

@@ -4,6 +4,8 @@ import br.com.gabrielferreira.autor.model.Autor;
 import br.com.gabrielferreira.autor.model.Livro;
 import br.com.gabrielferreira.commons.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.commons.service.ArquivoService;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,6 +18,7 @@ import static br.com.gabrielferreira.commons.utils.DataUtils.toDataAtualBrasil;
 import static br.com.gabrielferreira.commons.utils.DataUtils.toDataBrasil;
 import static org.junit.jupiter.api.Assertions.*;
 
+@Slf4j
 class AutorServiceTest {
 
     private AutorService autorService;
@@ -134,8 +137,6 @@ class AutorServiceTest {
 
         File file = new File(CAMINHO_COMPLETO);
         assertTrue(file.exists());
-
-        file.delete();
     }
 
     @Test
@@ -167,8 +168,12 @@ class AutorServiceTest {
         String entrada = autorService.lerArquivoAutores(CAMINHO_COMPLETO);
 
         assertNotNull(entrada);
+    }
 
+    @AfterAll
+    static void afterAll() {
         File file = new File(CAMINHO_COMPLETO);
-        file.delete();
+        boolean delete = file.delete();
+        log.info("Arquivo deletado: {}", delete);
     }
 }

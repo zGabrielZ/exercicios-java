@@ -3,6 +3,8 @@ package br.com.gabrielferreira.compras.service;
 import br.com.gabrielferreira.commons.exception.RegraDeNegocioException;
 import br.com.gabrielferreira.commons.service.ArquivoService;
 import br.com.gabrielferreira.compras.model.ItemCompra;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,6 +17,7 @@ import java.util.List;
 import static br.com.gabrielferreira.commons.utils.CalculoUtils.toBigDecimal;
 import static org.junit.jupiter.api.Assertions.*;
 
+@Slf4j
 class ItemCompraServiceTest {
 
     private static final String NOME_ARQUIVO = "lista-test.txt";
@@ -85,7 +88,12 @@ class ItemCompraServiceTest {
 
         File file = new File(CAMINHO_COMPLETO);
         assertTrue(file.exists());
+    }
 
-        file.delete();
+    @AfterAll
+    static void afterAll() {
+        File file = new File(CAMINHO_COMPLETO);
+        boolean delete = file.delete();
+        log.info("Arquivo deletado: {}", delete);
     }
 }
